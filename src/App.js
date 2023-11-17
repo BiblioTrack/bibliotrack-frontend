@@ -1,9 +1,9 @@
 import './App.css';
+import Home from './views/Home.js'
 
-// TODO : change logos in public folder
 function App() {
   return (
-    <> </>
+    <Home/>
   );
 }
 
