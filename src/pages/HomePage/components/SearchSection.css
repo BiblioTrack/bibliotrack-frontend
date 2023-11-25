@@ -1,0 +1,14 @@
+.search-section-container {
+    background-image: url('../../../assets/books-bg.PNG'); 
+    background-size: cover;
+    background-position: center;
+    height: 320px; /* Adjust the height as needed */
+    flex: 1; /* Allow the container to grow and take up available space */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white; /* Text color on top of the image */
+    position: relative;
+  }
+  
+ 
