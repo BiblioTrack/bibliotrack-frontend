@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Home from './views/Home.js'
-import About from './views/About.js'
+import Home from './pages/HomePage/HomePage.js'
+import About from './pages/AboutPage/AboutPage.js'
 
 
 function App() {
