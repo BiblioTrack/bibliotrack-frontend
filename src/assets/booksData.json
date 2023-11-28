@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "coverImage": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781524879761/the-great-gatsby-9781524879761_hr.jpg"
+    },
+    {
+      "id": 2,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "coverImage": "https://m.media-amazon.com/images/I/71FxgtFKcQL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": 3,
+      "title": "1984",
+      "author": "George Orwell",
+      "coverImage": "https://images.thalia.media/-/BF2000-2000/3f9944adb91944fa97f4e733b940d71f/nineteen-eighty-four-1984-taschenbuch-george-orwell-englisch.jpeg"
+    },
+    {
+      "id": 4,
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "coverImage": "https://m.media-amazon.com/images/I/71Q1tPupKjL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+      "id": 5,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "coverImage": "https://cdn.britannica.com/94/181394-050-2F76F7EE/Reproduction-cover-edition-The-Catcher-in-the.jpg"
+    }
+  ]
+  
