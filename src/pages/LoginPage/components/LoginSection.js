@@ -25,7 +25,7 @@ const LoginSection = () => {
                         <input value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             type='email'
-                            placeholder='your email'
+                            placeholder='Enter your email'
                             id='email'
                             name='email'
                             className='email-input'
@@ -34,7 +34,7 @@ const LoginSection = () => {
                         <input value={pass}
                             onChange={(e) => setPass(e.target.value)}
                             type='password'
-                            placeholder='******'
+                            placeholder='*************'
                             id='password'
                             name='password'
                             className='password-input'
