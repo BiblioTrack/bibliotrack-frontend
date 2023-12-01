@@ -8,16 +8,16 @@ const BookDetails = ({ book }) => {
   return (
     <Container className="book-details-container">
       <Row>
-        {/* Image and Request Borrowing Button */}
-        <Col md={4} className="book-details-image">
-          <Image src={book.coverImage} alt={book.title} fluid />
-          <Button variant="outline-dark" className="request-button">
+         {/* Image and Request Borrowing Button */}
+         <Col lg={3} md={4} className="book-details-image text-center">
+          <Image src={book.coverImage} alt={book.title} fluid className="bookcover-image" />
+          <Button variant="outline-dark" className="request-button w-100">
             Request Copy
           </Button>
         </Col>
 
         {/* Book Details */}
-        <Col md={8} className="book-details-info">
+        <Col lg={9} md={8} className="book-details-info mt-5 mt-md-0">
           <div className="unique-title">{book.title}</div>
           <div className="unique-author">{book.author}</div>
           <div className="genre-badges">
@@ -30,6 +30,7 @@ const BookDetails = ({ book }) => {
           <p className="description">{book.description}</p>
           <p><strong>Pages:</strong> {book.pages}</p>
           <p><strong>Format:</strong> {book.format}</p>
+          <p><strong>Available Copies:</strong> {book.availableCopies}</p>
           <p><strong>Publication Date:</strong> {book.publicationDate}</p>
           {/* Add more details as needed */}
         </Col>
