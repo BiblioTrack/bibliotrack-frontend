@@ -1,0 +1,37 @@
+/* BookDetails.css */
+  
+  .unique-title {
+    /* Styling for the unique title */
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .unique-author {
+    /* Styling for the unique author */
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .genre-badges {
+    /* Styling for the genre badges container */
+    margin-bottom: 10px;
+  }
+  
+
+  .genre-badge {
+    border: 1px solid #ced4da; /* Bootstrap gray border color */
+    padding: 0.25rem 0.5rem; /* Padding for the badge */
+    margin-right: 5px; /* Adjust margin as needed */
+  }
+  
+  
+  .description {
+    /* Styling for the book description */
+    margin-bottom: 15px;
+  }
+  
+  /* Add more styles as needed */
+  
