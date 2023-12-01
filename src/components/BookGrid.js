@@ -1,12 +1,15 @@
 import React from 'react';
 import BookCard from './BookCard'; // Import the new BookCard component
+import { Link } from 'react-router-dom';
 import './BookGrid.css';
 
-const BookGrid = ({ books, onBookClick }) => {
+const BookGrid = ({ books }) => {
   return (
     <div className="book-grid">
       {books.map((book) => (
-        <BookCard key={book.id} book={book} onBookClick={onBookClick} />
+        <Link key={book.id} to={`/book/${book.id}`}>
+          <BookCard key={book.id} book={book}/>
+        </Link>
       ))}
     </div>
   );
