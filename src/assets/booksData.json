@@ -8,7 +8,9 @@
     "genres": ["Classics", "Fiction", "School", "Historical Fiction", "Romance", "Literature", "Novels"],
     "pages": 180,
     "format": "Paperback",
-    "publicationDate": "April 10, 1925"
+    "publicationDate": "April 10, 1925",
+    "availableCopies": 5,
+    "totalCopies": 8
   },
   {
     "id": 2,
@@ -19,7 +21,9 @@
     "genres": ["Fiction", "Classics"],
     "pages": 281,
     "format": "Hardcover",
-    "publicationDate": "July 11, 1960"
+    "publicationDate": "July 11, 1960",
+    "availableCopies": 5,
+    "totalCopies": 8
   },
   {
     "id": 3,
@@ -30,7 +34,9 @@
     "genres": ["Classics", "Fiction", "Dystopian"],
     "pages": 328,
     "format": "Paperback",
-    "publicationDate": "June 8, 1949"
+    "publicationDate": "June 8, 1949",
+    "availableCopies": 5,
+    "totalCopies": 8
   },
   {
     "id": 4,
@@ -41,7 +47,9 @@
     "genres": ["Classics", "Fiction", "Romance"],
     "pages": 279,
     "format": "Hardcover",
-    "publicationDate": "January 28, 1813"
+    "publicationDate": "January 28, 1813",
+    "availableCopies": 5,
+    "totalCopies": 8
   },
   {
     "id": 5,
@@ -52,6 +60,8 @@
     "genres": ["Fiction", "Classics", "Coming-of-Age"],
     "pages": 277,
     "format": "Paperback",
-    "publicationDate": "July 16, 1951"
+    "publicationDate": "July 16, 1951",
+    "availableCopies": 5,
+    "totalCopies": 8
   }
 ]
