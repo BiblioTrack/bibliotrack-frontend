@@ -1,7 +1,6 @@
-import TopNavbar from '../../components/TopNavbar.js';
+import TopNavbar from '../../../components/TopNavbar.js';
 import LoginSection from './components/LoginSection.js';
-import VerticalSpace from '../../components/VerticalSpace.js';
-// import SearchResultsSection from '../HomePage/components/SearchResultsSection.js';
+import VerticalSpace from '../../../components/VerticalSpace.js';
 
 function Home() {
   return <>
