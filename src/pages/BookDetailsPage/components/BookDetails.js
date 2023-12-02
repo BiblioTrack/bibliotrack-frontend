@@ -11,7 +11,7 @@ const BookDetails = ({ book }) => {
          {/* Image and Request Borrowing Button */}
          <Col lg={3} md={4} className="book-details-image text-center">
           <Image src={book.coverImage} alt={book.title} fluid className="bookcover-image" />
-          <Button variant="outline-dark" className="request-button mt-3">
+          <Button variant="outline-dark" className="wide-button mt-3">
             Request Copy
           </Button>
         </Col>

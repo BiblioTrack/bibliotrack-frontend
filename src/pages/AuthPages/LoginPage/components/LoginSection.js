@@ -33,7 +33,7 @@ const LoginSection = () => {
           />
         </Form.Group>
 
-        <Button type="submit" variant="info" className="mb-3 auth-button"> LOGIN</Button>
+        <Button type="submit" variant="info" className="mb-3 wide-button"> LOGIN</Button>
 
         <div className="mt-3">
           <p>

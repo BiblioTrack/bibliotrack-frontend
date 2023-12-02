@@ -1,15 +1,14 @@
 /* BookDetails.css */
 
+  .book-details-image{
+    max-width: 300px;
+
+  }
+
   .bookcover-image {
     width: 100%; /* Set a fixed width for the image */
-    max-width: 300px;
   }
-  
-  .request-button {
-    width: 100%; /* Make the button 100% width */
-    max-width: 300px;
-  }
-  
+
   
   .unique-title {
     /* Styling for the unique title */

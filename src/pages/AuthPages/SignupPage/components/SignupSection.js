@@ -60,7 +60,7 @@ const SignupSection = () => {
           />
         </Form.Group>
 
-        <Button type="submit" variant="info" className="mb-3 auth-button"> SIGN UP </Button>
+        <Button type="submit" variant="info" className="mb-3 wide-button"> SIGN UP </Button>
 
         <div className="additional-options mt-3">
           <p>
