@@ -1,88 +1,91 @@
+// SignupSection.js
 import React, { useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
-// import VerticalSpace from '../../../components/VerticalSpace';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'; // Import Link for routing
 import './SignupSection.css';
 
-
 const SignupSection = () => {
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
 
-    const [firstname, setFirstname] = useState('')
-    const [lastname, setLastname] = useState('')
-    const [userID, setUserid] = useState('')
-    const [email, setEmail] = useState('')
-    const [pass, setPass] = useState('')
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add signup logic here
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(firstname)
-        console.log(lastname)
-        console.log(userID)
-        console.log(email)
-        console.log(pass)
-    }
-    return (
-        <Container fluid className="signup-section-container">
-            <Row className="justify-content-center text-center ">
-                <div className='signup-div'>
-                    <h1>Signup</h1>
-                    {/* <p>Welcome to our library management system</p> */}
-                    <form className='signup-form' onSubmit={handleSubmit} >
+  return (
+    <Container fluid className="signup-section-container">
+      <Row className="justify-content-center text-center">
+        <Col md={8} lg={6} xl={4}>
+          <div className="signup-div">
+            <h4>SIGN UP</h4>
+            <p>Welcome to our library management system</p>
 
-                        <label htmlFor='firstname' style={{ textAlign: "left" }}>First Name</label>
-                        <input value={firstname}
-                            onChange={(e) => setFirstname(e.target.value)}
-                            type='text'
-                            placeholder='Enter your first name'
-                            id='firstname'
-                            name='firstname'
-                            className='email-input'
-                        />
-                        <label htmlFor='lastname' style={{ textAlign: "left" }}>Last Name</label>
-                        <input value={lastname}
-                            onChange={(e) => setLastname(e.target.value)}
-                            type='text'
-                            placeholder='Enter your last name'
-                            id='lastname'
-                            name='lastname'
-                            className='email-input'
-                        />
-                        <label htmlFor='userid' style={{ textAlign: "left" }}>User ID</label>
-                        <input value={userID}
-                            onChange={(e) => setUserid(e.target.value)}
-                            type='userid'
-                            placeholder='Enter your userid'
-                            id='userid'
-                            name='userid'
-                            className='email-input'
-                        />
+            <Form className="mt-5 signup-form" onSubmit={handleSubmit}>
+              
+            <Row>
+                {/* First Name */}
+                <Col md={6} className="mb-3">
+                <Form.Group controlId="firstname">
+                    <Form.Control
+                    type="text"
+                    placeholder="First Name"
+                    value={firstname}
+                    onChange={(e) => setFirstname(e.target.value)}
+                    />
+                </Form.Group>
+                </Col>
 
-                        <label htmlFor='email' style={{ textAlign: "left" }}>Email</label>
-                        <input value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            type='email'
-                            placeholder='Enter your email'
-                            id='email'
-                            name='email'
-                            className='email-input'
-                        />
-                        <label htmlFor='password' style={{ textAlign: "left" }}>Password</label>
-                        <input value={pass}
-                            onChange={(e) => setPass(e.target.value)}
-                            type='password'
-                            placeholder='*************'
-                            id='password'
-                            name='password'
-                            className='password-input'
-                        />
+                {/* Last Name */}
+                <Col md={6} className="mb-3">
+                <Form.Group controlId="lastname">
+                    <Form.Control
+                    type="text"
+                    placeholder="Last Name"
+                    value={lastname}
+                    onChange={(e) => setLastname(e.target.value)}
+                    />
+                </Form.Group>
+                </Col>
+            </Row>
 
-                        <button type='submit' className='signupButton'>Sign up</button>
+              <Form.Group className="mb-3" controlId="email">
+                <Form.Control
+                  type="email"
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
 
-                    </form>
-                </div>
-                {/* </Col> */}
-            </Row >
-        </Container >
-    );
+              <Form.Group className="mb-3" controlId="password">
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={pass}
+                  onChange={(e) => setPass(e.target.value)}
+                />
+              </Form.Group>
+
+              <Button type="submit" variant="info" className="signupButton mb-3">
+                SIGN UP
+              </Button>
+
+              <div className="additional-options mt-3">
+                <p> Already have an account? &nbsp; 
+                  <Link to="/login" className="text-info">
+                    Login here
+                  </Link>
+                </p>
+              </div>
+            </Form>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
 };
 
-export default SignupSection; // Make sure to include this line
+export default SignupSection;
