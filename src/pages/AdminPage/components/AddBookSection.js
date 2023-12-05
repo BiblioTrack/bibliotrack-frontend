@@ -194,7 +194,9 @@ const AddBookSection = () => {
           />
         </Form.Group>
 
-        <Button type="submit" variant="info" className="mb-3 admin-button"> Add </Button>
+        <div align='center'>
+          <Button type="submit" variant="info" className="mb-3 admin-button"> Add </Button>
+        </div>
 
       </Form>
     </AdminSection >
