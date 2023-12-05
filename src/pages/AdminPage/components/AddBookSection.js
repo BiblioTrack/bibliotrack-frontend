@@ -25,9 +25,6 @@ const AddBookSection = () => {
   const [shelf, setShelf] = useState('');
   const [floor, setFloor] = useState('');
 
-  const [createdAt, setCreatedAt] = useState('');
-  const [updatedAt, setUpdatedAt] = useState('');
-
   const [description, setDescription] = useState('');
 
   const handleSubmit = (e) => {
@@ -187,31 +184,6 @@ const AddBookSection = () => {
           </Col>
         </Row>
 
-        <Row>
-          <Col md={6} className="mb-3">
-            <Form.Group className="mb-3" controlId="createdAt">
-              <Form.Label>Created At</Form.Label>
-              <FormControl
-                type="date"
-                placeholder="Created At"
-                value={createdAt}
-                onChange={(e) => setCreatedAt(e.target.value)}
-              />
-            </Form.Group>
-          </Col>
-          <Col md={6} className="mb-3">
-            <Form.Group className="mb-3" controlId="updatedAt">
-              <Form.Label>Updated At</Form.Label>
-              <FormControl
-                type="date"
-                placeholder="Updated At"
-                value={updatedAt}
-                onChange={(e) => setUpdatedAt(e.target.value)}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-
         <Form.Group className="mb-3" controlId="description">
           <Form.Label>Description</Form.Label>
           <FormControl
@@ -222,21 +194,7 @@ const AddBookSection = () => {
           />
         </Form.Group>
 
-
-
-
-
-
         <Button type="submit" variant="info" className="mb-3 admin-button"> Add </Button>
-
-        {/* <div className="additional-options mt-3">
-          <p>
-            Already have an account?{' '}
-            <Link to="/login" className="text-info">
-              Login here
-            </Link>
-          </p>
-        </div> */}
 
       </Form>
     </AdminSection >
