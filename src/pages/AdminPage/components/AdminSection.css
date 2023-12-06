@@ -1,0 +1,17 @@
+.admin-section-container {
+  background-image: url('../../../assets/books-bg.PNG');
+  background-size: cover;
+  background-position: right;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.admin-div {
+  background-color: #fff;
+  text-align: center;
+  padding: 50px;
+  border-radius: 15px;
+}
