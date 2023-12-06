@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, FormControl, Row, Col, Button } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
-import AdminSection from './AdminSection';
+import AdminSection from '../components/AdminSection';
 
 
 const AddBookSection = () => {

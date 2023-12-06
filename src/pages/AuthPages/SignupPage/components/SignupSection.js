@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, FormControl , Row, Col, Button} from 'react-bootstrap';
+import { Form, FormControl, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AuthSection from '../../components/AuthSection';
 
@@ -75,7 +75,7 @@ const SignupSection = () => {
           </p>
         </div>
 
-    </Form>
+      </Form>
 
 
     </AuthSection>
