@@ -19,5 +19,12 @@ img {
 
 .book-title{
   font-size: 18px;
+  
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Number of lines to show before ellipsis */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 }
 
