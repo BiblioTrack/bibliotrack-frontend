@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Form, FormControl, Row, Col, Button } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
-import AdminSection from '../components/AdminSection';
+import MainSection from '../../../components/MainSection';
 
 
 const AddBookSection = () => {
@@ -34,7 +33,7 @@ const AddBookSection = () => {
 
   return (
 
-    <AdminSection title="Add New Book to the System" description="">
+    <MainSection title="Add New Book to the System"  mdBreakpoint={12}>
       <Form className="mt-5" onSubmit={handleSubmit} title="Add New Book to the System" align="left">
 
         <Row>
@@ -116,7 +115,7 @@ const AddBookSection = () => {
               <Form.Label>Editor</Form.Label>
               <FormControl
                 type="text"
-                placeholder="editor"
+                placeholder="Editor Name"
                 value={editor}
                 onChange={(e) => setEditor(e.target.value)}
               />
@@ -127,6 +126,7 @@ const AddBookSection = () => {
               <Form.Label>Publisher</Form.Label>
               <FormControl
                 type="text"
+                placeholder="Publisher Name"
                 value={publisher}
                 onChange={(e) => setPublisher(e.target.value)}
               />
@@ -199,7 +199,7 @@ const AddBookSection = () => {
         </div>
 
       </Form>
-    </AdminSection >
+    </MainSection >
   );
 };
 

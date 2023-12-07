@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import '../../../components/MainSection.css'
+import './MainSection.css'
 
-const AuthSection = ({ title, description, children }) => {
+const MainSection = ({ title, description="", children , mdBreakpoint=8}) => {
   return (
     <Container fluid className="main-section-container">
       <Row className="justify-content-center text-center">
-        <Col md={8} lg={6} xl={4}>
+        <Col md={mdBreakpoint} lg={mdBreakpoint-2} xl={mdBreakpoint-4}>
           <div className="main-div">
             <h4>{title}</h4>
             <p>{description}</p>
@@ -18,4 +18,4 @@ const AuthSection = ({ title, description, children }) => {
   );
 };
 
-export default AuthSection;
+export default MainSection;
