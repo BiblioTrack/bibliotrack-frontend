@@ -6,7 +6,7 @@ import About from './pages/AboutPage/AboutPage.js'
 import Login from './pages/AuthPages/LoginPage/LoginPage.js'
 import Signup from './pages/AuthPages/SignupPage/SignupPage.js';
 import BookDetailsPage from './pages/BookDetailsPage/BookDetailsPage.js'
-import AddBook from './pages/AdminPage/AddBook.js';
+import AddBook from './pages/AddBookPage/AddBook.js';
 
 
 function App() {
