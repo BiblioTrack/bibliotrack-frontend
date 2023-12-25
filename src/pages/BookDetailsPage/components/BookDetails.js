@@ -30,6 +30,7 @@ const BookDetails = ({ book }) => {
           <p className="mb-3">{book.description}</p>
           <p><strong>Pages:</strong> {book.pages}</p>
           <p><strong>Format:</strong> {book.format}</p>
+          <p><strong>Total Copies:</strong> {book.totalCopies}</p>
           <p><strong>Available Copies:</strong> {book.availableCopies}</p>
           <p><strong>Publication Date:</strong> {book.publicationDate}</p>
           {/* Add more details as needed */}
