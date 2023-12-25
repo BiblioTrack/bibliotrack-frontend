@@ -40,12 +40,12 @@ const BookDetails = ({ book }) => {
               <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
                 Issue Copy
               </Button>
-              {showIssueCopyModal &&
                <IssueCopyModal
                 show={showIssueCopyModal}
                 onHide={handleHideIssueCopyModal}
+                bookId={book.id}
               />
-              }
+              
              
             </>
           }
