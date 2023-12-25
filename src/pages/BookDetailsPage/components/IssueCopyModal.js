@@ -31,13 +31,36 @@ const IssueCopyModal = ({ show, onHide , bookId}) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group controlId="copyNumber">
+          <Form.Group controlId="copyNumber"  className="mb-3" >
             <Form.Label>Copy Number</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter copy number"
               value={copyNumber}
               onChange={(e) => setCopyNumber(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="borrowerId"  className="mb-3" >
+            <Form.Label>User ID</Form.Label>
+            <Form.Control
+              type="text"
+              value={borrowerId}
+              onChange={(e) => setBorrowerId(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="issueDate"  className="mb-3" >
+            <Form.Label>Issue Date</Form.Label>
+            <Form.Control
+              type="text"
+              value={issueDate}
+              onChange={(e) => setIssueDate(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="returnDate"  className="mb-3" >
+            <Form.Label>Return Date</Form.Label>
+            <Form.Control
+              type="text"
+              value={returnDate}
+              onChange={(e) => setReturnDate(e.target.value)}
             />
           </Form.Group>
         </Form>
@@ -46,7 +69,7 @@ const IssueCopyModal = ({ show, onHide , bookId}) => {
         <Button variant="secondary" onClick={onHide}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleIssueCopy}>
+        <Button variant="info" onClick={handleIssueCopy}>
           Issue Copy
         </Button>
       </Modal.Footer>
