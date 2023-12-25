@@ -24,7 +24,7 @@ const LoginSection = () => {
       firstname: 'John',
       lastname: 'Doe',
       email: 'john@example.com',
-      role: 'admin', // or 'admin' based on user role
+      role: 'admin', 
     };    
 
 
@@ -37,16 +37,14 @@ const LoginSection = () => {
     /*
      try {
       const response = await axios.post('/api/login', { email, password });
-      const userData = response.data; // Assuming your backend sends user data upon successful login
+      const userData = response.data; 
       
-      // Now, you can handle the user data, such as storing it in your authentication context
-      // For example, using the useAuth hook from the previous example
       login(userData);
-      // Redirect to the home page, for example
-      history.push('/');
-      // Redirect or perform any other actions needed after successful login
+      navigate('/');
+
     } catch (error) {
       // Handle login error
+      //TODO: Login fail message
       console.error('Login failed', error);
     }
     */
