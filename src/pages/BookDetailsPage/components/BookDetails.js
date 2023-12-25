@@ -21,11 +21,6 @@ const BookDetails = ({ book }) => {
     setShowIssueCopyModal(false);
   };
 
-  const handleIssueCopy = (copyNumber) => {
-    // Handle the issuance logic here
-    console.log(`Issuing copy number: ${copyNumber}`);
-  };
-
   return (
     <Container className="book-details-container">
       <Row>
@@ -49,7 +44,6 @@ const BookDetails = ({ book }) => {
                <IssueCopyModal
                 show={showIssueCopyModal}
                 onHide={handleHideIssueCopyModal}
-                onIssueCopy={handleIssueCopy}
               />
               }
              

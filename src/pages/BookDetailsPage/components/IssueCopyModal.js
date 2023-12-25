@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const IssueCopyModal = ({ show, onHide, onIssueCopy }) => {
+const IssueCopyModal = ({ show, onHide }) => {
   const [copyNumber, setCopyNumber] = useState('');
 
   const handleIssueCopy = () => {
     // Perform any validation or additional logic as needed
-    // Then, call the onIssueCopy function to handle the issuance
-    onIssueCopy(copyNumber);
+
+    console.log(`Issuing copy number: ${copyNumber}`);
+
 
     // Close the modal after issuing the copy
     onHide();
