@@ -1,6 +1,11 @@
-  
   .wide-button {
-    width: 100%; /* Make the button 100% width */
+    width: 100%;
+    /* Make the button 100% width */
     border-radius: 5px;
   }
-  
+
+  .admin-button {
+    width: 25%;
+    /* Make the button 25% width */
+    border-radius: 5px;
+  }

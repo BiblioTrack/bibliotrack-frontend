@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import AuthSection from '../../components/AuthSection';
+import MainSection from '../../../../components/MainSection.js'
+
 
 const LoginSection = () => {
   const [email, setEmail] = useState('');
@@ -13,10 +14,11 @@ const LoginSection = () => {
   };
 
   return (
-    <AuthSection title="LOGIN" description="Welcome to our library management system">
-      <Form className="mt-5" onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="email">
+    <MainSection title="LOGIN" description="Welcome to our library management system">
+      <Form className="mt-5" onSubmit={handleSubmit} role ='form'>
+      <Form.Group className="mb-3" controlId="email" >
           <FormControl
+            data-testid="email"
             type="email"
             placeholder="Email Address"
             value={email}
@@ -26,6 +28,7 @@ const LoginSection = () => {
 
         <Form.Group className="mb-3" controlId="password">
           <FormControl
+            data-testid="password"
             type="password"
             placeholder="Password"
             value={password}
@@ -51,7 +54,7 @@ const LoginSection = () => {
      
     </Form>
 
-    </AuthSection>
+    </MainSection>
   );
 };
 

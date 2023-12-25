@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Form, FormControl , Row, Col, Button} from 'react-bootstrap';
+import { Form, FormControl, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import AuthSection from '../../components/AuthSection';
+import MainSection from '../../../../components/MainSection.js'
 
 const SignupSection = () => {
   const [firstname, setFirstname] = useState('');
@@ -15,13 +15,14 @@ const SignupSection = () => {
   };
 
   return (
-    <AuthSection title="SIGN UP" description="Welcome to our library management system">
-      <Form className="mt-5" onSubmit={handleSubmit}>
+    <MainSection title="SIGN UP" description="Welcome to our library management system">
+      <Form className="mt-5" onSubmit={handleSubmit} role ='form'>
       
       <Row>
           <Col md={6} className="mb-3">
-            <Form.Group controlId="firstname">
+            <Form.Group controlId="firstname" >
               <FormControl
+                data-testid="firstname"
                 type="text"
                 placeholder="First Name"
                 value={firstname}
@@ -31,8 +32,9 @@ const SignupSection = () => {
           </Col>
 
           <Col md={6} className="mb-3">
-            <Form.Group controlId="lastname">
+            <Form.Group controlId="lastname" >
               <FormControl
+                data-testid="lastname"
                 type="text"
                 placeholder="Last Name"
                 value={lastname}
@@ -42,8 +44,9 @@ const SignupSection = () => {
           </Col>
         </Row>
 
-        <Form.Group className="mb-3" controlId="email">
+        <Form.Group className="mb-3" controlId="email" >
           <FormControl
+            data-testid="email"
             type="email"
             placeholder="Email Address"
             value={email}
@@ -51,8 +54,9 @@ const SignupSection = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="password">
+        <Form.Group className="mb-3" controlId="password" >
           <FormControl
+            data-testid="password"
             type="password"
             placeholder="Password"
             value={pass}
@@ -71,10 +75,10 @@ const SignupSection = () => {
           </p>
         </div>
 
-    </Form>
+      </Form>
 
 
-    </AuthSection>
+    </MainSection>
   );
 };
 
