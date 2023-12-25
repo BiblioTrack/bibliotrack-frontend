@@ -2,9 +2,13 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './TopNavbar.css'; 
+import { useAuth } from '../pages/AuthPages/AuthContext.js'; 
+
 
 
 function TopNavbar() {
+  const { isAdmin } = useAuth();
+
   return (
     <Navbar className="navbar navbar-dark bg-info" data-testid="top-navbar" expand="md">
       <Navbar.Brand >BiblioTrack</Navbar.Brand>
@@ -13,7 +17,8 @@ function TopNavbar() {
         <Nav className="ml-auto">
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
-          <Nav.Link as={Link} to="/history">History</Nav.Link>
+          {isAdmin && <Nav.Link as={Link} to="/addbook">Add Book</Nav.Link>}
+          {!isAdmin && <Nav.Link as={Link} to="/history">History</Nav.Link>}
           <Nav.Link as={Link} to="/about">About</Nav.Link>
         </Nav>
       </Navbar.Collapse>
