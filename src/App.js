@@ -7,19 +7,23 @@ import Login from './pages/AuthPages/LoginPage/LoginPage.js'
 import Signup from './pages/AuthPages/SignupPage/SignupPage.js';
 import BookDetailsPage from './pages/BookDetailsPage/BookDetailsPage.js'
 import AddBook from './pages/AddBookPage/AddBook.js';
+import { AuthContextProvider } from './pages/AuthPages/AuthContext.js';
+
 
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/addbook" element={<AddBook />} />
-        <Route path="/book/:id" element={<BookDetailsPage />} />
-      </Routes>
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/addbook" element={<AddBook />} />
+          <Route path="/book/:id" element={<BookDetailsPage />} />
+        </Routes>
+      </AuthContextProvider>
     </BrowserRouter>
 
 
