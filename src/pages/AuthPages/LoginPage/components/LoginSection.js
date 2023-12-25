@@ -1,16 +1,55 @@
 import React, { useState } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import MainSection from '../../../../components/MainSection.js'
+import { useAuth } from '../../AuthContext.js';
+
 
 
 const LoginSection = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+
+  //TODO: form submit error check
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Mock user data
+    const mockUserData = {
+      id: 1,
+      firstname: 'John',
+      lastname: 'Doe',
+      email: 'john@example.com',
+      role: 'admin', // or 'admin' based on user role
+    };    
+
+
+    login(mockUserData);
+
+    navigate('/');
+
+
     // Add login logic here
+    /*
+     try {
+      const response = await axios.post('/api/login', { email, password });
+      const userData = response.data; // Assuming your backend sends user data upon successful login
+      
+      // Now, you can handle the user data, such as storing it in your authentication context
+      // For example, using the useAuth hook from the previous example
+      login(userData);
+      // Redirect to the home page, for example
+      history.push('/');
+      // Redirect or perform any other actions needed after successful login
+    } catch (error) {
+      // Handle login error
+      console.error('Login failed', error);
+    }
+    */
   };
 
   return (
