@@ -1,16 +1,24 @@
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './TopNavbar.css'; 
+
 
 function TopNavbar() {
   return (
-    <Navbar className="navbar navbar-dark bg-info" data-testid="top-navbar">
-      <Navbar.Brand href="#home">BiblioTrack</Navbar.Brand>
+    <Navbar className="navbar navbar-dark bg-info" data-testid="top-navbar" expand="md">
+      <Navbar.Brand >BiblioTrack</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        {/* Your navigation links go here */}
+        <Nav className="ml-auto">
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
+          <Nav.Link as={Link} to="/history">History</Nav.Link>
+          <Nav.Link as={Link} to="/about">About</Nav.Link>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
-};
+}
 
 export default TopNavbar;
