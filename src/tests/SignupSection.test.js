@@ -1,12 +1,16 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
+import { AuthContextProvider } from '../pages/AuthPages/AuthContext.js';
+
 import SignupSection from '../pages/AuthPages/SignupPage/components/SignupSection.js';
 
 test('renders SignupSection component with form, firstname, lastname, email, and password input fields', () => {
   render(
     <BrowserRouter>
+    <AuthContextProvider>
       <SignupSection />
+    </AuthContextProvider>
     </BrowserRouter>
   );
 
@@ -40,7 +44,9 @@ test('renders SignupSection component with form, firstname, lastname, email, and
 test('handles form submission', () => {
   render(
     <BrowserRouter>
+    <AuthContextProvider>
       <SignupSection />
+    </AuthContextProvider>
     </BrowserRouter>
   );
   const formElement = screen.getByRole('form');

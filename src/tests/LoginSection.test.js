@@ -1,14 +1,18 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';  // Import BrowserRouter
+import { AuthContextProvider } from '../pages/AuthPages/AuthContext.js';
+
 
 import LoginSection from '../pages/AuthPages/LoginPage/components/LoginSection.js';
 
 test('renders LoginSection component with form, email, and password input fields', () => {
   render(
-    <BrowserRouter>
-      <LoginSection />
-    </BrowserRouter>
+  <BrowserRouter>
+  <AuthContextProvider>
+    <LoginSection />
+  </AuthContextProvider>
+  </BrowserRouter>
   );
 
   // Assert that the form is present
@@ -30,7 +34,9 @@ test('renders LoginSection component with form, email, and password input fields
 test('handles form submission', () => {
   render(
     <BrowserRouter>
+    <AuthContextProvider>
       <LoginSection />
+    </AuthContextProvider>
     </BrowserRouter>
   );
   const formElement = screen.getByRole('form');
