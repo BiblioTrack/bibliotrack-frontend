@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Form } from 'react-bootstrap';
 import { PencilSquare } from 'react-bootstrap-icons';
-import IssueReturnModal from '../pages/BookPage/components/IssueReturnModal';
+import MarkReturnedModal from './MarkReturnedModal';
 
 const calculateStatus = (dueDate, returnDate) => {
   const currentDate = new Date();
@@ -119,7 +119,7 @@ const IssueHistoryAdmin = ({ issueHistory , showBookIdColumn = true}) => {
         </tbody>
       </Table>
 
-      <IssueReturnModal show={showReturnModal} onClose={handleCloseReturnModal} selectedIssue={selectedIssue} />
+      <MarkReturnedModal show={showReturnModal} onClose={handleCloseReturnModal} selectedIssue={selectedIssue} />
     </div>
   );
 };

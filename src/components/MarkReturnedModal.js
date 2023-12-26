@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const IssueReturnModal = ({ show, onClose, selectedIssue }) => {
+const MarkReturnedModal = ({ show, onClose, selectedIssue }) => {
     
   const [returnDate, setReturnDate] = useState(
     new Date().toISOString().split('T')[0] 
@@ -53,4 +53,4 @@ const IssueReturnModal = ({ show, onClose, selectedIssue }) => {
   );
 };
 
-export default IssueReturnModal;
+export default MarkReturnedModal;
