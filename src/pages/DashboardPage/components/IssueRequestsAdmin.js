@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { PencilSquare } from 'react-bootstrap-icons';
-import MarkReturnedModal from './MarkReturnedModal';
+import MarkReturnedModal from '../../../components/MarkReturnedModal';
 
 
 
@@ -48,7 +48,11 @@ const IssueRequestsAdmin = ({ requests }) => {
                 <td>{request.issueDate}</td>
                 <td>{request.dueDate}</td>
                 <td style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  {request.status}
+                {request.status === 'Approved' ? (
+    <span style={{ color: 'green', marginRight: '5px' }}>Approved</span>
+  ) : (
+    request.status === 'Pending' && <span style={{ color: 'orange', marginRight: '5px' }}>Pending</span>
+  )}
                   {isClickable && (<PencilSquare style={{ margin: '0px 10px' }} /> )}
                 </td>
               </tr>

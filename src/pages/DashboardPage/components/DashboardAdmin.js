@@ -1,12 +1,10 @@
 import React from 'react';
-import { useAuth } from '../../AuthPages/AuthContext.js';
-import IssueRequestsAdmin from '../../../components/IssueRequestsAdmin.js';
-import IssueHistoryAdmin from '../../../components/IssueHistoryAdmin';
+import IssueRequestsAdmin from './IssueRequestsAdmin.js';
+import IssueHistoryAdmin from '../../../components/IssueHistoryAdmin.js';
 import { Container } from 'react-bootstrap';
 
-const Dashboard = () =>{
+const DashboardAdmin = () =>{
 
-    const { isAdmin } = useAuth();
 
   
     // Dummy issue history for testing
@@ -29,16 +27,12 @@ const Dashboard = () =>{
     
     return(
     <Container>
-    <h4 className='my-5'>Dashboard</h4>
+      <h4 className='my-5'>Dashboard</h4>
 
-    {isAdmin &&
-        <>
-            <IssueRequestsAdmin requests={dummyIssueRequests}/>
-            <IssueHistoryAdmin issueHistory={dummyIssueHistory} />
-        </>   
-    }
+      <IssueRequestsAdmin requests={dummyIssueRequests}/>
+      <IssueHistoryAdmin issueHistory={dummyIssueHistory} />
     </Container>
     );
 }
 
-export default Dashboard;
+export default DashboardAdmin;

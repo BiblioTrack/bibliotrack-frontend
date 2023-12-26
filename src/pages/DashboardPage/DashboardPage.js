@@ -1,12 +1,12 @@
 import TopNavbar from '../../components/TopNavbar.js';
 import VerticalSpace from '../../components/VerticalSpace.js';
-import Dashboard from './components/Dashboard.js';
+import DashboardAdmin from './components/DashboardAdmin.js';
 
 function DashboardPage() {
   return <>
     <TopNavbar />
     <VerticalSpace margin={30} />
-    <Dashboard/>
+    <DashboardAdmin/>
     <VerticalSpace margin={20} />
   </>;
 }
