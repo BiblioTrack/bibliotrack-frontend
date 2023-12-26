@@ -45,20 +45,20 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
+        <Form.Group controlId="userId" className="mb-3">
+            <Form.Label>User ID</Form.Label>
+            <Form.Control
+              type="text"
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
+            />
+          </Form.Group>
           <Form.Group controlId="copyNumber" className="mb-3">
             <Form.Label>Copy Number</Form.Label>
             <Form.Control
               type="text"
               value={copyNumber}
               onChange={(e) => setCopyNumber(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="borrowerId" className="mb-3">
-            <Form.Label>User ID</Form.Label>
-            <Form.Control
-              type="text"
-              value={userId}
-              onChange={(e) => setUserId(e.target.value)}
             />
           </Form.Group>
           <Form.Group controlId="issueDate" className="mb-3">
