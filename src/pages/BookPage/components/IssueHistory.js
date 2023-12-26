@@ -59,9 +59,12 @@ const IssueHistory = ({ issueHistory }) => {
                 <td style={{ display: 'flex',  justifyContent: 'space-between' }}>
                   {status}
                   {isClickable && (
-                    <PencilSquare style={{ marginRight: '5px', cursor: 'pointer' }} onClick={() => handleShowReturnModal(issue)} />
+                    <PencilSquare style={{ marginRight: '5px', cursor: 'pointer' }} 
+                    onClick={() => handleShowReturnModal(issue)} 
+                    />
                   )}
-                </td>                </tr>
+                </td>                
+                </tr>
             );
         })}
         </tbody>
