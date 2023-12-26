@@ -12,7 +12,6 @@ const IssueReturnModal = ({ show, onClose, selectedIssue }) => {
 
      // Check if the return date is not empty
      if (!returnDate) {
-        // Set the error message
         alert('Return date cannot be empty');
         return;
       }
