@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BookGrid from '../../../components/BookGrid'; // Import the BookGrid component
+import BookGrid from './BookGrid.js'; 
 import booksData from '../../../assets/booksData.json'; // Import the dummy data
 import './SearchResultsSection.css'; 
 

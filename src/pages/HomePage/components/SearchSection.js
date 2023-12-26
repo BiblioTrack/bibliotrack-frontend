@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import SearchBar from '../../../components/SearchBar';
+import SearchBar from './SearchBar.js';
 import './SearchSection.css'; 
 
 
