@@ -2,22 +2,25 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const calculateStatus = (issueDate, dueDate, returnDate) => {
+const calculateStatus = (dueDate, returnDate) => {
   const currentDate = new Date();
   const dueDateObj = new Date(dueDate);
 
   if (returnDate) {
-    const returnDateObj = new Date(returnDate);
-    return returnDateObj <= dueDateObj ? 'Returned' : 'Returned (Overdue)';
+    //const returnDateObj = new Date(returnDate);
+    //return returnDateObj <= dueDateObj ? 'Returned' : 'Returned (Overdue)';
+    return "✔️ Returned"
   } else {
-    return dueDateObj < currentDate ? 'Overdue' : 'In Progress';
+    return dueDateObj < currentDate ? '⚠️ Overdue' : '🔄 In Progress';
   }
 };
+
+
 
 const IssueHistory = ({ issueHistory }) => (
   <div className="mb-5">
     <h4>Issue History</h4>
-    <Table striped bordered responsive>
+    <Table bordered responsive>
       <thead>
         <tr>
           <th>User ID</th>
@@ -28,15 +31,19 @@ const IssueHistory = ({ issueHistory }) => (
         </tr>
       </thead>
       <tbody>
-        {issueHistory.map((issue, index) => (
-          <tr key={index}>
+      {issueHistory.map((issue, index) => {
+        const status = calculateStatus(issue.dueDate, issue.returnDate);
+
+        return (
+            <tr key={index}>
             <td>{issue.userId}</td>
             <td>{issue.issueDate}</td>
             <td>{issue.dueDate}</td>
             <td>{issue.returnDate}</td>
-            <td>{calculateStatus(issue.issueDate, issue.dueDate, issue.returnDate)}</td>
-          </tr>
-        ))}
+            <td>{status}</td>
+            </tr>
+        );
+    })}
       </tbody>
     </Table>
   </div>
