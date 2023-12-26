@@ -5,7 +5,7 @@ import TopNavbar from '../../components/TopNavbar.js';
 import VerticalSpace from '../../components/VerticalSpace.js';
 
 import { useParams } from 'react-router-dom';
-import BookDetails from './components/Book.js';
+import Book from './components/Book.js';
 import booksData from '../../assets/booksData.json';
 
 const BookDetailsPage = () => {
@@ -19,7 +19,7 @@ const BookDetailsPage = () => {
     <>
       <TopNavbar/>
       <VerticalSpace margin={30} />     
-      {selectedBook ? <BookDetails book={selectedBook} /> : <p>Book not found</p>}
+      {selectedBook ? <Book book={selectedBook} /> : <p>Book not found</p>}
     </>
   );
 };
