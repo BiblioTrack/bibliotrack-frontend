@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { Container, Row, Col, Badge } from 'react-bootstrap';
-import BookImageAndButtons from '../components/BookImageAndButtons.js';
+import BookImageAndButtons from './BookImageAndButtons.js';
 import { useAuth } from '../../AuthPages/AuthContext.js';
-import './BookDetails.css'; 
+import './Book.css'; 
 
 
 const BookDetails = ({ book }) => {
@@ -13,9 +13,9 @@ const BookDetails = ({ book }) => {
   return (
     <Container className="book-details-container">
       <Row>
-         {/* Image and Request Borrowing Button */}
-         <Col lg={3} md={4} className="book-details-image text-center">
-         <BookImageAndButtons isAdmin={isAdmin} book={book} />
+        {/* Image and Request Borrowing Button */}
+        <Col lg={3} md={4} className="book-details-image text-center">
+          <BookImageAndButtons isAdmin={isAdmin} book={book} />
         </Col>
 
         {/* Book Details */}

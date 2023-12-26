@@ -5,7 +5,7 @@ import TopNavbar from '../../components/TopNavbar.js';
 import VerticalSpace from '../../components/VerticalSpace.js';
 
 import { useParams } from 'react-router-dom';
-import BookDetails from './components/BookDetails.js';
+import BookDetails from './components/Book.js';
 import booksData from '../../assets/booksData.json';
 
 const BookDetailsPage = () => {

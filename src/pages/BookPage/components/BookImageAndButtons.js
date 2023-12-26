@@ -1,7 +1,7 @@
 // BookImageAndButtons.js
 import React, { useState } from 'react';
 import { Image, Button } from 'react-bootstrap';
-import IssueCopyModal from '../components/IssueCopyModal.js';
+import IssueCopyModal from './IssueCopyModal.js';
 
 const BookImageAndButtons = ({ isAdmin , book }) => {
   const [showIssueCopyModal, setShowIssueCopyModal] = useState(false);
