@@ -3,7 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 
 const IssueCopyModal = ({ show, onHide, bookId }) => {
   const [copyNumber, setCopyNumber] = useState('');
-  const [borrowerId, setBorrowerId] = useState('');
+  const [userId, setUserId] = useState('');
   const [issueDate, setIssueDate] = useState(
     new Date().toISOString().split('T')[0] 
   );
@@ -18,12 +18,12 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
         alert('Return date must be after issue date');
         return;
       }
-      
+
     // TODO: onIssueCopy API
     const issueData = {
       bookId,
       copyNumber,
-      borrowerId,
+      userId,
       issueDate,
       returnDate,
     };
@@ -52,8 +52,8 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
             <Form.Label>User ID</Form.Label>
             <Form.Control
               type="text"
-              value={borrowerId}
-              onChange={(e) => setBorrowerId(e.target.value)}
+              value={userId}
+              onChange={(e) => setUserId(e.target.value)}
             />
           </Form.Group>
           <Form.Group controlId="issueDate" className="mb-3">
