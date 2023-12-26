@@ -37,7 +37,6 @@ const Book = ({ book }) => {
       </Row>
       <Row> <Col><hr className="my-5" /></Col></Row>
       <Row>
-        {/* Add more details as needed */}
         {isAdmin &&
           <IssueHistoryAdmin issueHistory={dummyIssueHistory} showBookIdColumn={false} />
         }

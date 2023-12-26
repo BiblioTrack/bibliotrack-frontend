@@ -11,7 +11,8 @@ const SignupSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add signup logic here
+    //TODO: Add signup form validation before submit 
+    //TODO: Add signup logic here
   };
 
   return (

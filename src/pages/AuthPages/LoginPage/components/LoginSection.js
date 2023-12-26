@@ -13,11 +13,11 @@ const LoginSection = () => {
   const { login } = useAuth();
 
 
-  //TODO: form submit error check
-  //TODO: https://stackoverflow.com/questions/39097440/on-react-router-how-to-stay-logged-in-state-even-page-refresh
-
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    //TODO: Add login form validation before submit 
+    //TODO: Add login logic here
 
     // Mock user data
     const mockUserData = {
@@ -33,22 +33,7 @@ const LoginSection = () => {
 
     navigate('/');
 
-
-    // Add login logic here
-    /*
-     try {
-      const response = await axios.post('/api/login', { email, password });
-      const userData = response.data; 
-      
-      login(userData);
-      navigate('/');
-
-    } catch (error) {
-      // Handle login error
-      //TODO: Login fail message
-      console.error('Login failed', error);
-    }
-    */
+    
   };
 
   return (

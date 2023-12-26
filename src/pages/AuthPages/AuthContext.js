@@ -2,11 +2,14 @@
 
 import React, { createContext, useContext, useState } from 'react';
 
+//TODO: https://stackoverflow.com/questions/39097440/on-react-router-how-to-stay-logged-in-state-even-page-refresh
+
 // Create the context
 const AuthContext = createContext();
 
 // Create a provider component
-const AuthContextProvider = ({ children }) => {// Mock user data
+const AuthContextProvider = ({ children }) => {
+  // Mock user data
   const mockUserData = {
     id: 1,
     firstname: 'John',
@@ -15,8 +18,8 @@ const AuthContextProvider = ({ children }) => {// Mock user data
     role: 'user', 
   };    
 
-  const [user, setUser] = useState(mockUserData); // Replace 'null' with your actual user object
-  const [isAdmin, setIsAdmin] = useState(true); // Add isAdmin or other user roles
+  const [user, setUser] = useState(mockUserData); 
+  const [isAdmin, setIsAdmin] = useState(true); 
 
   const login = (userData) => {
     setUser(userData);

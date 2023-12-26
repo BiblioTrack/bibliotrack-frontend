@@ -28,13 +28,14 @@ const AddBookSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add new book addition logic here
+    // TODO: Add new book form validation
+    // TODO: Add new book addition logic here
   };
 
   return (
 
     <MainSection title="Add New Book"  mdBreakpoint={10}>
-      <Form className="mt-5" onSubmit={handleSubmit} title="Add New Book to the System" align="left">
+      <Form className="mt-5" onSubmit={handleSubmit} title="Add New Book" align="left">
 
         <Row>
           <Col md={6} className="mb-3">
