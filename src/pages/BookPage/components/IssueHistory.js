@@ -78,6 +78,7 @@ const IssueHistory = ({ issueHistory }) => {
         <thead>
           <tr>
             <th>User ID</th>
+            <th>Copy Num.</th>
             <th>Issue Date</th>
             <th>Due Date</th>
             <th>Return Date</th>
@@ -96,6 +97,7 @@ const IssueHistory = ({ issueHistory }) => {
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
               >
                 <td>{issue.userId}</td>
+                <td>{issue.copyNumber}</td>
                 <td>{issue.issueDate}</td>
                 <td>{issue.dueDate}</td>
                 <td>{issue.returnDate}</td>

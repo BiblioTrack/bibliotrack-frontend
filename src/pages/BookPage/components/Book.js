@@ -15,10 +15,10 @@ const Book = ({ book }) => {
   
   // Dummy issue history for testing
   const dummyIssueHistory = [
-    { userId: '123', issueDate: '2023-01-01', dueDate: '2023-01-15', returnDate: '2023-01-14' },
-    { userId: '456', issueDate: '2023-02-01', dueDate: '2023-02-15', returnDate: null},
-    { userId: '789', issueDate: '2023-12-01', dueDate: '2023-12-28', returnDate: null},
-    { userId: '123', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26'},
+    { userId: '123', bookId: '1' , copyNumber: '888', issueDate: '2023-01-01', dueDate: '2023-01-15', returnDate: '2023-01-14' },
+    { userId: '456', bookId: '1' , copyNumber: '999', issueDate: '2023-02-01', dueDate: '2023-02-15', returnDate: null},
+    { userId: '789', bookId: '1' , copyNumber: '777', issueDate: '2023-12-01', dueDate: '2023-12-28', returnDate: null},
+    { userId: '123', bookId: '1' , copyNumber: '666', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26'},
   ];
 
 
