@@ -39,7 +39,7 @@ const Book = ({ book }) => {
       <Row>
         {/* Add more details as needed */}
         {isAdmin &&
-          <IssueHistoryAdmin issueHistory={dummyIssueHistory} showIdColumn={false} />
+          <IssueHistoryAdmin issueHistory={dummyIssueHistory} showBookIdColumn={false} />
         }
       </Row>
     </Container>

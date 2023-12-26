@@ -14,7 +14,7 @@ const calculateStatus = (dueDate, returnDate) => {
   }
 };
 
-const IssueHistoryAdmin = ({ issueHistory , showIdColumn = true}) => {
+const IssueHistoryAdmin = ({ issueHistory , showBookIdColumn = true}) => {
   const [showReturnModal, setShowReturnModal] = useState(false);
   const [selectedIssue, setSelectedIssue] = useState(null);
 
@@ -31,6 +31,7 @@ const IssueHistoryAdmin = ({ issueHistory , showIdColumn = true}) => {
     // Apply search filter
     const matchesSearch =
       issue.userId.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      ( showBookIdColumn && issue.bookId.toLowerCase().includes(searchQuery.toLowerCase()))||
       issue.issueDate.includes(searchQuery) ||
       issue.dueDate.includes(searchQuery) ||
       (issue.returnDate && issue.returnDate.includes(searchQuery));
@@ -53,7 +54,7 @@ const IssueHistoryAdmin = ({ issueHistory , showIdColumn = true}) => {
           <Form.Group controlId="searchQuery" className="col-md-8 mb-3 mb-md-0">
             <Form.Control
               type="text"
-              placeholder="Search by user ID, issue, due, or return date"
+              placeholder={`Search by user ID, ${showBookIdColumn ? "book ID, " : ""}issue, due, or return date`}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -77,7 +78,7 @@ const IssueHistoryAdmin = ({ issueHistory , showIdColumn = true}) => {
       <Table bordered responsive style={{ whiteSpace: 'nowrap' }}>
         <thead>
           <tr>
-            {showIdColumn && <th>Book ID</th>}
+            {showBookIdColumn && <th>Book ID</th>}
             <th>User ID</th>
             <th>Copy Num.</th>
             <th>Issue Date</th>
@@ -97,7 +98,7 @@ const IssueHistoryAdmin = ({ issueHistory , showIdColumn = true}) => {
                 onClick={() => isClickable && handleShowReturnModal(issue)}
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
               >
-                {showIdColumn && <td>{issue.bookId}</td>}
+                {showBookIdColumn && <td>{issue.bookId}</td>}
                 <td>{issue.userId}</td>
                 <td>{issue.copyNumber}</td>
                 <td>{issue.issueDate}</td>

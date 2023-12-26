@@ -3,7 +3,7 @@ import { useAuth } from '../../AuthPages/AuthContext.js';
 import IssueHistoryAdmin from '../../../components/IssueHistoryAdmin';
 import { Container } from 'react-bootstrap';
 
-const Dashboard = ({}) => {
+const Dashboard = () =>{
 
     const { isAdmin } = useAuth();
 
@@ -15,7 +15,7 @@ const Dashboard = ({}) => {
       { userId: '789', bookId: '1' , copyNumber: '777', issueDate: '2023-12-01', dueDate: '2023-12-28', returnDate: null},
       { userId: '123', bookId: '1' , copyNumber: '666', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26'},
       { userId: '789', bookId: '2' , copyNumber: '555', issueDate: '2023-12-01', dueDate: '2023-12-28', returnDate: null},
-      { userId: '123', bookId: '2' , copyNumber: '444', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26'},
+      { userId: '123', bookId: '33' , copyNumber: '444', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26'},
     ];
 
     
