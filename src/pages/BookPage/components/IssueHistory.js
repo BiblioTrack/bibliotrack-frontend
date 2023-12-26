@@ -1,6 +1,7 @@
 // IssueHistorySection.js
 import React, { useState } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table} from 'react-bootstrap';
+import { PencilSquare } from 'react-bootstrap-icons';
 import IssueReturnModal from './IssueReturnModal';
 
 const calculateStatus = (dueDate, returnDate) => {
@@ -43,19 +44,24 @@ const IssueHistory = ({ issueHistory }) => {
         <tbody>
         {issueHistory.map((issue, index) => {
             const status = calculateStatus(issue.dueDate, issue.returnDate);
+            const isClickable = status === '⚠️ Overdue' || status === '🔄 In Progress';
 
-            return (
+            return (               
                 <tr
                     key={index}
-                    onClick={() => handleShowReturnModal(issue)}
-                    style={{ cursor: 'pointer' }}
+                    onClick={() => isClickable && handleShowReturnModal(issue)}
+                    style={{ cursor: isClickable ? 'pointer' : 'default' }}
                 >
                 <td>{issue.userId}</td>
                 <td>{issue.issueDate}</td>
                 <td>{issue.dueDate}</td>
                 <td>{issue.returnDate}</td>
-                <td>{status}</td>
-                </tr>
+                <td style={{ display: 'flex',  justifyContent: 'space-between' }}>
+                  {status}
+                  {isClickable && (
+                    <PencilSquare style={{ marginRight: '5px', cursor: 'pointer' }} onClick={() => handleShowReturnModal(issue)} />
+                  )}
+                </td>                </tr>
             );
         })}
         </tbody>
