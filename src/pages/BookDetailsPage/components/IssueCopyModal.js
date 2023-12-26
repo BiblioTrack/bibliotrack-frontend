@@ -12,6 +12,13 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
   );
 
   const handleIssueCopy = () => {
+
+     // Validate that return date is after issue date
+     if (new Date(returnDate) <= new Date(issueDate)) {
+        alert('Return date must be after issue date');
+        return;
+      }
+      
     // TODO: onIssueCopy API
     const issueData = {
       bookId,
@@ -23,7 +30,6 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
 
     console.log(`Issuing copy: ${JSON.stringify(issueData)}`);
 
-    // Close the modal after issuing the copy
     onHide();
   };
 
