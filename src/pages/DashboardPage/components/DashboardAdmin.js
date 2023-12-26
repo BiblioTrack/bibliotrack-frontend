@@ -19,7 +19,7 @@ const DashboardAdmin = () =>{
 
     const dummyIssueRequests = [
         { userId: '123', bookId: '1' ,  issueDate: '2023-01-01', dueDate: '2023-01-15', status: 'Pending' },
-        { userId: '456', bookId: '2' ,  issueDate: '2023-01-02', dueDate: '2023-01-16', status: 'Pending' },
+        { userId: '456', bookId: '2' ,  issueDate: '2023-01-02', dueDate: '2023-01-16', status: 'Rejected' },
         { userId: '789', bookId: '1' ,  issueDate: '2023-01-03', dueDate: '2023-01-17', status: 'Approved' },
 
       ];

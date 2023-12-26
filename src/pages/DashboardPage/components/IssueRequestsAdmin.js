@@ -4,7 +4,6 @@ import { PencilSquare } from 'react-bootstrap-icons';
 import MarkReturnedModal from '../../../components/MarkReturnedModal';
 
 
-
 const IssueRequestsAdmin = ({ requests }) => {
   const [showRespondModal, setShowRespondModal] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -49,10 +48,10 @@ const IssueRequestsAdmin = ({ requests }) => {
                 <td>{request.dueDate}</td>
                 <td style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 {request.status === 'Approved' ? (
-    <span style={{ color: 'green', marginRight: '5px' }}>Approved</span>
-  ) : (
-    request.status === 'Pending' && <span style={{ color: 'orange', marginRight: '5px' }}>Pending</span>
-  )}
+                    <span>✔️ Approved</span>
+                  ) : (
+                    request.status === 'Pending'? <span >⏳  Pending</span> :<span >❌ Rejected</span>
+                  )}
                   {isClickable && (<PencilSquare style={{ margin: '0px 10px' }} /> )}
                 </td>
               </tr>
