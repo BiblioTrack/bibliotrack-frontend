@@ -1,20 +1,31 @@
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
-import { PencilSquare } from 'react-bootstrap-icons';
+import { PencilSquare , Trash3 } from 'react-bootstrap-icons';
 import RequestResponseModal from './RequestResponseModal';
+import RequestDeleteModal from './RequestDeleteModal.js'
+import { useAuth } from '../../../pages/AuthPages/AuthContext.js';
 
-const RequestsAdmin = ({ requests }) => {
+
+const Requests = ({ requests }) => {
+  const { isAdmin } = useAuth();
+
   const [showResponseModal, setShowResponseModal] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
 
   const handleCloseResponseModal = () => setShowResponseModal(false);
-  const handleShowResponseModal = (issue) => {
-    setSelectedRequest(issue);
+  const handleShowResponseModal = (request) => {
+    setSelectedRequest(request);
     setShowResponseModal(true);
   };
 
 
- 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const handleCloseDeleteModal = () => setShowDeleteModal(false);
+  const handleShowDeleteModal = (request) => {
+    setSelectedRequest(request);
+    setShowDeleteModal(true);
+  };
 
   return (
     <div className="mb-5">
@@ -24,7 +35,7 @@ const RequestsAdmin = ({ requests }) => {
         <thead>
           <tr>
             <th>Book ID</th>
-            <th>User ID</th>
+            {isAdmin && <th>User ID</th>}
             <th>Issue Date</th>
             <th>Due Date</th>
             <th>Status</th>
@@ -38,11 +49,19 @@ const RequestsAdmin = ({ requests }) => {
             return (
               <tr
                 key={index}
-                onClick={() => isClickable && handleShowResponseModal(request)}
+                onClick={() => {
+                  if (isAdmin) {
+                    // Admin action
+                    isClickable && handleShowResponseModal(request);
+                  } else {
+                    // Non-admin action
+                    isClickable && handleShowDeleteModal(request);
+                  }
+                }}
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
               >
                 <td>{request.bookId}</td>
-                <td>{request.userId}</td>
+                {isAdmin &&<td>{request.userId}</td>}
                 <td>{request.issueDate}</td>
                 <td>{request.dueDate}</td>
                 <td style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -51,17 +70,20 @@ const RequestsAdmin = ({ requests }) => {
                     ) : (
                       request.status === 'Pending'? <span >⏳  Pending</span> :<span >❌ Rejected</span>
                     )}
-                    {isClickable && (<PencilSquare style={{ margin: '0px 10px' }} /> )}
+                    {isAdmin && isClickable && (<PencilSquare style={{ margin: '0px 10px' }} /> )}
+                    {!isAdmin && isClickable && (<Trash3 style={{ margin: '0px 10px' }} /> )}
+
                 </td>
               </tr>
             );
           })}
         </tbody>
       </Table>
+      {isAdmin && <RequestResponseModal show={showResponseModal} onClose={handleCloseResponseModal} selectedRequest={selectedRequest} />}
+      {!isAdmin && <RequestDeleteModal show={showDeleteModal} onClose={handleCloseDeleteModal} selectedRequest={selectedRequest} />}
 
-      <RequestResponseModal show={showResponseModal} onClose={handleCloseResponseModal} selectedRequest={selectedRequest} />
     </div>
   );
 };
 
-export default RequestsAdmin;
+export default Requests;

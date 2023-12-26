@@ -1,5 +1,5 @@
 import React from 'react';
-import RequestsAdmin from './RequestsAdmin.js';
+import Requests from './Requests.js';
 import IssueHistoryUser from './IssueHistoryUser.js';
 import { Container } from 'react-bootstrap';
 
@@ -26,7 +26,7 @@ const DashboardUser = () =>{
     <Container>
       <h4 className='my-5'>Dashboard</h4>
 
-      <RequestsAdmin requests={dummyIssueRequests}/>
+      <Requests requests={dummyIssueRequests}/>
       <IssueHistoryUser issueHistory={dummyIssueHistory} />
     </Container>
     );
