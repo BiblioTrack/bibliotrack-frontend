@@ -18,7 +18,7 @@ const IssueHistory = ({ issueHistory }) => (
           <tr key={index}>
             <td>{issue.userId}</td>
             <td>{issue.issueDate}</td>
-            <td>{issue.returnDate}</td>
+            <td>{issue.dueDate}</td>
           </tr>
         ))}
       </tbody>

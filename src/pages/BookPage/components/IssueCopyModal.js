@@ -25,7 +25,7 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
       copyNumber,
       userId,
       issueDate,
-      returnDate: dueDate,
+      dueDate,
     };
 
     console.log(`Issuing copy: ${JSON.stringify(issueData)}`);

@@ -15,8 +15,8 @@ const Book = ({ book }) => {
   
   // Dummy issue history for testing
   const dummyIssueHistory = [
-    { userId: '123', issueDate: '2023-01-01', returnDate: '2023-01-15' },
-    { userId: '456', issueDate: '2023-02-01', returnDate: '2023-02-15' },
+    { userId: '123', issueDate: '2023-01-01', dueDate: '2023-01-15' },
+    { userId: '456', issueDate: '2023-02-01', dueDate: '2023-02-15' },
     // Add more dummy data as needed
   ];
 
