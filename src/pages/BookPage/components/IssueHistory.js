@@ -56,10 +56,10 @@ const IssueHistory = ({ issueHistory }) => {
                 <td>{issue.issueDate}</td>
                 <td>{issue.dueDate}</td>
                 <td>{issue.returnDate}</td>
-                <td style={{ display: 'flex',  justifyContent: 'space-between' }}>
+                <td style={{ display: 'flex',  justifyContent: 'space-between', alignItems: 'center' }}>
                   {status}
                   {isClickable && (
-                    <PencilSquare style={{ marginRight: '5px', cursor: 'pointer' }} 
+                    <PencilSquare style={{ margin: '0px 10px 0px 20px' }} 
                     onClick={() => handleShowReturnModal(issue)} 
                     />
                   )}
