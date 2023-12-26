@@ -7,7 +7,7 @@ import LoginPage from './pages/AuthPages/LoginPage/LoginPage.js'
 import SignupPage from './pages/AuthPages/SignupPage/SignupPage.js';
 import BookPage from './pages/BookPage/BookPage.js'
 import AddBookPage from './pages/AddBookPage/AddBookPage.js';
-import DashboardPage from './pages/DashboardPage/Dashboardpage.js';
+import DashboardPage from './pages/DashboardPage/DashboardPage.js';
 import { AuthContextProvider } from './pages/AuthPages/AuthContext.js';
 
 
