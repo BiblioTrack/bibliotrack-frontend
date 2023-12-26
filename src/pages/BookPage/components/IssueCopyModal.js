@@ -19,7 +19,7 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
         alert('Issue and due date cannot be empty');
         return;
       }
-     if (new Date(dueDate) < new Date(issueDate)) {
+     else if (new Date(dueDate) < new Date(issueDate)) {
         alert('Return date must be after issue date');
         return;
       }
