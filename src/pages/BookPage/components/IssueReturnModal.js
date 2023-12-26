@@ -1,14 +1,30 @@
 // ReturnModal.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 const IssueReturnModal = ({ show, onClose, selectedIssue }) => {
-  const handleMarkReturned = (returnDate) => {
+    
+  const [returnDate, setReturnDate] = useState(
+    new Date().toISOString().split('T')[0] 
+  );
+
+  const handleMarkReturned = () => {
+
+     // Check if the return date is not empty
+     if (!returnDate) {
+        // Set the error message
+        alert('Return date cannot be empty');
+        return;
+      }
+
     // Perform logic to mark issue as returned and set the return date
-    console.log(`Marking issue as returned with date: ${returnDate}`);
+    console.log(`Marking ${selectedIssue} as returned`);
+    console.log(JSON.stringify(returnDate));
+
 
     onClose();
   };
+
 
   return (
     <Modal show={show} onHide={onClose} aria-labelledby="contained-modal-title-vcenter" centered>
@@ -19,7 +35,10 @@ const IssueReturnModal = ({ show, onClose, selectedIssue }) => {
         <Form>
           <Form.Group controlId="returnDate">
             <Form.Label>Return Date</Form.Label>
-            <Form.Control type="date" />
+            <Form.Control type="date" 
+                value={returnDate}
+                onChange={(e) => setReturnDate(e.target.value)}
+            />
           </Form.Group>
         </Form>
       </Modal.Body>
@@ -27,7 +46,7 @@ const IssueReturnModal = ({ show, onClose, selectedIssue }) => {
         <Button variant="secondary" onClick={onClose}>
           Close
         </Button>
-        <Button variant="info" onClick={() => handleMarkReturned('selectedDate')}>
+        <Button variant="info" onClick={() => handleMarkReturned()}>
           Mark Returned
         </Button>
       </Modal.Footer>
