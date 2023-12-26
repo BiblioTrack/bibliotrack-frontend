@@ -1,11 +1,23 @@
   .wide-button {
     width: 100%;
-    /* Make the button 100% width */
     border-radius: 5px;
   }
 
-  .admin-button {
-    width: 25%;
-    /* Make the button 25% width */
+  .half-wide-button {
+    width: 50%;
     border-radius: 5px;
+  }
+
+  /*Migrate to Bootstrap 5*/
+
+  .bg-info , .btn-info{
+    background-color: #17a2b8!important;
+  }
+  .btn-info{
+    color: #fff!important;
+    border-color: #17a2b8!important;
+  }
+
+  .text-info {
+    color : #17a2b8!important;
   }

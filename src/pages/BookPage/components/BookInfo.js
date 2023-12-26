@@ -8,7 +8,7 @@ const BookInfo = ({ book }) => (
     <div className="unique-author mb-2">{book.author}</div>
     <div className="mb-2">
       {book.genres.map((genre, index) => (
-        <Badge key={index} pill bg="light" className="genre-badge mr-1">
+        <Badge key={index} pill bg="light" text="dark" className="genre-badge mr-1">
           {genre}
         </Badge>
       ))}

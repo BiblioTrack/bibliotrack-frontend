@@ -9,12 +9,14 @@ import './TopNavbar.css';
 function TopNavbar() {
   const { isAdmin } = useAuth();
 
+  //TODO: change navbar to sticky top
+
   return (
-    <Navbar className="navbar navbar-dark bg-info" data-testid="top-navbar" expand="md">
+    <Navbar bg="info" data-bs-theme="dark" className='px-2' data-testid="top-navbar" expand="md">
       <Navbar.Brand >BiblioTrack</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
+        <Nav className="me-auto">
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
           {isAdmin && <Nav.Link as={Link} to="/addbook">Add Book</Nav.Link>}

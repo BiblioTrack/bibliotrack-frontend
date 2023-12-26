@@ -31,7 +31,7 @@ const IssueHistory = ({ issueHistory }) => {
     return(
     <div className="mb-5">
         <h5 className="mb-3">Issue History</h5>
-        <Table bordered responsive>
+        <Table bordered responsive style={{whiteSpace: 'nowrap'}}>
         <thead>
             <tr>
             <th>User ID</th>
