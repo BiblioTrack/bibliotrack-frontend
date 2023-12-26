@@ -3,7 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 
 const RequestCopyModal = ({ show, onHide, bookId }) => {
   //TODO: get userId
-  const [userId, setUserId] = useState('');
+  const [userId] = useState('');
   const [issueDate, setIssueDate] = useState(
     new Date().toISOString().split('T')[0] 
   );
