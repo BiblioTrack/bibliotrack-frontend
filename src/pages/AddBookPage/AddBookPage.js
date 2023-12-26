@@ -2,7 +2,7 @@ import TopNavbar from '../../components/TopNavbar.js';
 import VerticalSpace from '../../components/VerticalSpace.js';
 import AddBookSection from './components/AddBookSection.js';
 
-function AddBook() {
+function AddBookPage() {
   return <>
     <TopNavbar />
     <VerticalSpace margin={30} />
@@ -11,4 +11,4 @@ function AddBook() {
   </>;
 }
 
-export default AddBook;
+export default AddBookPage;

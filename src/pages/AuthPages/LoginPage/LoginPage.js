@@ -2,7 +2,7 @@ import TopNavbar from '../../../components/TopNavbar.js';
 import LoginSection from './components/LoginSection.js';
 import VerticalSpace from '../../../components/VerticalSpace.js';
 
-function Home() {
+function LoginPage() {
   return <>
     <TopNavbar />
     <VerticalSpace margin={30} />
@@ -11,5 +11,5 @@ function Home() {
   </>;
 }
 
-export default Home;
+export default LoginPage;
 
