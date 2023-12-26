@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Form } from 'react-bootstrap';
 import { PencilSquare } from 'react-bootstrap-icons';
-import IssueReturnModal from './IssueReturnModal';
+import IssueReturnModal from '../pages/BookPage/components/IssueReturnModal';
 
 const calculateStatus = (dueDate, returnDate) => {
   const currentDate = new Date();
@@ -14,7 +14,7 @@ const calculateStatus = (dueDate, returnDate) => {
   }
 };
 
-const IssueHistory = ({ issueHistory }) => {
+const IssueHistoryAdmin = ({ issueHistory , showIdColumn = true}) => {
   const [showReturnModal, setShowReturnModal] = useState(false);
   const [selectedIssue, setSelectedIssue] = useState(null);
 
@@ -77,6 +77,7 @@ const IssueHistory = ({ issueHistory }) => {
       <Table bordered responsive style={{ whiteSpace: 'nowrap' }}>
         <thead>
           <tr>
+            {showIdColumn && <th>Book ID</th>}
             <th>User ID</th>
             <th>Copy Num.</th>
             <th>Issue Date</th>
@@ -96,6 +97,7 @@ const IssueHistory = ({ issueHistory }) => {
                 onClick={() => isClickable && handleShowReturnModal(issue)}
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
               >
+                {showIdColumn && <td>{issue.bookId}</td>}
                 <td>{issue.userId}</td>
                 <td>{issue.copyNumber}</td>
                 <td>{issue.issueDate}</td>
@@ -121,4 +123,4 @@ const IssueHistory = ({ issueHistory }) => {
   );
 };
 
-export default IssueHistory;
+export default IssueHistoryAdmin;

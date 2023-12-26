@@ -4,7 +4,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import BookImageAndButtons from './BookImageAndButtons.js';
 import BookInfo from './BookInfo.js';
-import IssueHistory from './IssueHistory.js';
+import IssueHistoryAdmin from '../../../components/IssueHistoryAdmin.js';
 import { useAuth } from '../../AuthPages/AuthContext.js';
 import './Book.css'; 
 
@@ -39,7 +39,7 @@ const Book = ({ book }) => {
       <Row>
         {/* Add more details as needed */}
         {isAdmin &&
-          <IssueHistory issueHistory={dummyIssueHistory} />
+          <IssueHistoryAdmin issueHistory={dummyIssueHistory} showIdColumn={false} />
         }
       </Row>
     </Container>
