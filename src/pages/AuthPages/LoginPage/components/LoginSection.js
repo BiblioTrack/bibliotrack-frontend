@@ -25,7 +25,7 @@ const LoginSection = () => {
       firstname: 'John',
       lastname: 'Doe',
       email: 'john@example.com',
-      role: 'admin', 
+      role: 'user', 
     };    
 
 

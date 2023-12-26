@@ -12,7 +12,7 @@ const AuthContextProvider = ({ children }) => {// Mock user data
     firstname: 'John',
     lastname: 'Doe',
     email: 'john@example.com',
-    role: 'admin', 
+    role: 'user', 
   };    
 
   const [user, setUser] = useState(mockUserData); // Replace 'null' with your actual user object
