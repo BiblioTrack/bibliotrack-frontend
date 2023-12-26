@@ -7,14 +7,14 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
   const [issueDate, setIssueDate] = useState(
     new Date().toISOString().split('T')[0] 
   );
-  const [returnDate, setReturnDate] = useState(
+  const [dueDate, setDueDate] = useState(
     new Date(new Date()+7).toISOString().split('T')[0]
   );
 
   const handleIssueCopy = () => {
 
      // Validate that return date is after issue date
-     if (new Date(returnDate) <= new Date(issueDate)) {
+     if (new Date(dueDate) <= new Date(issueDate)) {
         alert('Return date must be after issue date');
         return;
       }
@@ -25,7 +25,7 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
       copyNumber,
       userId,
       issueDate,
-      returnDate,
+      returnDate: dueDate,
     };
 
     console.log(`Issuing copy: ${JSON.stringify(issueData)}`);
@@ -64,12 +64,12 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
               onChange={(e) => setIssueDate(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="returnDate" className="mb-3">
-            <Form.Label>Return Date</Form.Label>
+          <Form.Group controlId="dueDte" className="mb-3">
+            <Form.Label>Due Date</Form.Label>
             <Form.Control
               type="date"
-              value={returnDate}
-              onChange={(e) => setReturnDate(e.target.value)}
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
             />
           </Form.Group>
         </Form>
