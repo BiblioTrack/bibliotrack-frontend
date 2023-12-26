@@ -1,9 +1,8 @@
 // BookDetails.js
 
-import React, { useState } from 'react';
-import { Container, Row, Col, Image, Button, Badge } from 'react-bootstrap';
-import IssueCopyModal from '../components/IssueCopyModal.js'; 
-
+import React from 'react';
+import { Container, Row, Col, Badge } from 'react-bootstrap';
+import BookImageAndButtons from '../components/BookImageAndButtons.js';
 import { useAuth } from '../../AuthPages/AuthContext.js';
 import './BookDetails.css'; 
 
@@ -11,44 +10,12 @@ import './BookDetails.css';
 const BookDetails = ({ book }) => {
   const { isAdmin } = useAuth();
 
-  const [showIssueCopyModal, setShowIssueCopyModal] = useState(false);
-
-  const handleShowIssueCopyModal = () => {
-    setShowIssueCopyModal(true);
-  };
-
-  const handleHideIssueCopyModal = () => {
-    setShowIssueCopyModal(false);
-  };
-
   return (
     <Container className="book-details-container">
       <Row>
          {/* Image and Request Borrowing Button */}
          <Col lg={3} md={4} className="book-details-image text-center">
-          <Image src={book.coverImage} alt={book.title} fluid className="bookcover-image" />
-          {!isAdmin &&
-            <Button variant="outline-dark" className="wide-button mt-3">
-              Request Copy
-            </Button>
-          }
-          {isAdmin &&
-            <>
-            <Button variant="outline-dark" className="wide-button mt-3">
-              Edit Book
-            </Button>
-              <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
-                Issue Copy
-              </Button>
-               <IssueCopyModal
-                show={showIssueCopyModal}
-                onHide={handleHideIssueCopyModal}
-                bookId={book.id}
-              />
-              
-             
-            </>
-          }
+         <BookImageAndButtons isAdmin={isAdmin} book={book} />
         </Col>
 
         {/* Book Details */}
