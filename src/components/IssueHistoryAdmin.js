@@ -106,12 +106,7 @@ const IssueHistoryAdmin = ({ issueHistory , showBookIdColumn = true}) => {
                 <td>{issue.returnDate}</td>
                 <td style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   {status}
-                  {isClickable && (
-                    <PencilSquare
-                      style={{ margin: '0px 10px' }}
-                      onClick={() => handleShowReturnModal(issue)}
-                    />
-                  )}
+                  {isClickable && (<PencilSquare style={{ margin: '0px 10px' }} /> )}
                 </td>
               </tr>
             );
