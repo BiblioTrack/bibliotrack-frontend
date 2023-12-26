@@ -6,22 +6,20 @@ import RequestCopyModal from './RequestCopyModal.js';
 
 
 const BookImageAndButtons = ({ isAdmin , book }) => {
+  /*For Admin Issue Copy*/
   const [showIssueCopyModal, setShowIssueCopyModal] = useState(false);
-
   const handleShowIssueCopyModal = () => {
     setShowIssueCopyModal(true);
   };
-
   const handleHideIssueCopyModal = () => {
     setShowIssueCopyModal(false);
   };
 
+  /*For User Request Copy*/
   const [showRequestCopyModal, setRequestCopyModal] = useState(false);
-
   const handleShowRequestCopyModal = () => {
     setRequestCopyModal(true);
   };
-
   const handleHideRequestCopyModal = () => {
     setRequestCopyModal(false);
   };
