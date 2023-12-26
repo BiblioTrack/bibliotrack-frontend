@@ -33,7 +33,7 @@ const AddBookSection = () => {
 
   return (
 
-    <MainSection title="Add New Book to the System"  mdBreakpoint={12}>
+    <MainSection title="Add New Book"  mdBreakpoint={10}>
       <Form className="mt-5" onSubmit={handleSubmit} title="Add New Book to the System" align="left">
 
         <Row>
@@ -42,7 +42,6 @@ const AddBookSection = () => {
               <Form.Label>Title</Form.Label>
               <FormControl
                 type="text"
-                placeholder="Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -53,7 +52,6 @@ const AddBookSection = () => {
               <Form.Label>Author</Form.Label>
               <FormControl
                 type="text"
-                placeholder="Author"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
               />
@@ -67,7 +65,6 @@ const AddBookSection = () => {
               <Form.Label>ISBN</Form.Label>
               <FormControl
                 type="text"
-                placeholder="ISBN"
                 value={isbn}
                 onChange={(e) => setIsbn(e.target.value)}
               />
@@ -91,7 +88,6 @@ const AddBookSection = () => {
               <Form.Label>Edition</Form.Label>
               <FormControl
                 type="int"
-                placeholder="Edition"
                 value={edition}
                 onChange={(e) => setEdition(e.target.value)}
               />
@@ -112,10 +108,9 @@ const AddBookSection = () => {
         <Row>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="editor">
-              <Form.Label>Editor</Form.Label>
+              <Form.Label>Editor Name</Form.Label>
               <FormControl
                 type="text"
-                placeholder="Editor Name"
                 value={editor}
                 onChange={(e) => setEditor(e.target.value)}
               />
@@ -123,10 +118,9 @@ const AddBookSection = () => {
           </Col>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="publisher">
-              <Form.Label>Publisher</Form.Label>
+              <Form.Label>Publisher Name</Form.Label>
               <FormControl
                 type="text"
-                placeholder="Publisher Name"
                 value={publisher}
                 onChange={(e) => setPublisher(e.target.value)}
               />
@@ -140,7 +134,6 @@ const AddBookSection = () => {
               <Form.Label>Copies</Form.Label>
               <FormControl
                 type="text"
-                placeholder="Copies"
                 value={copies}
                 onChange={(e) => setCopies(e.target.value)}
               />
@@ -151,7 +144,6 @@ const AddBookSection = () => {
               <Form.Label>Page Count</Form.Label>
               <FormControl
                 type="int"
-                placeholder="Page Count"
                 value={pageCount}
                 onChange={(e) => setPageCount(e.target.value)}
               />
@@ -165,7 +157,6 @@ const AddBookSection = () => {
               <Form.Label>Shelf</Form.Label>
               <FormControl
                 type="int"
-                placeholder="Shelf"
                 value={shelf}
                 onChange={(e) => setShelf(e.target.value)}
               />
@@ -176,7 +167,6 @@ const AddBookSection = () => {
               <Form.Label>Floor</Form.Label>
               <FormControl
                 type="int"
-                placeholder="Floor"
                 value={floor}
                 onChange={(e) => setFloor(e.target.value)}
               />
@@ -186,16 +176,16 @@ const AddBookSection = () => {
 
         <Form.Group className="mb-3" controlId="description">
           <Form.Label>Description</Form.Label>
-          <FormControl
-            type="text"
-            placeholder="Description"
+          <Form.Control
+            as="textarea"
+            rows={3} 
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </Form.Group>
 
         <div align='center'>
-          <Button type="submit" variant="info" className="mb-3 admin-button"> Add </Button>
+          <Button type="submit" variant="info" className="mb-3 wide-button"> Add </Button>
         </div>
 
       </Form>
