@@ -14,6 +14,7 @@ const LoginSection = () => {
 
 
   //TODO: form submit error check
+  //TODO: https://stackoverflow.com/questions/39097440/on-react-router-how-to-stay-logged-in-state-even-page-refresh
 
   const handleSubmit = (e) => {
     e.preventDefault();

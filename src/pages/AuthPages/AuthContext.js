@@ -8,12 +8,12 @@ const AuthContext = createContext();
 // Create a provider component
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null); // Replace 'null' with your actual user object
-  const [isAdmin, setIsAdmin] = useState(false); // Add isAdmin or other user roles
+  const [isAdmin, setIsAdmin] = useState(true); // Add isAdmin or other user roles
 
   const login = (userData) => {
     setUser(userData);
     // Add logic to determine if the user is an admin
-    setIsAdmin(userData.role === 'admin'); 
+    setIsAdmin(userData.role === 'user'); 
   };
 
   const logout = () => {

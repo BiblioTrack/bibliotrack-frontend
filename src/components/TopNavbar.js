@@ -10,7 +10,7 @@ function TopNavbar() {
   const { isAdmin } = useAuth();
 
   //TODO: change navbar to sticky top
-  //TODO remove user and admin options before login
+  //TODO: remove user and admin options before login
 
   return (
     <Navbar bg="info" data-bs-theme="dark" className='px-2' data-testid="top-navbar" expand="md">
