@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { PencilSquare } from 'react-bootstrap-icons';
-import MarkReturnedModal from '../../../components/MarkReturnedModal';
+import RequestResponseModal from './RequestResponseModal';
 
-
-const IssueRequestsAdmin = ({ requests }) => {
-  const [showRespondModal, setShowRespondModal] = useState(false);
+const RequestsAdmin = ({ requests }) => {
+  const [showResponseModal, setShowResponseModal] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
 
-  const handleCloseRespondModal = () => setShowRespondModal(false);
-  const handleShowRespondModal = (issue) => {
+  const handleCloseResponseModal = () => setShowResponseModal(false);
+  const handleShowResponseModal = (issue) => {
     setSelectedRequest(issue);
-    setShowRespondModal(true);
+    setShowResponseModal(true);
   };
 
 
@@ -39,7 +38,7 @@ const IssueRequestsAdmin = ({ requests }) => {
             return (
               <tr
                 key={index}
-                onClick={() => isClickable && handleShowRespondModal(request)}
+                onClick={() => isClickable && handleShowResponseModal(request)}
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
               >
                 <td>{request.bookId}</td>
@@ -47,12 +46,12 @@ const IssueRequestsAdmin = ({ requests }) => {
                 <td>{request.issueDate}</td>
                 <td>{request.dueDate}</td>
                 <td style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                {request.status === 'Approved' ? (
-                    <span>✔️ Approved</span>
-                  ) : (
-                    request.status === 'Pending'? <span >⏳  Pending</span> :<span >❌ Rejected</span>
-                  )}
-                  {isClickable && (<PencilSquare style={{ margin: '0px 10px' }} /> )}
+                  {request.status === 'Approved' ? (
+                      <span>✔️ Approved</span>
+                    ) : (
+                      request.status === 'Pending'? <span >⏳  Pending</span> :<span >❌ Rejected</span>
+                    )}
+                    {isClickable && (<PencilSquare style={{ margin: '0px 10px' }} /> )}
                 </td>
               </tr>
             );
@@ -60,9 +59,9 @@ const IssueRequestsAdmin = ({ requests }) => {
         </tbody>
       </Table>
 
-      <MarkReturnedModal show={showRespondModal} onClose={handleCloseRespondModal} selectedIssue={selectedRequest} />
+      <RequestResponseModal show={showResponseModal} onClose={handleCloseResponseModal} selectedRequest={selectedRequest} />
     </div>
   );
 };
 
-export default IssueRequestsAdmin;
+export default RequestsAdmin;
