@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../../AuthPages/AuthContext.js';
+import IssueRequestsAdmin from '../../../components/IssueRequestsAdmin.js';
 import IssueHistoryAdmin from '../../../components/IssueHistoryAdmin';
 import { Container } from 'react-bootstrap';
 
@@ -18,13 +19,23 @@ const Dashboard = () =>{
       { userId: '123', bookId: '33' , copyNumber: '444', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26'},
     ];
 
+    const dummyIssueRequests = [
+        { userId: '123', bookId: '1' ,  issueDate: '2023-01-01', dueDate: '2023-01-15', status: 'Pending' },
+        { userId: '456', bookId: '2' ,  issueDate: '2023-01-02', dueDate: '2023-01-16', status: 'Pending' },
+        { userId: '789', bookId: '1' ,  issueDate: '2023-01-03', dueDate: '2023-01-17', status: 'Approved' },
+
+      ];
+  
     
     return(
     <Container>
-    <h3 className='mb-5'>Dashboard</h3>
+    <h4 className='my-5'>Dashboard</h4>
 
     {isAdmin &&
-        <IssueHistoryAdmin issueHistory={dummyIssueHistory} />
+        <>
+            <IssueRequestsAdmin requests={dummyIssueRequests}/>
+            <IssueHistoryAdmin issueHistory={dummyIssueHistory} />
+        </>   
     }
     </Container>
     );
