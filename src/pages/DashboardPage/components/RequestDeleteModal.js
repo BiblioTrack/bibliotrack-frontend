@@ -6,8 +6,8 @@ const RequestDeleteModal = ({ show, onClose, selectedRequest }) => {
 
  
   const handleDelete = () => {
-    // Update the backend and handle other necessary actions
-    // Don't forget to close the modal
+    // TODO: Use Delete Request API call
+    console.log(`Delete Request ${selectedRequest}`);
     onClose();
   };
 

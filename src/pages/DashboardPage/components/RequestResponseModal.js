@@ -6,8 +6,7 @@ const RequestResponseModal = ({ show, onClose, selectedRequest }) => {
   const [copyNumber, setCopyNumber] = useState('');
 
   const handleApprove = () => {
-    // Implement logic for approving the request
-    // Update the backend and handle other necessary actions
+    // TODO: Implement logic for approving the request
     const issueData = {
         bookId: selectedRequest.bookId,
         copyNumber,
@@ -17,14 +16,12 @@ const RequestResponseModal = ({ show, onClose, selectedRequest }) => {
     };
   
     console.log(`Issuing copy: ${JSON.stringify(issueData)}`);
-    // Don't forget to close the modal
     onClose();
   };
 
   const handleReject = () => {
-    // Implement logic for rejecting the request
-    // Update the backend and handle other necessary actions
-    // Don't forget to close the modal
+    // TODO: Implement logic for rejecting the request
+    console.log(`Reject Request: ${JSON.stringify(selectedRequest)}`);
     onClose();
   };
 
