@@ -13,14 +13,10 @@ const SearchResultsSection = () => {
     setBooks(booksData);
   }, []);
 
-  const handleBookClick = (bookId) => {
-    console.log(`Book with ID ${bookId} clicked`);
-  };
-
   return (
     <div className="search-results-container">
       <h3 className="search-results-header">Search Results</h3>
-      <BookGrid books={books} onBookClick={handleBookClick} />
+      <BookGrid books={books} />
     </div>
   );
 };
