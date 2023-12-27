@@ -1,6 +1,6 @@
 // BookDetails.js
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import BookImageAndButtons from './BookImageAndButtons.js';
 import BookInfo from './BookInfo.js';
@@ -11,15 +11,44 @@ import './Book.css';
 
 const Book = ({ book }) => {
   const { isAdmin } = useAuth();
+  const [issues, setIssues] = useState([]);
+
+
+  useEffect(() => {
+    //TODO: use fetchIssueHistory logic here
+
+    /*
+    const fetchIssueHistory = async () => {
+      try {
+        // Replace the following with your actual API endpoint to fetch issueHistory
+        const response = await fetch('/api/issues');
+        const data = await response.json();
+
+        setIssues(data);
+      } catch (error) {
+        console.error('Error fetching issue history:', error);
+      }
+    };
+
+    // Fetch issueHistory only if the user is an admin
+    if (isAdmin) {
+      fetchIssueHistory();
+    }
+    */
+
+    //Mock
+    // Dummy issue history for testing
+    const dummyIssues = [
+          { userId: '123', bookId: '1' , copyNumber: '888', issueDate: '2023-01-01', dueDate: '2023-01-15', returnDate: '2023-01-14' },
+          { userId: '456', bookId: '1' , copyNumber: '999', issueDate: '2023-02-01', dueDate: '2023-02-15', returnDate: null},
+          { userId: '789', bookId: '1' , copyNumber: '777', issueDate: '2023-12-01', dueDate: '2023-12-28', returnDate: null},
+          { userId: '123', bookId: '1' , copyNumber: '666', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26'},
+    ];
+    setIssues(dummyIssues);
+
+  }, [isAdmin]);
 
   
-  // Dummy issue history for testing
-  const dummyIssueHistory = [
-    { userId: '123', bookId: '1' , copyNumber: '888', issueDate: '2023-01-01', dueDate: '2023-01-15', returnDate: '2023-01-14' },
-    { userId: '456', bookId: '1' , copyNumber: '999', issueDate: '2023-02-01', dueDate: '2023-02-15', returnDate: null},
-    { userId: '789', bookId: '1' , copyNumber: '777', issueDate: '2023-12-01', dueDate: '2023-12-28', returnDate: null},
-    { userId: '123', bookId: '1' , copyNumber: '666', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26'},
-  ];
 
 
   return (
@@ -38,7 +67,7 @@ const Book = ({ book }) => {
       <Row> <Col><hr className="my-5" /></Col></Row>
       <Row>
         {isAdmin &&
-          <IssueHistoryAdmin issueHistory={dummyIssueHistory} showBookIdColumn={false} />
+          <IssueHistoryAdmin issueHistory={issues} showBookIdColumn={false} />
         }
       </Row>
     </Container>
