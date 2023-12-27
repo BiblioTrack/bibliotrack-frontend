@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { useAuth } from '../../AuthPages/AuthContext.js';
+
 
 const RequestCopyModal = ({ show, onHide, bookId }) => {
-  //TODO: get userId
-  const [userId] = useState('');
+
+  const { user } = useAuth();
+
+
   const [issueDate, setIssueDate] = useState(
     new Date().toISOString().split('T')[0] 
   );
@@ -14,7 +18,6 @@ const RequestCopyModal = ({ show, onHide, bookId }) => {
   const handleIssueCopy = () => {
 
     const maxBorrowDays = 14; // Maximum allowed days for borrowing
-
 
      if (!dueDate || !issueDate) {
         alert('Issue and due date cannot be empty');
@@ -30,10 +33,10 @@ const RequestCopyModal = ({ show, onHide, bookId }) => {
         return;
       }
 
-    // TODO: onRequestCopy API
+    // TODO: RequestCopy API call
     const issueData = {
       bookId,
-      userId,
+      userId: user.id,
       issueDate,
       dueDate,
     };
