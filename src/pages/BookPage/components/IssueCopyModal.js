@@ -13,9 +13,10 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
 
   const handleIssueCopy = () => {
 
-     // Validate that return date is after issue date
+    //TODO: validate that userId and CopyNumber aren't empty
+
+     // Validate return date and issue date
      if (!dueDate || !issueDate) {
-      // Set the error message
         alert('Issue and due date cannot be empty');
         return;
       }
@@ -24,7 +25,7 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
         return;
       }
 
-    // TODO: onIssueCopy API
+    // TODO: IssueCopy API Call
     const issueData = {
       bookId,
       copyNumber,
