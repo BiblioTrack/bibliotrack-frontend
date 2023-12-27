@@ -6,8 +6,10 @@ import './SearchResultsSection.css';
 const SearchResultsSection = () => {
   const [books, setBooks] = useState([]);
 
-  // Set books data from the imported JSON file
   useEffect(() => {
+    //TODO: Use API GET books endpoint
+
+    //Mock
     setBooks(booksData);
   }, []);
 
