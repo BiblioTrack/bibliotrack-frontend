@@ -14,7 +14,7 @@ const SearchSection = () => {
           <SearchBar
             placeholder="Search Books..."
             onSearch={() => {
-              //TODO: Handle search action
+              //TODO: Implement search function
               console.log('Search initiated!');
             }}
           />
