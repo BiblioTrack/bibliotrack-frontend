@@ -8,6 +8,10 @@ const SearchResultsSection = () => {
 
   useEffect(() => {
     //TODO: Use API GET books endpoint
+    /*
+    const books= await fetchAllBook();
+    setBooks(books);
+    */
 
     //Mock
     setBooks(booksData);

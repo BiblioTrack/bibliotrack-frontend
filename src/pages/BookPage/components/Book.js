@@ -15,24 +15,15 @@ const Book = ({ book }) => {
 
 
   useEffect(() => {
-    //TODO: use fetchIssueHistory logic here
+    //TODO: use fetchIssueHistorySingleBook logic here
 
     /*
-    const fetchIssueHistory = async () => {
-      try {
-        // Replace the following with your actual API endpoint to fetch issueHistory
-        const response = await fetch('/api/issues');
-        const data = await response.json();
-
-        setIssues(data);
-      } catch (error) {
-        console.error('Error fetching issue history:', error);
-      }
-    };
 
     // Fetch issueHistory only if the user is an admin
     if (isAdmin) {
-      fetchIssueHistory();
+      const issues = await fetchIssueHistorySingleBook(book.id);
+      setIssues(issues);
+
     }
     */
 

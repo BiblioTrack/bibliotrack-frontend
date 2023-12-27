@@ -18,19 +18,8 @@ const BookDetailsPage = () => {
     //TODO: Use API GET book/:id endpoint
 
     /*
-    const fetchBook = async () => {
-      try {
-        // Replace the following with your actual API endpoint to fetch book details
-        const response = await fetch(`/api/books/${id}`);
-        const data = await response.json();
-
-        setSelectedBook(data);
-      } catch (error) {
-        console.error('Error fetching book details:', error);
-      }
-    };
-
-    fetchBook();
+    const book= await fetchBook(id);
+    setSelectedBook(book);
     */
    
     //Mock
