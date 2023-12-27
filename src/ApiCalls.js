@@ -36,17 +36,16 @@ const fetchIssueHistory = async () => {
   }
 };
 
-// Function to fetch all issue requests from the API
-const fetchIssueRequests = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/requests`);
-    const data = await response.json();
-    return data; 
-  } catch (error) {
-    console.error('Error fetching issue requests:', error);
-    return []; 
-  }
-};
+const fetchIssueHistorySingleUser = async (userId) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/issues?userId=${userId}`);
+      const data = await response.json();
+      return data; 
+    } catch (error) {
+      console.error('Error fetching issue history:', error);
+      return []; 
+    }
+  };
 
 const fetchIssueHistorySingleBook = async (bookId) => {
     try {
@@ -61,3 +60,28 @@ const fetchIssueHistorySingleBook = async (bookId) => {
     }
 };
   
+// Function to fetch all issue requests from the API
+const fetchIssueRequests = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/requests`);
+    const data = await response.json();
+    return data; 
+  } catch (error) {
+    console.error('Error fetching issue requests:', error);
+    return []; 
+  }
+};
+
+// Function to fetch all issue requests from the API
+const fetchIssueRequestsSingleUser = async (userId) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/requests?userId=${userId}`);
+      const data = await response.json();
+      return data; 
+    } catch (error) {
+      console.error('Error fetching issue requests:', error);
+      return []; 
+    }
+  };
+  
+
