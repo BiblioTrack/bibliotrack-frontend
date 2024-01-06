@@ -1,0 +1,11 @@
+.about-container {
+    background-color: #969393;
+    background-size: cover;
+    background-position: right;
+    min-height: 80vh;
+    max-width: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+}
