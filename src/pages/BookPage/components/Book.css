@@ -1,34 +1,40 @@
 /* BookDetails.css */
 
-  .book-details-image{
-    max-width: 300px;
+.book-details-image {
+  max-width: 300px;
 
-  }
+}
 
-  .bookcover-image {
-    width: 100%; /* Set a fixed width for the image */
-  }
+.bookcover-image {
+  width: 100%;
+  /* Set a fixed width for the image */
+}
 
-  
-  .unique-title {
-    /* Styling for the unique title */
-    font-size: 24px;
-    color: #333;
-    font-weight: bold;
-  }
-  
-  .unique-author {
-    /* Styling for the unique author */
-    font-size: 18px;
-    color: #555;
-  }
-  
- 
 
-  .genre-badge {
-    border: 1px solid #ced4da; /* Bootstrap gray border color */
-    padding: 0.25rem 0.5rem; /* Padding for the badge */
-  }
-  
+.unique-title {
+  /* Styling for the unique title */
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
+}
 
-  
+.unique-author {
+  /* Styling for the unique author */
+  font-size: 18px;
+  color: #555;
+}
+
+
+
+.genre-badge {
+  border: 1px solid #ced4da;
+  /* Bootstrap gray border color */
+  padding: 0.25rem 0.5rem;
+  /* Padding for the badge */
+}
+
+.editbookmodal {
+  width: 500px;
+  height: 300px;
+
+}
