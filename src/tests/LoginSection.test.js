@@ -6,7 +6,7 @@ import { AuthContextProvider } from '../pages/AuthPages/AuthContext.js';
 
 import LoginSection from '../pages/AuthPages/LoginPage/components/LoginSection.js';
 
-test('renders LoginSection component with form, email, and password input fields', () => {
+test('Test: render LoginSection component with expected input fields', () => {
   render(
   <BrowserRouter>
   <AuthContextProvider>
@@ -30,19 +30,24 @@ test('renders LoginSection component with form, email, and password input fields
   expect(passwordInput).toHaveAttribute('type', 'password');
 });
 
-// Optionally, you can add more specific tests for form submission and other interactions
-test('handles form submission', () => {
+test('Test: invalid form submission', () => {
   render(
     <BrowserRouter>
-    <AuthContextProvider>
-      <LoginSection />
-    </AuthContextProvider>
+      <AuthContextProvider>
+        <LoginSection />
+      </AuthContextProvider>
     </BrowserRouter>
   );
+
   const formElement = screen.getByRole('form');
 
-  // Simulate form submission
-  fireEvent.submit(formElement);
+   // Spy on window.alert
+   const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
 
-  // Add assertions based on the component's behavior after the form submission
+  // Simulate form submission without entering email and password
+  fireEvent.submit(formElement);
+  expect(alertSpy).toHaveBeenCalledWith('Please enter both email and password.');
+  alertSpy.mockRestore();
+
 });
+

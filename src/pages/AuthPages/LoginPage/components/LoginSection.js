@@ -22,13 +22,6 @@ const LoginSection = () => {
       return false;
     }
 
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email.trim() || !emailRegex.test(email)) {
-      alert('Please enter a valid email address.');
-      return false;
-    }
-
     //TODO: Add login logic here
 
     // Mock user data
