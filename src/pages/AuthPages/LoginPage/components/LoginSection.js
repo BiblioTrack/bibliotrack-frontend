@@ -22,13 +22,10 @@ const LoginSection = () => {
       return false;
     }
 
-    if (!email) {
-      alert('Please enter your email.');
-      return false;
-    }
-
-    if (!password) {
-      alert('Please enter your password.');
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim() || !emailRegex.test(email)) {
+      alert('Please enter a valid email address.');
       return false;
     }
 
