@@ -13,7 +13,16 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
 
   const handleIssueCopy = () => {
 
-    //TODO: validate that userId and CopyNumber aren't empty
+    //Validate that userId and CopyNumber aren't empty
+    if (!userId.trim()) {
+      alert('User ID acannot be empty');
+      return;
+    }
+
+    if (!copyNumber.trim()) {
+      alert('Copy Number cannot be empty');
+      return;
+    }
 
      // Validate return date and issue date
      if (!dueDate || !issueDate) {
