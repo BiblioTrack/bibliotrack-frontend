@@ -4,19 +4,26 @@ import { Form, InputGroup, Button } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
 import './SearchBar.css';
 
-const SearchBar = ({ placeholder, onSearch }) => {
+const SearchBar = ({ placeholder, value, onSearch, onChange }) => {
+  const onFormSubmit = e => {
+    e.preventDefault();
+    onSearch();
+  }
+  
   return (
-    <Form>
+    <Form onSubmit={onFormSubmit}>
       <InputGroup className="searchBar">
         <Form.Control 
           type="text"
           placeholder={placeholder || 'Search ...'}
           className="searchInput"
+          value={value}
+          onChange={onChange}
         />
         <Button
           variant="info"
           className="searchButton"
-          onClick={onSearch}
+          type='submit'
         >
           <FaSearch />
         </Button>
