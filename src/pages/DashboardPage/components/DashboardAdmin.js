@@ -11,11 +11,11 @@ const DashboardAdmin = () =>{
   useEffect(() => {
     const fetchData = async () => {
       /*
-        // Fetch issue history
+        // TODO: Fetch issue history
         const historyData = await fetchIssueHistory();
         setIssueHistory(historyData);
 
-        // Fetch issue requests
+        // TODO: Fetch issue requests
         const requestData = await fetchIssueRequests();
         setIssueRequests(requestData);
       */
