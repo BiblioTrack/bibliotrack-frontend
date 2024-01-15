@@ -53,6 +53,8 @@ const AddBookSection = () => {
       description,
     };
 
+    console.log(newBook);
+
   };
 
   return (
