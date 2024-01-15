@@ -17,13 +17,6 @@ const SignupSection = () => {
       return false;
     }
 
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email.trim() || !emailRegex.test(email)) {
-      alert('Please enter a valid email address.');
-      return false;
-    }
-
     // Validate password strength
     if (password.length < 8) {
       alert('Password should be at least 8 characters long.');
