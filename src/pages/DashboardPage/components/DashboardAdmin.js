@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Requests from './Requests.js';
-import IssueHistoryAdmin from '../../../components/IssueHistoryAdmin.js';
+import IssueHistoryAdmin from '../components/IssueHistoryAdmin.js';
 import { Container } from 'react-bootstrap';
 
 const DashboardAdmin = () =>{
