@@ -28,8 +28,31 @@ const AddBookSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Add new book form validation
+
+    // Add new book form validation
+    if (!title || !author || !isbn || !category) {
+      // Handle validation error, e.g., show an alert
+      alert('Please fill in all required fields.');
+      return;
+    }
+
     // TODO: Add new book addition logic here
+    const newBook = {
+      title,
+      author,
+      isbn,
+      category,
+      edition,
+      publishYear,
+      editor,
+      publisher,
+      copies,
+      pageCount,
+      shelf,
+      floor,
+      description,
+    };
+
   };
 
   return (
@@ -40,7 +63,7 @@ const AddBookSection = () => {
         <Row>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="title">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Title *</Form.Label>
               <FormControl
                 type="text"
                 value={title}
@@ -50,7 +73,7 @@ const AddBookSection = () => {
           </Col>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="author">
-              <Form.Label>Author</Form.Label>
+              <Form.Label>Author *</Form.Label>
               <FormControl
                 type="text"
                 value={author}
@@ -63,7 +86,7 @@ const AddBookSection = () => {
         <Row>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="isbn">
-              <Form.Label>ISBN</Form.Label>
+              <Form.Label>ISBN *</Form.Label>
               <FormControl
                 type="text"
                 value={isbn}
@@ -73,7 +96,7 @@ const AddBookSection = () => {
           </Col>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="category">
-              <Form.Label>Category</Form.Label>
+              <Form.Label>Category *</Form.Label>
               <FormControl
                 type="text"
                 value={category}
