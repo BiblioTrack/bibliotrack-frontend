@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 const calculateStatus = (dueDate, returnDate) => {
   const currentDate = new Date();
@@ -81,7 +83,11 @@ const IssueHistoryUser = ({ issueHistory }) => {
 
             return (
               <tr key={index} >
-                <td>{issue.bookId}</td>
+                <td>
+                  <Link to={`/book/${issue.bookId}`}>
+                    {issue.bookId}
+                  </Link>
+                </td>
                 <td>{issue.copyNumber}</td>
                 <td>{issue.issueDate}</td>
                 <td>{issue.dueDate}</td>

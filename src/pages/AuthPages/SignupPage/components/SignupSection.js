@@ -7,11 +7,41 @@ const SignupSection = () => {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+
+  const validateSignUpForm = () => {
+    // Validate name (firstname and lastname)
+    if (!firstname.trim() || !lastname.trim()) {
+      alert('Please enter both first name and last name.');
+      return false;
+    }
+
+    // Validate password strength
+    if (password.length < 8) {
+      alert('Password should be at least 8 characters long.');
+      return false;
+    }
+
+    // Validate matching passwords
+    if (password !== repeatPassword) {
+      alert('Passwords do not match.');
+      return false;
+    }
+
+    // TODO: Add more advanced password strength validation if needed
+
+    return true;
+  };
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //TODO: Add signup form validation before submit 
+    //Add signup form validation before submit 
+     if (!validateSignUpForm()) {
+      return;
+    }
     //TODO: Add signup logic here
   };
 
@@ -60,8 +90,18 @@ const SignupSection = () => {
             data-testid="password"
             type="password"
             placeholder="Password"
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="repeatPassword" >
+          <FormControl
+            data-testid="repeatPassword"
+            type="password"
+            placeholder="Repeat Password"
+            value={repeatPassword}
+            onChange={(e) => setRepeatPassword(e.target.value)}
           />
         </Form.Group>
 

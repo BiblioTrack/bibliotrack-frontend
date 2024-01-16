@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { PencilSquare , Trash3 } from 'react-bootstrap-icons';
 import RequestResponseModal from './RequestResponseModal';
 import RequestDeleteModal from './RequestDeleteModal.js'
@@ -60,7 +61,12 @@ const Requests = ({ requests }) => {
                 }}
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
               >
-                <td>{request.bookId}</td>
+                <td>
+                  <Link to={`/book/${request.bookId}`}>
+                    {request.bookId}
+                  </Link>
+                </td>
+                                
                 {isAdmin &&<td>{request.userId}</td>}
                 <td>{request.issueDate}</td>
                 <td>{request.dueDate}</td>

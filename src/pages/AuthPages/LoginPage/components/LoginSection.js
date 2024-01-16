@@ -16,7 +16,12 @@ const LoginSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //TODO: Add login form validation before submit 
+    //Add login form validation before submit 
+    if (!email || !password) {
+      alert('Please enter both email and password.');
+      return false;
+    }
+
     //TODO: Add login logic here
 
     // Mock user data

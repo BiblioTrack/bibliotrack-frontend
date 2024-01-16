@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { PencilSquare } from 'react-bootstrap-icons';
 import MarkReturnedModal from './MarkReturnedModal';
 
@@ -98,7 +99,12 @@ const IssueHistoryAdmin = ({ issueHistory , showBookIdColumn = true}) => {
                 onClick={() => isClickable && handleShowReturnModal(issue)}
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
               >
-                {showBookIdColumn && <td>{issue.bookId}</td>}
+                {showBookIdColumn &&   
+                <td>
+                  <Link to={`/book/${issue.bookId}`}>
+                    {issue.bookId}
+                  </Link>
+                </td>}
                 <td>{issue.userId}</td>
                 <td>{issue.copyNumber}</td>
                 <td>{issue.issueDate}</td>

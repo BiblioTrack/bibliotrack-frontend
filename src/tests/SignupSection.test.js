@@ -5,7 +5,7 @@ import { AuthContextProvider } from '../pages/AuthPages/AuthContext.js';
 
 import SignupSection from '../pages/AuthPages/SignupPage/components/SignupSection.js';
 
-test('renders SignupSection component with form, firstname, lastname, email, and password input fields', () => {
+test('Test: Render SignupSection component with expected input fields', () => {
   render(
     <BrowserRouter>
     <AuthContextProvider>
@@ -16,32 +16,27 @@ test('renders SignupSection component with form, firstname, lastname, email, and
 
   // Assert that the form is present
   const formElement = screen.getByRole('form');
-
   expect(formElement).toBeInTheDocument();
 
-  // Assert that the firstname input field is present
-  const firstnameInput = screen.getByTestId('firstname');
-  expect(firstnameInput).toBeInTheDocument();
-  expect(firstnameInput).toHaveAttribute('type', 'text');
+  // Assert that the input fields are present, have the correct type, and have the correct labels
+  const inputFields = [
+    { name: 'firstname', type: 'text' },
+    { name: 'lastname', type: 'text'},
+    { name: 'email', type: 'email' },
+    { name: 'password', type: 'password' },
+    { name: 'repeatPassword', type: 'password'},
+  ];
 
-  // Assert that the lastname input field is present
-  const lastnameInput = screen.getByTestId('lastname');
-  expect(lastnameInput).toBeInTheDocument();
-  expect(lastnameInput).toHaveAttribute('type', 'text');
+  inputFields.forEach(({ name, type}) => {
+    const inputElement = screen.getByTestId(name);
+    expect(inputElement).toBeInTheDocument();
+    expect(inputElement).toHaveAttribute('type', type);
+  });
 
-  // Assert that the email input field is present
-  const emailInput = screen.getByTestId('email');
-  expect(emailInput).toBeInTheDocument();
-  expect(emailInput).toHaveAttribute('type', 'email');
-
-  // Assert that the password input field is present
-  const passwordInput = screen.getByTestId('password');
-  expect(passwordInput).toBeInTheDocument();
-  expect(passwordInput).toHaveAttribute('type', 'password');
 });
 
-// Optionally, you can add more specific tests for form submission and other interactions
-test('handles form submission', () => {
+
+test('Test: empty form submission', () => {
   render(
     <BrowserRouter>
     <AuthContextProvider>
@@ -49,9 +44,40 @@ test('handles form submission', () => {
     </AuthContextProvider>
     </BrowserRouter>
   );
-  const formElement = screen.getByRole('form');
-  // Simulate form submission
-  fireEvent.submit(formElement);
+  
+   // Mock the alert function to check if it's called
+   jest.spyOn(window, 'alert').mockImplementation(() => {});
 
-  // Add assertions based on the component's behavior after the form submission
+   // Simulate form submission without filling out the form
+   fireEvent.submit(screen.getByRole('form'));
+   expect(window.alert).toHaveBeenCalled();
+});
+
+
+test('Test: form submission with valid data', () => {
+  render(
+    <BrowserRouter>
+      <AuthContextProvider>
+        <SignupSection />
+      </AuthContextProvider>
+    </BrowserRouter>
+  );
+
+  // Fill out the form with valid data
+  fireEvent.change(screen.getByTestId('firstname'), { target: { value: 'John' } });
+  fireEvent.change(screen.getByTestId('lastname'), { target: { value: 'Doe' } });
+  fireEvent.change(screen.getByTestId('email'), { target: { value: 'john@example.com' } });
+  fireEvent.change(screen.getByTestId('password'), { target: { value: 'strongPassword' } });
+  fireEvent.change(screen.getByTestId('repeatPassword'), { target: { value: 'strongPassword' } });
+
+  // Mock the alert function to check if it's called
+  jest.spyOn(window, 'alert').mockImplementation(() => {});
+
+  // Simulate form submission
+  fireEvent.submit(screen.getByRole('form'));
+
+  // Assert that alert is not called (since data is valid)
+  expect(window.alert).not.toHaveBeenCalled();
+
+  // TODO: you can check if the user is redirected to another page
 });

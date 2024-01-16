@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import BookImageAndButtons from './BookImageAndButtons.js';
 import BookInfo from './BookInfo.js';
-import IssueHistoryAdmin from '../../../components/IssueHistoryAdmin.js';
+import IssueHistoryAdmin from '../../../pages/DashboardPage/components/IssueHistoryAdmin.js';
 import { useAuth } from '../../AuthPages/AuthContext.js';
 import './Book.css'; 
 
