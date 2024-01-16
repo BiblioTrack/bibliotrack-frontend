@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import SearchResultsSection from '../pages/HomePage/components/SearchResultsSection'; // Adjust the path accordingly
 import '@testing-library/jest-dom'; // Import this for additional matchers
-import userEvent from '@testing-library/user-event'; // Import this for simulating user events
 import booksData from '../assets/booksData.json';
 
 
@@ -22,7 +21,7 @@ jest.mock('../../src/pages/HomePage/components/BookGrid.js', () => ({ books }) =
   ));
 
 describe('SearchResultsSection', () => {
-  it('Test: mock book grid', async () => {
+  it('Test: mock book grid', () => {
      // Mock the setBooks function
      const setBooksMock = jest.fn();
 
@@ -38,7 +37,7 @@ describe('SearchResultsSection', () => {
      expect(initialMockedBookGrid.children).toHaveLength(booksData.length);
   });
 
-  it('Test: filter books based on search query', async () => {
+  it('Test: filter books based on search query', () => {
     const setBooksMock = jest.fn();
 
     React.useEffect.mockImplementationOnce((callback) => callback());
