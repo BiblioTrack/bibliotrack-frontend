@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Row, Col, FormControl } from 'react-bootstrap';
 
-const EditBookModal = ({ show, onHide, bookId, bookData }) => {
+const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
 
   const [title, setTitle] = useState(bookData.title);
   const [author, setAuthor] = useState(bookData.author);
@@ -24,46 +24,11 @@ const EditBookModal = ({ show, onHide, bookId, bookData }) => {
 
   const [description, setDescription] = useState(bookData.description);
 
-  // const [formData, setFormData] = useState({
-  //   title: '',
-  //   author: '',
-  // });
-
-  // useEffect(() => {
-  //   // Set the form data to default values when the modal opens
-  //   setFormData({
-  //     title: bookData.title || '',
-  //     author: bookData.author || '',
-  //   });
-  // }, [bookData]);
-
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const handleSave = () => {
-  //   // Call the onSave function with the updated form data
-  //   onSave(formData);
-  //   onHide(); // Close the modal after saving
-  // };
 
   const handleBookEdit = () => {
 
     //   TODO: validate that Title is not emplty and CopyNumber aren't empty
 
-    //   Validate return date and issue date
-    //   if (!dueDate || !issueDate) {
-    //     alert('Issue and due date cannot be empty');
-    //     return;
-    //   }
-    //   else if (new Date(dueDate) < new Date(issueDate)) {
-    //     alert('Due date must be after issue date');
-    //     return;
-    //   }
 
     // TODO: EditBook API Call
     const bookData = {
@@ -85,10 +50,12 @@ const EditBookModal = ({ show, onHide, bookId, bookData }) => {
     console.log(`Editing book copy: ${JSON.stringify(bookData)}`);
 
     onHide();
+
+    onSubmit();
   };
 
   return (
-    <Modal show={show} onHide={onHide} centered>
+    <Modal show={show} onHide={onHide} onSubmit={handleBookEdit} centered>
       <Modal.Header closeButton>
         <Modal.Title>Edit Book</Modal.Title>
       </Modal.Header>
@@ -250,7 +217,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData }) => {
           Close
         </Button>
         <Button variant="info" onClick={handleBookEdit}>
-          Edit Book
+          Submit
         </Button>
       </Modal.Footer>
     </Modal>
