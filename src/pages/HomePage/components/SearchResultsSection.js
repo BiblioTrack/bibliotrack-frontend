@@ -13,7 +13,12 @@ const SearchResultsSection = ({ searchQuery }) => {
     fetchAllBooks()
       .then(data => setBooks(data))
       .catch(error => console.error('Error setting books:', error));
+
+    //Mock
+    // setBooks(booksData);
   }, []);
+
+
 
 
   // Filter books based on search query
