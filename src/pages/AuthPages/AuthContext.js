@@ -9,6 +9,7 @@ const AuthContext = createContext();
 
 // Create a provider component
 const AuthContextProvider = ({ children }) => {
+  //TODO: remove mock user
   // Mock user data
   const mockUserData = {
     id: 1,
