@@ -11,7 +11,7 @@ jest.mock('../ApiCalls');
 jest.mock('../../src/pages/HomePage/components/BookGrid.js', () => ({ books }) => (
     <div data-testid="mocked-book-grid">
         {books.map(book => (
-            <div key={book.id}>{book.title}</div>
+            <div key={book._id}>{book.title}</div>
         ))}
     </div>
 ));

@@ -21,17 +21,17 @@ const BookDetailsPage = () => {
     const book= await fetchBook(id);
     setSelectedBook(book);
     */
-   
+
     //Mock
-    setSelectedBook(booksData.find((book) => book.id.toString() === id));
+    setSelectedBook(booksData.find((book) => book._id.toString() === id));
 
   }, [id]);
-  
+
 
   return (
     <>
-      <TopNavbar/>
-      <VerticalSpace margin={30} />     
+      <TopNavbar />
+      <VerticalSpace margin={30} />
       {selectedBook ? <Book book={selectedBook} /> : <p>Book not found</p>}
     </>
   );

@@ -45,7 +45,7 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
           <RequestCopyModal
             show={showRequestCopyModal}
             onHide={handleHideRequestCopyModal}
-            bookId={book.id}
+            bookId={book._id}
           />
         </>
 
@@ -58,7 +58,7 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
           <EditBookModal
             show={showEditBookModal}
             onHide={handleHideEditBookModal}
-            bookId={book.id}
+            bookId={book._id}
             bookData={book}
           />
           <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
@@ -67,7 +67,7 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
           <IssueCopyModal
             show={showIssueCopyModal}
             onHide={handleHideIssueCopyModal}
-            bookId={book.id}
+            bookId={book._id}
           />
 
         </>
