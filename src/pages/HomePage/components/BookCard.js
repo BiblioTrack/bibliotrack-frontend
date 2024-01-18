@@ -6,9 +6,9 @@ import './BookCard.css'
 const BookCard = ({ book }) => {
   return (
     <Card className="book-item" >
-      <Card.Img variant="top" src={book.coverImage} alt={book.title} />
+      <Card.Img variant="top" src={book.coverImage} alt={book.name} />
       <Card.Body>
-        <Card.Title className="book-title">{book.title}</Card.Title>
+        <Card.Title className="book-title">{book.name}</Card.Title>
         <Card.Text>by {book.author}</Card.Text>
       </Card.Body>
     </Card>

@@ -4,7 +4,7 @@ import { Badge } from 'react-bootstrap';
 
 const BookInfo = ({ book }) => (
   <>
-    <div className="unique-title mb-2">{book.title}</div>
+    <div className="unique-title mb-2">{book.name}</div>
     <div className="unique-author mb-2">{book.author}</div>
     <div className="mb-2">
       {book.genres.map((genre, index) => (

@@ -24,7 +24,7 @@ const SearchResultsSection = ({ searchQuery }) => {
   // Filter books based on search query
   const filteredBooks = books.filter(book =>
     book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    book.title.toLowerCase().includes(searchQuery.toLowerCase())
+    book.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
