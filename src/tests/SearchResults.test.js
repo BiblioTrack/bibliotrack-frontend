@@ -18,10 +18,7 @@ jest.mock('../../src/pages/HomePage/components/BookGrid.js', () => ({ books }) =
 
 describe('SearchResultsSection', () => {
     it('fetches books from API and renders the book grid', async () => {
-        const mockedBooks = [
-            { id: 1, title: 'Book 1', author: 'Author 1' },
-            { id: 2, title: 'Book 2', author: 'Author 2' },
-        ];
+
 
         // Mock the fetchAllBooks function to return the mockedBooks
         fetchAllBooks.mockResolvedValueOnce(booksData);
@@ -37,17 +34,14 @@ describe('SearchResultsSection', () => {
     });
 
     it('filters books based on the search query', async () => {
-        const mockedBooks = [
-            { id: 1, title: 'Book 1', author: 'Author 1' },
-            { id: 2, title: 'Book 2', author: 'Author 2' },
-        ];
+
 
         // Mock the fetchAllBooks function to return the mockedBooks
-        fetchAllBooks.mockResolvedValueOnce(mockedBooks);
+        fetchAllBooks.mockResolvedValueOnce(booksData);
 
         // Render the SearchResultsSection component with a search query
         await act(async () => {
-            render(<SearchResultsSection searchQuery="Author 1" />);
+            render(<SearchResultsSection searchQuery="Harper Lee" />);
         });
 
         // Ensure that the BookGrid is rendered with the filtered books
