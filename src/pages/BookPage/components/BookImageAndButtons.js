@@ -37,7 +37,7 @@ const BookImageAndButtons = ({ isAdmin , book }) => {
   };
 
   const handleConfirmDelete = () => {
-    // Perform the actual delete operation
+    // TODO: Perform the actual delete operation
     console.log(book.id);
     navigate('/');
 
