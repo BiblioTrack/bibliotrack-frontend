@@ -1,53 +1,59 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import SearchResultsSection from '../pages/HomePage/components/SearchResultsSection'; // Adjust the path accordingly
-import '@testing-library/jest-dom'; // Import this for additional matchers
+import { render, screen, act } from '@testing-library/react';
+import SearchResultsSection from '../pages/HomePage/components/SearchResultsSection';
 import booksData from '../assets/booksData.json';
+import { fetchAllBooks } from '../ApiCalls';
 
+// Mock the ApiCalls module
+jest.mock('../ApiCalls');
 
-// Mock the useEffect hook
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useEffect: jest.fn(),
-}));
-
-// Mock the BookGrid component to avoid rendering its actual content
+// Mock the BookGrid component
 jest.mock('../../src/pages/HomePage/components/BookGrid.js', () => ({ books }) => (
     <div data-testid="mocked-book-grid">
-      {books.map(book => (
-        <div key={book.id}>{book.title}</div>
-      ))}
+        {books.map(book => (
+            <div key={book.id}>{book.title}</div>
+        ))}
     </div>
-  ));
+));
 
 describe('SearchResultsSection', () => {
-  it('Test: mock book grid', () => {
-     // Mock the setBooks function
-     const setBooksMock = jest.fn();
+    it('fetches books from API and renders the book grid', async () => {
+        const mockedBooks = [
+            { id: 1, title: 'Book 1', author: 'Author 1' },
+            { id: 2, title: 'Book 2', author: 'Author 2' },
+        ];
 
-     // Mock the useEffect hook to immediately invoke the effect callback
-     React.useEffect.mockImplementationOnce((callback) => callback());
- 
-     // Mock the useState hook to provide initial data (booksData)
-     jest.spyOn(React, 'useState').mockReturnValueOnce([booksData, setBooksMock]);
- 
-     render(<SearchResultsSection searchQuery="" />); 
-     // Ensure that the BookGrid is initially rendered with 4 books.
-     const initialMockedBookGrid = screen.getByTestId('mocked-book-grid');
-     expect(initialMockedBookGrid.children).toHaveLength(booksData.length);
-  });
+        // Mock the fetchAllBooks function to return the mockedBooks
+        fetchAllBooks.mockResolvedValueOnce(booksData);
 
-  it('Test: filter books based on search query', () => {
-    const setBooksMock = jest.fn();
+        // Render the SearchResultsSection component
+        await act(async () => {
+            render(<SearchResultsSection searchQuery="" />);
+        });
 
-    React.useEffect.mockImplementationOnce((callback) => callback());
+        // Ensure that the BookGrid is rendered with the fetched books
+        const mockedBookGrid = screen.getByTestId('mocked-book-grid');
+        expect(mockedBookGrid.children).toHaveLength(booksData.length);
+    });
 
-    jest.spyOn(React, 'useState').mockReturnValueOnce([booksData, setBooksMock]);
+    it('filters books based on the search query', async () => {
+        const mockedBooks = [
+            { id: 1, title: 'Book 1', author: 'Author 1' },
+            { id: 2, title: 'Book 2', author: 'Author 2' },
+        ];
 
-    render(<SearchResultsSection searchQuery="1984" />); 
-    const initialMockedBookGrid = screen.getByTestId('mocked-book-grid');
-    expect(initialMockedBookGrid.children).toHaveLength(1);
- });
+        // Mock the fetchAllBooks function to return the mockedBooks
+        fetchAllBooks.mockResolvedValueOnce(mockedBooks);
 
-  // Add more test cases as needed
+        // Render the SearchResultsSection component with a search query
+        await act(async () => {
+            render(<SearchResultsSection searchQuery="Author 1" />);
+        });
+
+        // Ensure that the BookGrid is rendered with the filtered books
+        const mockedBookGrid = screen.getByTestId('mocked-book-grid');
+        expect(mockedBookGrid.children).toHaveLength(1);
+    });
+
+    // Add more test cases as needed
 });
