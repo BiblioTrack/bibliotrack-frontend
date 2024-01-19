@@ -6,7 +6,8 @@ import VerticalSpace from '../../components/VerticalSpace.js';
 
 import { useParams } from 'react-router-dom';
 import Book from './components/Book.js';
-import booksData from '../../assets/booksData.json';
+// import booksData from '../../assets/booksData.json';
+import { fetchBook } from '../../ApiCalls.js'
 
 const BookDetailsPage = () => {
 
@@ -16,14 +17,16 @@ const BookDetailsPage = () => {
 
   useEffect(() => {
     //TODO: Use API GET book/:id endpoint
+    const asyncFetchBook = async () => {
+      const book = await fetchBook(id);
+      setSelectedBook(book);
+    };
 
-    /*
-    const book= await fetchBook(id);
-    setSelectedBook(book);
-    */
+    asyncFetchBook();
+
 
     //Mock
-    setSelectedBook(booksData.find((book) => book._id.toString() === id));
+    // setSelectedBook(booksData.find((book) => book._id.toString() === id));
 
   }, [id]);
 

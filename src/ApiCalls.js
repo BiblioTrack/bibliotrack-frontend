@@ -14,10 +14,12 @@ export const fetchAllBooks = async () => {
 
 export const fetchBook = async (id) => {
   try {
-    const response = await fetch(`/books/${id}`);
+    const response = await fetch(`${API_BASE_URL}/books/${id}`);
     const data = await response.json();
     return data;
+
   } catch (error) {
+
     console.error('Error fetching book details:', error);
     return null;
   }
