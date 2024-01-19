@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const BookImageAndButtons = ({ isAdmin , book }) => {
+const BookImageAndButtons = ({ isAdmin, book }) => {
   const navigate = useNavigate();
 
   /*For Admin Issue Copy*/
@@ -51,48 +51,48 @@ const BookImageAndButtons = ({ isAdmin , book }) => {
   };
 
   return (
+    <>
+      <Image src={book.coverImage} alt="Image Unavailable" fluid className="bookcover-image" />
+      {!isAdmin &&
         <>
-          <Image src={book.coverImage} alt="Image Unavailable" fluid className="bookcover-image" />
-          {!isAdmin &&
-          <>
-            <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowRequestCopyModal}>
-                Request Copy
-              </Button>
-              <RequestCopyModal
-              show={showRequestCopyModal}
-              onHide={handleHideRequestCopyModal}
-              bookId={book.id}
-            />
-          </>            
-            
-          }
-          {isAdmin &&
-            <>
-            <Button variant="outline-dark" className="wide-button mt-3">
-              Edit Book
-            </Button>
-            <Button onClick={handleDeleteClick} variant="outline-dark" className="wide-button mt-3">
-              Delete Book
-            </Button>
-              <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
-                Issue Copy
-              </Button>
-
-               <IssueCopyModal
-                show={showIssueCopyModal}
-                onHide={handleHideIssueCopyModal}
-                bookId={book.id}
-              />
-
-                <ConfirmDeleteModal
-                  show={showDeleteModal}
-                  onHide={handleCancelDelete}
-                  onConfirm={handleConfirmDelete}
-                />
-                           
-            </>
-          }
+          <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowRequestCopyModal}>
+            Request Copy
+          </Button>
+          <RequestCopyModal
+            show={showRequestCopyModal}
+            onHide={handleHideRequestCopyModal}
+            bookId={book.id}
+          />
         </>
+
+      }
+      {isAdmin &&
+        <>
+          <Button variant="outline-dark" className="wide-button mt-3">
+            Edit Book
+          </Button>
+          <Button onClick={handleDeleteClick} variant="outline-dark" className="wide-button mt-3">
+            Delete Book
+          </Button>
+          <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
+            Issue Copy
+          </Button>
+
+          <IssueCopyModal
+            show={showIssueCopyModal}
+            onHide={handleHideIssueCopyModal}
+            bookId={book.id}
+          />
+
+          <ConfirmDeleteModal
+            show={showDeleteModal}
+            onHide={handleCancelDelete}
+            onConfirm={handleConfirmDelete}
+          />
+
+        </>
+      }
+    </>
   );
 };
 

@@ -7,8 +7,8 @@ const BookGrid = ({ books }) => {
   return (
     <div className="book-grid">
       {books.map((book) => (
-        <Link key={book.id} to={`/book/${book.id}`}>
-          <BookCard key={book.id} book={book}/>
+        <Link key={book._id} to={`/book/${book._id}`}>
+          <BookCard key={book._id} book={book} />
         </Link>
       ))}
     </div>

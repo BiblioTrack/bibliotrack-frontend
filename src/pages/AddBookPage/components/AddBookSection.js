@@ -59,7 +59,7 @@ const AddBookSection = () => {
 
   return (
 
-    <MainSection title="Add New Book"  mdBreakpoint={10}>
+    <MainSection title="Add New Book" mdBreakpoint={10}>
       <Form className="mt-5" onSubmit={handleSubmit} title="Add New Book" align="left">
 
         <Row>
@@ -204,14 +204,14 @@ const AddBookSection = () => {
           <Form.Label>Description</Form.Label>
           <Form.Control
             as="textarea"
-            rows={3} 
+            rows={3}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
         </Form.Group>
 
         <div align='center'>
-          <Button type="submit" variant="info" className="mb-3 wide-button"> Add </Button>
+          <Button type="submit" variant="info" className="mb-3 wide-button"> Submit </Button>
         </div>
 
       </Form>
