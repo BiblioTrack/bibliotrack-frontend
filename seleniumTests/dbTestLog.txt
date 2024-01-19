@@ -1,0 +1,11 @@
+[1/19/2024, 7:38:49 PM] Log file for the test which enters the dashboard page and tests book issue history
+[1/19/2024, 7:38:50 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
+[1/19/2024, 7:38:50 PM] clicked dashboard button and the URL is:http://localhost:3000/dashboard
+[1/19/2024, 7:38:52 PM] clicked the 2nd issue request and the URL is:http://localhost:3000/book/2
+[1/19/2024, 7:38:54 PM] back to the dashboard page  and the URL is:http://localhost:3000/dashboard
+[1/19/2024, 7:38:58 PM] Selected option: Returned
+[1/19/2024, 7:39:00 PM] Selected option: Overdue
+[1/19/2024, 7:39:02 PM] Selected option: In Progress
+[1/19/2024, 7:39:04 PM] Selected option: All
+[1/19/2024, 7:39:06 PM] type 123 and observation done
+[1/19/2024, 7:39:06 PM] Dashboard page and Dropdown filter test passed.
