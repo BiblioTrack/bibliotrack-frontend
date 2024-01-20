@@ -52,7 +52,7 @@ export const fetchIssueHistorySingleUser = async (userId) => {
 export const fetchIssueHistorySingleBook = async (bookId) => {
   try {
     // Replace 'your-api-base-url' with the actual base URL of your API
-    const response = await fetch(`/issues?bookId=${bookId}`);
+    const response = await fetch(`${API_BASE_URL}/issues?bookId=${bookId}`);
     const data = await response.json();
 
     return data;
