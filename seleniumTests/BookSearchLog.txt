@@ -1,0 +1,13 @@
+[1/19/2024, 7:23:15 PM] Log file for the test case to test the search navigation bar and the book issue history
+[1/19/2024, 7:23:15 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
+[1/19/2024, 7:23:19 PM] searched and selected on the book 1984
+[1/19/2024, 7:23:20 PM] Redirected to: http://localhost:3000/book/3
+[1/19/2024, 7:23:21 PM] Checking dropdown in book issue history
+[1/19/2024, 7:23:24 PM] Selected option: Returned
+[1/19/2024, 7:23:26 PM] Selected option: Overdue
+[1/19/2024, 7:23:28 PM] Selected option: In Progress
+[1/19/2024, 7:23:30 PM] Selected option: All
+[1/19/2024, 7:23:32 PM] type 123 and observation done
+[1/19/2024, 7:23:32 PM] Search bar on Home page and book issue history tested
+
+

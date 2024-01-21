@@ -1,0 +1,5 @@
+
+[1/19/2024, 10:40:39 PM] Log file for the test case to test the login page
+[1/19/2024, 10:40:39 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/login
+[1/19/2024, 10:40:41 PM] redirected to signUp page and URL is http://localhost:3000/signup
+[1/19/2024, 10:40:48 PM] entered user's personal details
