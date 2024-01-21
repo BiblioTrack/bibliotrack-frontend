@@ -36,7 +36,7 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
 
   return (
     <>
-      <Image src={book.coverImage} alt="Image Unavailable" fluid className="bookcover-image" />
+      <Image src={book.imageUrl} alt="Image Unavailable" fluid className="bookcover-image" />
       {!isAdmin &&
         <>
           <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowRequestCopyModal}>
