@@ -86,4 +86,24 @@ export const fetchIssueRequestsSingleUser = async (userId) => {
   }
 };
 
+export const postBookData = async (bookData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/books`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bookData),
+    });
 
+    if (!response.ok) {
+      throw new Error('Failed to add book');
+    }
+
+    // Handle successful response (e.g., show success message, reset form, etc.)
+    console.log('Book added successfully');
+  } catch (error) {
+    // Handle errors (e.g., show error message)
+    console.error('Error adding book:', error.message);
+  }
+};
