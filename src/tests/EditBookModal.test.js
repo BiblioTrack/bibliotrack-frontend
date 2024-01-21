@@ -4,16 +4,16 @@ import '@testing-library/jest-dom';
 import EditBookModal from '../pages/BookPage/components/EditBookModal.js';
 
 const mockBookData = {
-    title: 'Sample Title',
+    name: 'Sample Title',
     author: 'Sample Author',
     isbn: '1234567890',
-    category: 'Fiction',
+    genres: 'Fiction',
     edition: '1st',
-    publishYear: '2022',
+    publicationDate: '2022-01-01',
     editor: 'John Doe',
     publisher: 'XYZ Publications',
     copies: '5',
-    pageCount: '300',
+    pages: '300',
     shelf: 'A1',
     floor: '1',
     description: 'Sample description.',
@@ -51,13 +51,14 @@ describe('EditBookModal Component', () => {
 
     test('updates state when input fields are changed', () => {
         const handleClose = jest.fn();
-        const { getByLabelText } = render(
+        const { getByTestId } = render(
             <EditBookModal show={true} onHide={handleClose} bookId="1" bookData={mockBookData} />
         );
 
-        fireEvent.change(getByLabelText(/title/i), { target: { value: 'New Title' } });
+        // fireEvent.change(getByLabelText(/name/i), { target: { value: 'New Title' } });
+        fireEvent.change(getByTestId("bookNameTest"), { target: { value: 'New Title' } });
 
-        expect(getByLabelText(/title/i).value).toBe('New Title');
+        expect(getByTestId("bookNameTest").value).toBe('New Title');
     });
 
 
