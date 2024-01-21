@@ -86,7 +86,7 @@ export const fetchIssueRequestsSingleUser = async (userId) => {
   }
 };
 
-export const postBookData = async (bookData) => {
+export const addNewBook = async (bookData) => {
   try {
     const response = await fetch(`${API_BASE_URL}/books`, {
       method: 'POST',
@@ -105,5 +105,27 @@ export const postBookData = async (bookData) => {
   } catch (error) {
     // Handle errors (e.g., show error message)
     console.error('Error adding book:', error.message);
+  }
+};
+
+export const editBookData = async (bookData) => {
+  try {
+    const response = await fetch(`https://your-api-endpoint.com/books/${bookId}`, {
+      method: 'PUT', // Assuming your API supports updating via HTTP PUT
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to edit book');
+    }
+
+    // Handle successful response (e.g., show success message, navigate to book details, etc.)
+    console.log('Book edited successfully');
+  } catch (error) {
+    // Handle errors (e.g., show error message)
+    console.error('Error editing book:', error.message);
   }
 };

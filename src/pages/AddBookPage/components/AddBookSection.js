@@ -57,7 +57,7 @@ const AddBookSection = () => {
 
     console.log(newBook);
 
-    postBookData(newBook);
+    addNewBook(newBook);
 
   };
 
