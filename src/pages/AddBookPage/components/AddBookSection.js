@@ -9,28 +9,29 @@ const AddBookSection = () => {
   const [author, setAuthor] = useState('');
 
   const [isbn, setIsbn] = useState('');
-  const [category, setCategory] = useState('');
+  const [genres, setGenres] = useState('');
 
   const [edition, setEdition] = useState('');
-  const [publishYear, setPublishYear] = useState('');
+  const [publicationDate, setPublicationDate] = useState('');
 
   const [editor, setEditor] = useState('');
   const [publisher, setPublisher] = useState('');
 
 
   const [copies, setCopies] = useState('');
-  const [pageCount, setPageCount] = useState('');
+  const [pages, setPages] = useState('');
 
   const [shelf, setShelf] = useState('');
   const [floor, setFloor] = useState('');
 
+  const [imageUrl, setImageUrl] = useState('');
   const [description, setDescription] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Add new book form validation
-    if (!name || !author || !isbn || !category) {
+    if (!name || !author || !isbn || !genres) {
       // Handle validation error, e.g., show an alert
       alert('Please fill in all required fields.');
       return;
@@ -41,15 +42,16 @@ const AddBookSection = () => {
       name,
       author,
       isbn,
-      category,
+      genres,
       edition,
-      publishYear,
+      publicationDate,
       editor,
       publisher,
       copies,
-      pageCount,
+      pages,
       shelf,
       floor,
+      imageUrl,
       description,
     };
 
@@ -69,6 +71,7 @@ const AddBookSection = () => {
               <FormControl
                 type="text"
                 value={name}
+                data-testid='bookNameTest'
                 onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
@@ -97,12 +100,12 @@ const AddBookSection = () => {
             </Form.Group>
           </Col>
           <Col md={6} className="mb-3">
-            <Form.Group className="mb-3" controlId="category">
-              <Form.Label>Category *</Form.Label>
+            <Form.Group className="mb-3" controlId="genres">
+              <Form.Label>Genres *</Form.Label>
               <FormControl
                 type="text"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                value={genres}
+                onChange={(e) => setGenres(e.target.value)}
               />
             </Form.Group>
           </Col>
@@ -120,12 +123,12 @@ const AddBookSection = () => {
             </Form.Group>
           </Col>
           <Col md={6} className="mb-3">
-            <Form.Group className="mb-3" controlId="publishYear">
+            <Form.Group className="mb-3" controlId="publicationDate">
               <Form.Label>Publish Year</Form.Label>
               <FormControl
                 type="text"
-                value={publishYear}
-                onChange={(e) => setPublishYear(e.target.value)}
+                value={publicationDate}
+                onChange={(e) => setPublicationDate(e.target.value)}
               />
             </Form.Group>
           </Col>
@@ -166,12 +169,12 @@ const AddBookSection = () => {
             </Form.Group>
           </Col>
           <Col md={6} className="mb-3">
-            <Form.Group className="mb-3" controlId="pageCount">
+            <Form.Group className="mb-3" controlId="pages">
               <Form.Label>Page Count</Form.Label>
               <FormControl
                 type="int"
-                value={pageCount}
-                onChange={(e) => setPageCount(e.target.value)}
+                value={pages}
+                onChange={(e) => setPages(e.target.value)}
               />
             </Form.Group>
           </Col>
@@ -199,6 +202,16 @@ const AddBookSection = () => {
             </Form.Group>
           </Col>
         </Row>
+
+        <Form.Group className="mb-3" controlId="imageUrl">
+          <Form.Label>Book Cover Link</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={2}
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+        </Form.Group>
 
         <Form.Group className="mb-3" controlId="description">
           <Form.Label>Description</Form.Label>
