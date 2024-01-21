@@ -108,14 +108,14 @@ export const addNewBook = async (bookData) => {
   }
 };
 
-export const editBookData = async (bookData) => {
+export const editBookData = async (bookId, bookData) => {
   try {
-    const response = await fetch(`https://your-api-endpoint.com/books/${bookId}`, {
+    const response = await fetch(`${API_BASE_URL}/books?_id=${bookId}`, {
       method: 'PUT', // Assuming your API supports updating via HTTP PUT
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(bookData),
     });
 
     if (!response.ok) {

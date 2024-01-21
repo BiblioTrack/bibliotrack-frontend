@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Row, Col, FormControl } from 'react-bootstrap';
+import { editBookData } from '../../../ApiCalls'
+
 
 const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
 
@@ -51,11 +53,13 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
     };
 
     console.log(`Editing book copy: ${JSON.stringify(bookData)}`);
+    editBookData(bookId, bookData);
 
     onHide();
 
-    onSubmit();
   };
+
+
 
   return (
     <Modal show={show} onHide={onHide} onSubmit={handleBookEdit} centered>
@@ -229,7 +233,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
         <Button variant="secondary" onClick={onHide}>
           Close
         </Button>
-        <Button variant="info" onClick={handleBookEdit}>
+        <Button variant="info" type="submit" onClick={handleBookEdit}>
           Submit
         </Button>
       </Modal.Footer>

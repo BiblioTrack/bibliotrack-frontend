@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, FormControl, Row, Col, Button } from 'react-bootstrap';
 import MainSection from '../../../components/MainSection';
-import { postBookData } from '../../../ApiCalls'
+import { addNewBook } from '../../../ApiCalls'
 
 const AddBookSection = () => {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EditBookModal from '../pages/BookPage/components/EditBookModal.js';
 
@@ -36,18 +36,40 @@ describe('EditBookModal Component', () => {
         expect(handleClose).toHaveBeenCalledTimes(1);
     });
 
-    test('calls handleBookEdit when "Submit" button is clicked', () => {
+    test('calls fetch with the correct data when submit button is clicked', async () => {
         const handleClose = jest.fn();
-        const handleBookEdit = jest.fn();
-        const { getByText } = render(
-            <EditBookModal show={true} onHide={handleClose} onSubmit={handleBookEdit} bookId="1" bookData={mockBookData}
+        // const { getByText, getByLabelText, getByTestId } = render(<EditBookModal onHide={handleClose} bookId="1" bookData={mockBookData} />);
+        const { getByText, getByLabelText } = render(
+            <EditBookModal show={true} onHide={handleClose} bookId="1" bookData={mockBookData}
             />,
         );
+        // Mocking the global fetch function
+        global.fetch = jest.fn(() =>
+            Promise.resolve({
+                ok: true,
+                json: () => Promise.resolve({}),
+            })
+        );
 
+        // Simulate user interactions
         fireEvent.click(getByText(/submit/i));
 
-        expect(handleBookEdit).toHaveBeenCalled();
+        // Wait for the asynchronous operations (if any) to complete
+        await waitFor(() => { });
+
+        // Expect that fetch was called with the correct data
+        expect(global.fetch).toHaveBeenCalledWith(
+            'http://localhost:8080/api/books?_id=1',
+            expect.objectContaining({
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+        );
     });
+
+
 
     test('updates state when input fields are changed', () => {
         const handleClose = jest.fn();
