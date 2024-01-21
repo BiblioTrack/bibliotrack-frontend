@@ -5,7 +5,7 @@ import MainSection from '../../../components/MainSection';
 
 const AddBookSection = () => {
 
-  const [title, setTitle] = useState('');
+  const [name, setName] = useState('');
   const [author, setAuthor] = useState('');
 
   const [isbn, setIsbn] = useState('');
@@ -30,7 +30,7 @@ const AddBookSection = () => {
     e.preventDefault();
 
     // Add new book form validation
-    if (!title || !author || !isbn || !category) {
+    if (!name || !author || !isbn || !category) {
       // Handle validation error, e.g., show an alert
       alert('Please fill in all required fields.');
       return;
@@ -38,7 +38,7 @@ const AddBookSection = () => {
 
     // TODO: Add new book addition logic here
     const newBook = {
-      title,
+      name,
       author,
       isbn,
       category,
@@ -64,12 +64,12 @@ const AddBookSection = () => {
 
         <Row>
           <Col md={6} className="mb-3">
-            <Form.Group className="mb-3" controlId="title">
+            <Form.Group className="mb-3" controlId="name">
               <Form.Label>Title *</Form.Label>
               <FormControl
                 type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
           </Col>
