@@ -3,7 +3,7 @@ import { Modal, Button, Form, Row, Col, FormControl } from 'react-bootstrap';
 
 const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
 
-  const [title, setTitle] = useState(bookData.title);
+  const [name, setName] = useState(bookData.name);
   const [author, setAuthor] = useState(bookData.author);
 
   const [isbn, setIsbn] = useState(bookData.isbn);
@@ -33,7 +33,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
     // TODO: EditBook API Call
     const bookData = {
       bookId,
-      title,
+      name,
       isbn,
       category,
       edition,
@@ -63,12 +63,12 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
         <Form>
           <Row>
             <Col md={6} className="mb-3">
-              <Form.Group className="mb-3" controlId="title">
+              <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Title</Form.Label>
                 <FormControl
                   type="text"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </Form.Group>
             </Col>
