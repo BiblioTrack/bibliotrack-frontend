@@ -23,7 +23,7 @@ const BookInfo = ({ book }) => (
     <p><strong>Language:</strong> {book.language}</p>
     <p><strong>Total Copies:</strong> {book.totalCopies}</p>
     <p><strong>Available Copies:</strong> {book.availableCopies}</p>
-    <p><strong>Publication Date:</strong> {book.publicationDate}</p>
+    <p><strong>Publication Date:</strong> {new Date(new Date(book.publicationDate) + 7).toISOString().split('T')[0]}</p>
   </>
 );
 

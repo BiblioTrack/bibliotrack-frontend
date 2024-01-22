@@ -12,7 +12,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
   const [genres, setGenres] = useState(bookData.genres);
 
   const [edition, setEdition] = useState(bookData.edition);
-  const [publicationDate, setPublicationDate] = useState(bookData.publicationDate);
+  const [publicationDate, setPublicationDate] = useState(new Date(new Date(bookData.publicationDate) + 7).toISOString().split('T')[0]);
 
   const [editor, setEditor] = useState(bookData.edition);
   const [publisher, setPublisher] = useState(bookData.publisher);
@@ -128,9 +128,9 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
             </Col>
             <Col md={6} className="mb-3">
               <Form.Group className="mb-3" controlId="publicationDate">
-                <Form.Label>Publish Year</Form.Label>
+                <Form.Label>Publication Date</Form.Label>
                 <FormControl
-                  type="text"
+                  type="date"
                   value={publicationDate}
                   onChange={(e) => setPublicationDate(e.target.value)}
                 />

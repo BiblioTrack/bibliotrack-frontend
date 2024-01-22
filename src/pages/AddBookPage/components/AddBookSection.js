@@ -126,9 +126,9 @@ const AddBookSection = () => {
           </Col>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="publicationDate">
-              <Form.Label>Publish Year</Form.Label>
+              <Form.Label>Publication Date</Form.Label>
               <FormControl
-                type="text"
+                type="date"
                 value={publicationDate}
                 onChange={(e) => setPublicationDate(e.target.value)}
               />
