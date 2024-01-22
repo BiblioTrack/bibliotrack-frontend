@@ -1,0 +1,8 @@
+[1/22/2024, 6:14:32 PM] Log file for the test case to test logout functionality using the dropdown
+[1/22/2024, 6:14:32 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
+[1/22/2024, 6:14:35 PM] user logged out successfully and URL is http://localhost:3000/login
+[1/22/2024, 6:14:37 PM] user log out functionality tested
+[1/22/2024, 6:15:01 PM] Log file for the test case to test logout functionality using the dropdown
+[1/22/2024, 6:15:02 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
+[1/22/2024, 6:15:06 PM] user logged out successfully and URL is http://localhost:3000/login
+[1/22/2024, 6:15:08 PM] user log out functionality tested
