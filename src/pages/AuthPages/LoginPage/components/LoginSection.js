@@ -32,8 +32,6 @@ const LoginSection = () => {
 
       // Assuming the API returns user data upon successful login
       const userData = await response.json();
-      console.log('login data', userData.userinfo)
-
 
       // Call the login function with the user data
       login(userData.userinfo);
