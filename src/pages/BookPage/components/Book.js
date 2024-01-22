@@ -10,7 +10,7 @@ import './Book.css';
 import { fetchIssueHistorySingleBook } from '../../../ApiCalls.js'
 
 const Book = ({ book }) => {
-  const { isAdmin } = useAuth();
+  const { isAdmin, user } = useAuth();
   const [issues, setIssues] = useState([]);
 
 
@@ -22,7 +22,7 @@ const Book = ({ book }) => {
     // Fetch issueHistory only if the user is an admin
     if (isAdmin) {
       const asyncfetchIssueHistorySingleBook = async () => {
-        const issues = await fetchIssueHistorySingleBook(book._id);
+        const issues = await fetchIssueHistorySingleBook(book._id, user);
         setIssues(issues);
       };
 
