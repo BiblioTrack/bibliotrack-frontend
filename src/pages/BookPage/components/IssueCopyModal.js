@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { createIssueCopy } from '../../../ApiCalls.js'
 
 const IssueCopyModal = ({ show, onHide, bookId }) => {
   const [copyNumber, setCopyNumber] = useState('');
   const [userId, setUserId] = useState('');
   const [issueDate, setIssueDate] = useState(
-    new Date().toISOString().split('T')[0] 
+    new Date().toISOString().split('T')[0]
   );
   const [dueDate, setDueDate] = useState(
-    new Date(new Date()+7).toISOString().split('T')[0]
+    new Date(new Date() + 7).toISOString().split('T')[0]
   );
 
-  const handleIssueCopy = () => {
+  const handleIssueCopy = async () => {
 
     //Validate that userId and CopyNumber aren't empty
     if (!userId.trim()) {
@@ -24,15 +25,15 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
       return;
     }
 
-     // Validate return date and issue date
-     if (!dueDate || !issueDate) {
-        alert('Issue and due date cannot be empty');
-        return;
-      }
-     else if (new Date(dueDate) < new Date(issueDate)) {
-        alert('Due date must be after issue date');
-        return;
-      }
+    // Validate return date and issue date
+    if (!dueDate || !issueDate) {
+      alert('Issue and due date cannot be empty');
+      return;
+    }
+    else if (new Date(dueDate) < new Date(issueDate)) {
+      alert('Due date must be after issue date');
+      return;
+    }
 
     // TODO: IssueCopy API Call
     const issueData = {
@@ -43,8 +44,8 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
       dueDate,
     };
 
-    console.log(`Issuing copy: ${JSON.stringify(issueData)}`);
-
+    // console.log(`Issuing copy: ${JSON.stringify(issueData)}`);
+    createIssueCopy(issueData)
     onHide();
   };
 
@@ -55,7 +56,7 @@ const IssueCopyModal = ({ show, onHide, bookId }) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-        <Form.Group controlId="userId" className="mb-3">
+          <Form.Group controlId="userId" className="mb-3">
             <Form.Label>User ID</Form.Label>
             <Form.Control
               type="text"

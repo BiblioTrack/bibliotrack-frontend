@@ -155,3 +155,37 @@ export const createBookRequest = async (issueData, user) => {
   }
 
 }
+
+export const fetchUserById = async (userId) => {
+  // Implement the logic to fetch user details by userId from your API
+  // Example: const response = await fetch(`/api/users/${userId}`);
+  // const userData = await response.json();
+  // setUser(userData);
+};
+
+export const createIssueCopy = async (issueData, user) => {
+
+  createBookRequest(issueData, user)
+
+
+
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/issues`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(issueData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to issue copy');
+    }
+
+    console.log('Copy issued successfully');
+  } catch (error) {
+    console.error('Error issuing copy:', error.message);
+    alert('Failed to issue copy. Please try again.');
+  }
+}
