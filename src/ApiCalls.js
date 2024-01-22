@@ -1,5 +1,6 @@
 // Assume you have an API endpoint for fetching issue history and issue requests
-const API_BASE_URL = 'http://localhost:8080/api';
+
+export const API_BASE_URL = 'http://localhost:8080/api';
 
 export const fetchAllBooks = async () => {
   try {
@@ -129,3 +130,4 @@ export const editBookData = async (bookId, bookData) => {
     console.error('Error editing book:', error.message);
   }
 };
+
