@@ -19,14 +19,12 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const [user, setUser] = useState(mockUserData);
-  const [isAdmin, setIsAdmin] = useState(() => {
-    return mockUserData.role === 'admin' ? true : false
-  });
+  const [isAdmin, setIsAdmin] = useState(true);
 
   const login = (userData) => {
     setUser(userData);
     // Add logic to determine if the user is an admin
-    setIsAdmin(userData.role === 'admin');
+    setIsAdmin(userData.role === 'admin' ? true : false);
   };
 
   const logout = () => {

@@ -18,7 +18,6 @@ const LoginSection = () => {
         username,
         password
       };
-      console.log(JSON.stringify(userCred))
       // Make API call to authenticate user
       const response = await fetch(`${API_BASE_URL}/users/login`, {
         method: 'POST',
@@ -27,24 +26,22 @@ const LoginSection = () => {
         },
         body: JSON.stringify(userCred),
       });
-      console.log(response);
       if (!response.ok) {
         throw new Error('Invalid username or password');
       }
 
       // Assuming the API returns user data upon successful login
       const userData = await response.json();
-
+      console.log('login data', userData.userinfo)
 
 
       // Call the login function with the user data
-      login(userData);
+      login(userData.userinfo);
 
       // Navigate to the home page or any other route upon successful login
       navigate('/');
     } catch (error) {
       console.error('Error during login:', error);
-      console.log(process.env.REACT_APP_API_ENDPOINT)
       // Handle authentication error, e.g., display an error message to the user
       alert('Invalid username or password');
     }
