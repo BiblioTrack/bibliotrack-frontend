@@ -131,3 +131,27 @@ export const editBookData = async (bookId, bookData) => {
   }
 };
 
+
+export const createBookRequest = async (issueData, user) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/bookRequests`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(issueData),
+    });
+    console.log(response)
+    if (!response.ok) {
+      throw new Error('Failed to request copy');
+    }
+
+    console.log('Copy requested successfully');
+
+  } catch (error) {
+    console.error('Error requesting copy:', error.message);
+    alert('Failed to request copy. Please try again.');
+  }
+
+}

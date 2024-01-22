@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useAuth } from '../../AuthPages/AuthContext.js';
-import { API_BASE_URL } from '../../../ApiCalls.js'
+import { createBookRequest } from '../../../ApiCalls.js'
 
 const RequestCopyModal = ({ show, onHide, bookId }) => {
 
@@ -16,6 +16,8 @@ const RequestCopyModal = ({ show, onHide, bookId }) => {
   );
   const [copyNumber, setCopyNumber] = useState('');
   const [reason, setReason] = useState('study');
+
+
 
   const handleIssueCopy = async () => {
 
@@ -43,29 +45,9 @@ const RequestCopyModal = ({ show, onHide, bookId }) => {
       copyNumber,
       reason,
     };
-    console.log(user.token)
-    // console.log(`Issuing copy: ${JSON.stringify(issueData)}`);
-    try {
-      const response = await fetch(`${API_BASE_URL}/bookRequests`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`,
-        },
-        body: JSON.stringify(issueData),
-      });
-      console.log(response)
-      if (!response.ok) {
-        throw new Error('Failed to request copy');
-      }
 
-      console.log('Copy requested successfully');
-      onHide();
-    } catch (error) {
-      console.error('Error requesting copy:', error.message);
-      alert('Failed to request copy. Please try again.');
-    }
-
+    console.log(user)
+    createBookRequest(issueData, user)
     onHide();
   };
 

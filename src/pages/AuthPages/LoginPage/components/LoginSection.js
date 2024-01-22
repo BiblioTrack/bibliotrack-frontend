@@ -34,8 +34,8 @@ const LoginSection = () => {
       const userData = await response.json();
 
       // Call the login function with the user data
-      login(userData.userinfo);
-
+      login(userData);
+      // console.log('login data', userData)
       // Navigate to the home page or any other route upon successful login
       navigate('/');
     } catch (error) {
