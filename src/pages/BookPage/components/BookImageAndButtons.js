@@ -4,7 +4,8 @@ import { Image, Button } from 'react-bootstrap';
 import IssueCopyModal from './IssueCopyModal.js';
 import RequestCopyModal from './RequestCopyModal.js';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
-import { useNavigate } from 'react-router-dom'; import EditBookModal from './EditBookModal.js';
+import { useNavigate } from 'react-router-dom'; 
+import EditBookModal from './EditBookModal.js';
 
 
 const BookImageAndButtons = ({ isAdmin, book }) => {
