@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { Image, Button } from 'react-bootstrap';
 import IssueCopyModal from './IssueCopyModal.js';
 import RequestCopyModal from './RequestCopyModal.js';
-import ConfirmDeleteModal from './ConfirmDeleteModal';
-import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -29,26 +28,6 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
     setRequestCopyModal(false);
   };
 
-  /*For Delete Book*/
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-
-  const handleDeleteClick = () => {
-    setShowDeleteModal(true);
-  };
-
-  const handleConfirmDelete = () => {
-    // TODO: Perform the actual delete operation
-    console.log(book.id);
-    navigate('/');
-
-    // Close the modal
-    setShowDeleteModal(false);
-  };
-
-  const handleCancelDelete = () => {
-    // Close the modal without performing any action
-    setShowDeleteModal(false);
-  };
 
   return (
     <>
@@ -82,12 +61,6 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
             show={showIssueCopyModal}
             onHide={handleHideIssueCopyModal}
             bookId={book.id}
-          />
-
-          <ConfirmDeleteModal
-            show={showDeleteModal}
-            onHide={handleCancelDelete}
-            onConfirm={handleConfirmDelete}
           />
 
         </>
