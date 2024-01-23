@@ -11,19 +11,25 @@ describe('AddBookSection Component', () => {
   });
 
   it('submits the form with valid data', () => {
-    const { getByLabelText, getByText } = render(<AddBookSection />);
+    const { getByLabelText, getByText, getByTestId } = render(<AddBookSection />);
 
     // Fill in the form with valid data
-    fireEvent.change(getByLabelText(/title/i), { target: { value: 'Sample Title' } });
+    fireEvent.change(getByTestId("bookNameTest"), { target: { value: 'Sample Title' } });
     fireEvent.change(getByLabelText(/author/i), { target: { value: 'Sample Author' } });
     fireEvent.change(getByLabelText(/isbn/i), { target: { value: '1234567890' } });
-    fireEvent.change(getByLabelText(/category/i), { target: { value: 'Fiction' } });
+    fireEvent.change(getByLabelText(/genres/i), { target: { value: 'Fiction' } });
 
 
     // Submit the form
     fireEvent.click(getByText(/submit/i));
 
     // TODO: Add assertions for the expected behavior after form submission
+
+    expect(getByTestId("bookNameTest").value).toBe('Sample Title');
+    expect(getByLabelText(/author/i).value).toBe('Sample Author');
+    expect(getByLabelText(/isbn/i).value).toBe('1234567890');
+    expect(getByLabelText(/genres/i).value).toBe('Fiction');
+
   });
 
   it('displays an alert with invalid form data', () => {
@@ -35,7 +41,7 @@ describe('AddBookSection Component', () => {
     fireEvent.change(getByLabelText(/title/i), { target: { value: '' } });
     fireEvent.change(getByLabelText(/author/i), { target: { value: 'Sample Author' } });
     fireEvent.change(getByLabelText(/isbn/i), { target: { value: '1234567890' } });
-    // fireEvent.change(getByLabelText(/category/i), { target: { value: '' } });
+    // fireEvent.change(getByLabelText(/genres/i), { target: { value: '' } });
 
     // Submit the form
     fireEvent.click(getByText(/submit/i));

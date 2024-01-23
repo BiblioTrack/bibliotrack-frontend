@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useAuth } from '../../AuthPages/AuthContext.js';
-
+import { createBookRequest } from '../../../ApiCalls.js'
 
 const RequestCopyModal = ({ show, onHide, bookId }) => {
 
@@ -9,40 +9,45 @@ const RequestCopyModal = ({ show, onHide, bookId }) => {
 
 
   const [issueDate, setIssueDate] = useState(
-    new Date().toISOString().split('T')[0] 
+    new Date().toISOString().split('T')[0]
   );
   const [dueDate, setDueDate] = useState(
-    new Date(new Date()+7).toISOString().split('T')[0]
+    new Date(new Date() + 7).toISOString().split('T')[0]
   );
+  const [copyNumber, setCopyNumber] = useState('');
+  const [reason, setReason] = useState('study');
 
-  const handleIssueCopy = () => {
+
+
+  const handleIssueCopy = async () => {
 
     const maxBorrowDays = 14; // Maximum allowed days for borrowing
 
-     if (!dueDate || !issueDate) {
-        alert('Issue and due date cannot be empty');
-        return;
-      }
-     else if (new Date(dueDate) < new Date(issueDate)) {
-        alert('Return date must be after issue date');
-        return;
-      }
-      else if (new Date(dueDate) - new Date(issueDate) > maxBorrowDays * 24 * 60 * 60 * 1000) {
-        console.log(new Date(dueDate) - new Date(issueDate) );
-        alert(`You can't request a book for more than ${maxBorrowDays} days`);
-        return;
-      }
+    if (!dueDate || !issueDate) {
+      alert('Issue and due date cannot be empty');
+      return;
+    }
+    else if (new Date(dueDate) < new Date(issueDate)) {
+      alert('Return date must be after issue date');
+      return;
+    }
+    else if (new Date(dueDate) - new Date(issueDate) > maxBorrowDays * 24 * 60 * 60 * 1000) {
+      console.log(new Date(dueDate) - new Date(issueDate));
+      alert(`You can't request a book for more than ${maxBorrowDays} days`);
+      return;
+    }
 
     // TODO: RequestCopy API call
     const issueData = {
       bookId,
-      userId: user.id,
       issueDate,
       dueDate,
+      copyNumber,
+      reason,
     };
 
-    console.log(`Issuing copy: ${JSON.stringify(issueData)}`);
-
+    console.log(user)
+    createBookRequest(issueData, user)
     onHide();
   };
 
@@ -53,7 +58,7 @@ const RequestCopyModal = ({ show, onHide, bookId }) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          
+
           <Form.Group controlId="issueDate" className="mb-3">
             <Form.Label>Issue Date</Form.Label>
             <Form.Control
@@ -68,6 +73,22 @@ const RequestCopyModal = ({ show, onHide, bookId }) => {
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="copyNumber" className="mb-3">
+            <Form.Label>Copy Number</Form.Label>
+            <Form.Control
+              type="text"
+              value={copyNumber}
+              onChange={(e) => setCopyNumber(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="reason" className="mb-3">
+            <Form.Label>Reason</Form.Label>
+            <Form.Control
+              type="text"
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
             />
           </Form.Group>
         </Form>

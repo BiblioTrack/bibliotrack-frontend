@@ -9,23 +9,25 @@ const AuthContext = createContext();
 
 // Create a provider component
 const AuthContextProvider = ({ children }) => {
-  //TODO: remove mock user
-  // Mock user data
+
+  // Mock user data ***this is without token, so incomplete
   const mockUserData = {
     id: 1,
     firstname: 'John',
     lastname: 'Doe',
     email: 'john@example.com',
-    role: 'user', 
-  };    
+    role: 'admin',
+  };
 
-  const [user, setUser] = useState(mockUserData); 
-  const [isAdmin, setIsAdmin] = useState(true); 
+  const [user, setUser] = useState(mockUserData);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   const login = (userData) => {
+    // console.log('auth data', userData.userinfo)
+    // console.log('auth data role', userData.userinfo.role)
     setUser(userData);
     // Add logic to determine if the user is an admin
-    setIsAdmin(userData.role === 'admin'); 
+    setIsAdmin(userData.userinfo.role === 'admin' ? true : false);
   };
 
   const logout = () => {

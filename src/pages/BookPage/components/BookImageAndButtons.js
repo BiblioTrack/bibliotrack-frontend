@@ -4,13 +4,10 @@ import { Image, Button } from 'react-bootstrap';
 import IssueCopyModal from './IssueCopyModal.js';
 import RequestCopyModal from './RequestCopyModal.js';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom'; import EditBookModal from './EditBookModal.js';
 
 
 const BookImageAndButtons = ({ isAdmin, book }) => {
-  const navigate = useNavigate();
-
   /*For Admin Issue Copy*/
   const [showIssueCopyModal, setShowIssueCopyModal] = useState(false);
   const handleShowIssueCopyModal = () => {
@@ -29,6 +26,14 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
     setRequestCopyModal(false);
   };
 
+  /*For Admin Edit Book*/
+  const [showEditBookModal, setEditBookModal] = useState(false);
+  const handleEditBookModal = () => {
+    setEditBookModal(true);
+  };
+  const handleHideEditBookModal = () => {
+    setEditBookModal(false);
+  };
   /*For Delete Book*/
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -52,7 +57,7 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
 
   return (
     <>
-      <Image src={book.coverImage} alt="Image Unavailable" fluid className="bookcover-image" />
+      <Image src={book.imageUrl} alt="Image Unavailable" fluid className="bookcover-image" />
       {!isAdmin &&
         <>
           <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowRequestCopyModal}>
@@ -70,9 +75,6 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
         <>
           <Button variant="outline-dark" className="wide-button mt-3">
             Edit Book
-          </Button>
-          <Button onClick={handleDeleteClick} variant="outline-dark" className="wide-button mt-3">
-            Delete Book
           </Button>
           <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
             Issue Copy

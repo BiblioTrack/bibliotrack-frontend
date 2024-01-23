@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Row, Col, FormControl } from 'react-bootstrap';
+import { editBookData } from '../../../ApiCalls'
+
 
 const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
 
-  const [title, setTitle] = useState(bookData.title);
+  const [name, setName] = useState(bookData.name);
   const [author, setAuthor] = useState(bookData.author);
 
   const [isbn, setIsbn] = useState(bookData.isbn);
-  const [category, setCategory] = useState(bookData.category);
+  const [genres, setGenres] = useState(bookData.genres);
 
   const [edition, setEdition] = useState(bookData.edition);
-  const [publishYear, setPublishYear] = useState(bookData.publishYear);
+  const [publicationDate, setPublicationDate] = useState(new Date(new Date(bookData.publicationDate) + 7).toISOString().split('T')[0]);
 
   const [editor, setEditor] = useState(bookData.edition);
   const [publisher, setPublisher] = useState(bookData.publisher);
 
 
   const [copies, setCopies] = useState(bookData.copies);
-  const [pageCount, setPageCount] = useState(bookData.pageCount);
+  const [pages, setPages] = useState(bookData.pages);
 
   const [shelf, setShelf] = useState(bookData.shelf);
   const [floor, setFloor] = useState(bookData.floor);
 
+  const [imageUrl, setImageUrl] = useState(bookData.imageUrl);
   const [description, setDescription] = useState(bookData.description);
 
 
@@ -33,26 +36,30 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
     // TODO: EditBook API Call
     const bookData = {
       bookId,
-      title,
+      name,
       isbn,
-      category,
+      genres,
       edition,
-      publishYear,
+      publicationDate,
       editor,
       publisher,
       copies,
-      pageCount,
+      pages,
       shelf,
       floor,
+      imageUrl,
       description,
+
     };
 
     console.log(`Editing book copy: ${JSON.stringify(bookData)}`);
+    editBookData(bookId, bookData);
 
     onHide();
 
-    onSubmit();
   };
+
+
 
   return (
     <Modal show={show} onHide={onHide} onSubmit={handleBookEdit} centered>
@@ -63,12 +70,13 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
         <Form>
           <Row>
             <Col md={6} className="mb-3">
-              <Form.Group className="mb-3" controlId="title">
+              <Form.Group className="mb-3" controlId="name">
                 <Form.Label>Title</Form.Label>
                 <FormControl
                   type="text"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  value={name}
+                  data-testid='bookNameTest'
+                  onChange={(e) => setName(e.target.value)}
                 />
               </Form.Group>
             </Col>
@@ -96,12 +104,12 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
               </Form.Group>
             </Col>
             <Col md={6} className="mb-3">
-              <Form.Group className="mb-3" controlId="category">
-                <Form.Label>Category</Form.Label>
+              <Form.Group className="mb-3" controlId="genres">
+                <Form.Label>Genres</Form.Label>
                 <FormControl
                   type="text"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
+                  value={genres}
+                  onChange={(e) => setGenres(e.target.value)}
                 />
               </Form.Group>
             </Col>
@@ -119,12 +127,12 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
               </Form.Group>
             </Col>
             <Col md={6} className="mb-3">
-              <Form.Group className="mb-3" controlId="publishYear">
-                <Form.Label>Publish Year</Form.Label>
+              <Form.Group className="mb-3" controlId="publicationDate">
+                <Form.Label>Publication Date</Form.Label>
                 <FormControl
-                  type="text"
-                  value={publishYear}
-                  onChange={(e) => setPublishYear(e.target.value)}
+                  type="date"
+                  value={publicationDate}
+                  onChange={(e) => setPublicationDate(e.target.value)}
                 />
               </Form.Group>
             </Col>
@@ -165,12 +173,12 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
               </Form.Group>
             </Col>
             <Col md={6} className="mb-3">
-              <Form.Group className="mb-3" controlId="pageCount">
+              <Form.Group className="mb-3" controlId="pages">
                 <Form.Label>Page Count</Form.Label>
                 <FormControl
                   type="int"
-                  value={pageCount}
-                  onChange={(e) => setPageCount(e.target.value)}
+                  value={pages}
+                  onChange={(e) => setPages(e.target.value)}
                 />
               </Form.Group>
             </Col>
@@ -198,6 +206,15 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
               </Form.Group>
             </Col>
           </Row>
+          <Form.Group className="mb-3" controlId="imageUrl">
+            <Form.Label>Book Cover Link</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={2}
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+            />
+          </Form.Group>
 
           <Form.Group className="mb-3" controlId="description">
             <Form.Label>Description</Form.Label>
@@ -216,7 +233,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
         <Button variant="secondary" onClick={onHide}>
           Close
         </Button>
-        <Button variant="info" onClick={handleBookEdit}>
+        <Button variant="info" type="submit" onClick={handleBookEdit}>
           Submit
         </Button>
       </Modal.Footer>

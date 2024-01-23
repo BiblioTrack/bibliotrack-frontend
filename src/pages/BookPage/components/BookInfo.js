@@ -15,10 +15,15 @@ const BookInfo = ({ book }) => (
     </div>
     <p className="mb-3">{book.description}</p>
     <p><strong>Pages:</strong> {book.pages}</p>
+    <p><strong>Shelf:</strong> {book.shelf}</p>
+    <p><strong>Floor:</strong> {book.floor}</p>
     <p><strong>Format:</strong> {book.format}</p>
+    <p><strong>Editor:</strong> {book.editor}</p>
+    <p><strong>Publisher:</strong> {book.publisher}</p>
+    <p><strong>Language:</strong> {book.language}</p>
     <p><strong>Total Copies:</strong> {book.totalCopies}</p>
     <p><strong>Available Copies:</strong> {book.availableCopies}</p>
-    <p><strong>Publication Date:</strong> {book.publicationDate}</p>
+    <p><strong>Publication Date:</strong> {new Date(new Date(book.publicationDate) + 7).toISOString().split('T')[0]}</p>
   </>
 );
 

@@ -8,11 +8,11 @@ import LoginSection from '../pages/AuthPages/LoginPage/components/LoginSection.j
 
 test('Test: render LoginSection component with expected input fields', () => {
   render(
-  <BrowserRouter>
-  <AuthContextProvider>
-    <LoginSection />
-  </AuthContextProvider>
-  </BrowserRouter>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <LoginSection />
+      </AuthContextProvider>
+    </BrowserRouter>
   );
 
   // Assert that the form is present
@@ -20,9 +20,9 @@ test('Test: render LoginSection component with expected input fields', () => {
   expect(formElement).toBeInTheDocument();
 
   // Assert that the email input field is present
-  const emailInput = screen.getByTestId('email');
-  expect(emailInput).toBeInTheDocument();
-  expect(emailInput).toHaveAttribute('type', 'email');
+  const userNameInput = screen.getByTestId('username');
+  expect(userNameInput).toBeInTheDocument();
+  expect(userNameInput).toHaveAttribute('type', 'username');
 
   // Assert that the password input field is present
   const passwordInput = screen.getByTestId('password');
@@ -41,12 +41,12 @@ test('Test: invalid form submission', () => {
 
   const formElement = screen.getByRole('form');
 
-   // Spy on window.alert
-   const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
+  // Spy on window.alert
+  const alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => { });
 
-  // Simulate form submission without entering email and password
+  // Simulate form submission without entering username and password
   fireEvent.submit(formElement);
-  expect(alertSpy).toHaveBeenCalledWith('Please enter both email and password.');
+  expect(alertSpy).toHaveBeenCalledWith('Please enter both username and password.');
   alertSpy.mockRestore();
 
 });

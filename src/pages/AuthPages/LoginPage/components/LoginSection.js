@@ -1,56 +1,92 @@
 import React, { useState } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
-import { Link , useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MainSection from '../../../../components/MainSection.js'
 import { useAuth } from '../../AuthContext.js';
-
-
+import { API_BASE_URL } from '../../../../ApiCalls.js'
 
 const LoginSection = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { login } = useAuth();
+
+  const userLoginRequest = async (username, password) => {
+    try {
+
+      const userCred = {
+        username,
+        password
+      };
+      // Make API call to authenticate user
+      const response = await fetch(`${API_BASE_URL}/users/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userCred),
+      });
+      if (!response.ok) {
+        throw new Error('Invalid username or password');
+      }
+
+      // Assuming the API returns user data upon successful login
+      const userData = await response.json();
+
+      // Call the login function with the user data
+      login(userData);
+      // console.log('login data', userData)
+      // Navigate to the home page or any other route upon successful login
+      navigate('/');
+    } catch (error) {
+      console.error('Error during login:', error);
+      // Handle authentication error, e.g., display an error message to the user
+      alert('Invalid username or password');
+    }
+  };
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     //Add login form validation before submit 
-    if (!email || !password) {
-      alert('Please enter both email and password.');
+    if (!username || !password) {
+      alert('Please enter both username and password.');
       return false;
     }
 
     //TODO: Add login logic here
 
-    // Mock user data
-    const mockUserData = {
-      id: 1,
-      firstname: 'John',
-      lastname: 'Doe',
-      email: 'john@example.com',
-      role: 'user', 
-    };    
+    userLoginRequest(username, password);
 
 
-    login(mockUserData);
+    // // Mock user data
+    // const mockUserData = {
+    //   id: 1,
+    //   firstname: 'John',
+    //   lastname: 'Doe',
+    //   email: 'john@example.com',
+    //   role: 'user',
+    // };
 
-    navigate('/');
 
-    
+    // login(mockUserData);
+
+    // navigate('/');
+
+
   };
 
   return (
     <MainSection title="LOGIN" description="Welcome to our library management system">
-      <Form className="mt-5" onSubmit={handleSubmit} role ='form'>
-      <Form.Group className="mb-3" controlId="email" >
+      <Form className="mt-5" onSubmit={handleSubmit} role='form'>
+        <Form.Group className="mb-3" controlId="username" >
           <FormControl
-            data-testid="email"
-            type="email"
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            data-testid="username"
+            type="username"
+            placeholder="User Name"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </Form.Group>
 
@@ -79,8 +115,8 @@ const LoginSection = () => {
             </Link>
           </p>
         </div>
-     
-    </Form>
+
+      </Form>
 
     </MainSection>
   );

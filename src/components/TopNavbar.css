@@ -5,23 +5,3 @@
 .navbar .navbar-brand {
   font-weight: 500;
 }
-
-.nav-item .dropdown-menu {
-  background: #ffffff;
-}
-
-.nav-item .dropdown-item  , .nav-item span {
-  color: #000;
-}
-
-.nav-item span {
-  margin-left: 15px;
-}
-
-.nav-item .dropdown-item:hover , .nav-item .dropdown-item:active{
-  background: #e6e6e6;
-}
-
-.dropdown-divider{
-  border-top: 1px solid #999;  
-}
