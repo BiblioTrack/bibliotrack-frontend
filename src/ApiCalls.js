@@ -174,19 +174,39 @@ export const createBookRequest = async (issueData, user) => {
 
 }
 
-export const fetchUserById = async (userId) => {
-  // Implement the logic to fetch user details by userId from your API
-  // Example: const response = await fetch(`/api/users/${userId}`);
-  // const userData = await response.json();
-  // setUser(userData);
+
+export const approveBookRequest = async (requestId, updateData, user) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/bookRequests/${requestId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(updateData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to approve book request');
+    }
+
+    console.log('Book request approved successfully');
+
+  } catch (error) {
+    console.error('Error approving book request:', error.message);
+    alert('Failed to approve book request. Please try again.');
+  }
 };
+
+
+// export const fetchUserById = async (userId) => {
+//   // Implement the logic to fetch user details by userId from your API
+//   
+// };
 
 export const createIssueCopy = async (issueData, user) => {
 
-  createBookRequest(issueData, user)
-
-
-
+  // createBookRequest(issueData, user)
 
   try {
     const response = await fetch(`${API_BASE_URL}/issues`, {

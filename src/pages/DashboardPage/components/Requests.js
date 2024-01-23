@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { PencilSquare , Trash3 } from 'react-bootstrap-icons';
+import { PencilSquare, Trash3 } from 'react-bootstrap-icons';
 import RequestResponseModal from './RequestResponseModal';
 import RequestDeleteModal from './RequestDeleteModal.js'
 import { useAuth } from '../../../pages/AuthPages/AuthContext.js';
@@ -12,13 +12,18 @@ const Requests = ({ requests }) => {
 
   const [showResponseModal, setShowResponseModal] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const [updatedRequests, setUpdatedRequests] = useState(requests);
 
   const handleCloseResponseModal = () => setShowResponseModal(false);
   const handleShowResponseModal = (request) => {
+    console.log(request)
     setSelectedRequest(request);
     setShowResponseModal(true);
   };
-
+  useEffect(() => {
+    // Update the table when the requests prop changes
+    setUpdatedRequests(requests);
+  }, [requests]);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -28,6 +33,15 @@ const Requests = ({ requests }) => {
     setShowDeleteModal(true);
   };
 
+  const handleUpdateRequests = (updatedRequest) => {
+    const updatedRequestsCopy = [...updatedRequests];
+    const index = updatedRequestsCopy.findIndex((r) => r.requestId === updatedRequest.requestId);
+    if (index !== -1) {
+      updatedRequestsCopy[index] = updatedRequest;
+      setUpdatedRequests(updatedRequestsCopy);
+    }
+  };
+
   return (
     <div className="mb-5">
       <h5 className="mb-3">Issue Requests</h5>
@@ -35,8 +49,9 @@ const Requests = ({ requests }) => {
       <Table bordered responsive style={{ whiteSpace: 'nowrap' }}>
         <thead>
           <tr>
-            <th>Book ID</th>
-            {isAdmin && <th>User ID</th>}
+            <th>Request ID</th>
+            <th>Book Name</th>
+            {isAdmin && <th>User Email</th>}
             <th>Issue Date</th>
             <th>Due Date</th>
             <th>Status</th>
@@ -46,7 +61,7 @@ const Requests = ({ requests }) => {
           {requests.map((request, index) => {
 
             const isClickable = request.status === 'Pending';
-            
+
             return (
               <tr
                 key={index}
@@ -61,23 +76,24 @@ const Requests = ({ requests }) => {
                 }}
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
               >
+                <td>{request.requestId}</td>
                 <td>
-                  <Link to={`/book/${request.bookId}`}>
-                    {request.bookId}
+                  <Link to={`/book/${request.bookName}`}>
+                    {request.bookName}
                   </Link>
                 </td>
-                                
-                {isAdmin &&<td>{request.userId}</td>}
+
+                {isAdmin && <td>{request.userEmail}</td>}
                 <td>{request.issueDate}</td>
                 <td>{request.dueDate}</td>
                 <td style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   {request.status === 'Approved' ? (
-                      <span>✔️ Approved</span>
-                    ) : (
-                      request.status === 'Pending'? <span >⏳  Pending</span> :<span >❌ Rejected</span>
-                    )}
-                    {isAdmin && isClickable && (<PencilSquare style={{ margin: '0px 10px' }} /> )}
-                    {!isAdmin && isClickable && (<Trash3 style={{ margin: '0px 10px' }} /> )}
+                    <span>✔️ Approved</span>
+                  ) : (
+                    request.status === 'Pending' ? <span >⏳  Pending</span> : <span >❌ Rejected</span>
+                  )}
+                  {isAdmin && isClickable && (<PencilSquare style={{ margin: '0px 10px' }} />)}
+                  {!isAdmin && isClickable && (<Trash3 style={{ margin: '0px 10px' }} />)}
 
                 </td>
               </tr>
@@ -85,8 +101,8 @@ const Requests = ({ requests }) => {
           })}
         </tbody>
       </Table>
-      {isAdmin && <RequestResponseModal show={showResponseModal} onClose={handleCloseResponseModal} selectedRequest={selectedRequest} />}
-      {!isAdmin && <RequestDeleteModal show={showDeleteModal} onClose={handleCloseDeleteModal} selectedRequest={selectedRequest} />}
+      {isAdmin && <RequestResponseModal show={showResponseModal} onClose={handleCloseResponseModal} onUpdateRequests={handleUpdateRequests} selectedRequest={selectedRequest} />}
+      {!isAdmin && <RequestDeleteModal show={showDeleteModal} onClose={handleCloseDeleteModal} onUpdateRequests={handleUpdateRequests} selectedRequest={selectedRequest} />}
 
     </div>
   );

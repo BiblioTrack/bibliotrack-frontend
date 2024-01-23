@@ -17,13 +17,14 @@ const DashboardAdmin = () => {
 
     const restructureHistoryData = (historyData) => {
       return historyData.map(request => ({
-        userId: request.userId._id,
-        bookId: request.bookId._id,
+        userEmail: request.userId.email,
+        bookName: request.bookId.name,
         copyNumber: request.copyNumber,
         issueDate: new Date(new Date(request.requestDate) + 7).toISOString().split('T')[0],
         dueDate: new Date(new Date(request.dueDate) + 7).toISOString().split('T')[0],
         returnDate: new Date(new Date(request.returnDate) + 7).toISOString().split('T')[0],
-        status: request.status
+        status: request.status,
+        requestId: request._id
       }));
     };
     const restructuredHistoryDataList = restructureHistoryData(historyData);
@@ -36,8 +37,9 @@ const DashboardAdmin = () => {
 
     const restructureRequestData = (requestData) => {
       return requestData.map(request => ({
-        userId: request.userId._id,
-        bookId: request.bookId._id,
+        requestId: request._id,
+        userEmail: request.userId.email,
+        bookName: request.bookId.name,
         copyNumber: request.copyNumber,
         issueDate: new Date(new Date(request.requestDate) + 7).toISOString().split('T')[0],
         dueDate: new Date(new Date(request.dueDate) + 7).toISOString().split('T')[0],
