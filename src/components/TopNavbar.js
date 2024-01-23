@@ -1,16 +1,17 @@
 // TopNavbar.js
 import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { Link , useNavigate } from 'react-router-dom';
-import { useAuth } from '../pages/AuthPages/AuthContext.js'; 
-import './TopNavbar.css'; 
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../pages/AuthPages/AuthContext.js';
+import './TopNavbar.css';
 
 function TopNavbar() {
   const { user, isAdmin } = useAuth();
   const { logout } = useAuth();
   const navigate = useNavigate();
-  
-  
+
+  console.log(user)
+
   const handleLogout = () => {
 
     //TODO: Add logout logic here
@@ -18,7 +19,7 @@ function TopNavbar() {
     logout();
 
     navigate('/login');
-    
+
   };
 
 
@@ -28,17 +29,17 @@ function TopNavbar() {
       <Navbar.Brand >BiblioTrack</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-      {user && 
+        {user != null && user.userinfo != null &&
           <Nav className="me-auto">
-          <Nav.Link as={Link} to="/">Home</Nav.Link>
-          <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
-          {isAdmin && <Nav.Link as={Link} to="/addbook">Add Book</Nav.Link>}
-          <Nav.Link as={Link} to="/about">About</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
+            {isAdmin && <Nav.Link as={Link} to="/addbook">Add Book</Nav.Link>}
+            <Nav.Link as={Link} to="/about">About</Nav.Link>
           </Nav>
-      }
-      {user && (
+        }
+        {user != null && user.userinfo != null && (
           <Nav className="ml-auto">
-            <NavDropdown align="end" title={user.firstname + ' '+ user.lastname || 'Profile'} id="basic-nav-dropdown">
+            <NavDropdown align="end" title={user.userinfo.firstname + ' ' + user.userinfo.lastname || 'Profile'} id="basic-nav-dropdown">
               <span>User ID: {user.id}</span>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
