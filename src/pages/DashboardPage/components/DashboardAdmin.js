@@ -82,7 +82,7 @@ const DashboardAdmin = () => {
       <h4 className='my-5'>Dashboard</h4>
 
       <Requests requests={issueRequests} />
-      <IssueHistoryAdmin issueHistory={issueHistory} />
+      {/* <IssueHistoryAdmin issueHistory={issueHistory} /> */}
     </Container>
   );
 }
