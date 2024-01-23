@@ -31,6 +31,7 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
 
   /*For Admin Edit Book*/
   const [showEditBookModal, setEditBookModal] = useState(false);
+  
   const handleEditBookModal = () => {
     setEditBookModal(true);
   };
@@ -96,6 +97,14 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
             show={showDeleteModal}
             onHide={handleCancelDelete}
             onConfirm={handleConfirmDelete}
+          />
+
+          <EditBookModal
+            show={showEditBookModal}
+            onHide={handleHideEditBookModal}
+            bookId={book._id}
+            bookData={book}
+            onSubmit={handleEditBookModal}
           />
 
         </>
