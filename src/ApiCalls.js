@@ -45,9 +45,19 @@ export const fetchIssueHistory = async (user) => {
   }
 };
 
-export const fetchIssueHistorySingleUser = async (userId) => {
+export const fetchIssueHistorySingleUser = async (user) => {
+
+  const userId = user.userinfo._id;
+  const token = user.token;
+
   try {
-    const response = await fetch(`${API_BASE_URL}/issues?userId=${userId}`);
+    const response = await fetch(`${API_BASE_URL}/issues?userId=${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {
@@ -94,9 +104,17 @@ export const fetchIssueRequests = async (user) => {
 };
 
 // Function to fetch all issue requests from the API
-export const fetchIssueRequestsSingleUser = async (userId) => {
+export const fetchIssueRequestsSingleUser = async (user) => {
+  const userId = user.userinfo._id;
+  const token = user.token;
   try {
-    const response = await fetch(`${API_BASE_URL}/requests?userId=${userId}`);
+    const response = await fetch(`${API_BASE_URL}/bookRequests?userId=${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {
