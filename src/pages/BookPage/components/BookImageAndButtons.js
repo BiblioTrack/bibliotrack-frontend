@@ -9,6 +9,8 @@ import EditBookModal from './EditBookModal.js';
 
 
 const BookImageAndButtons = ({ isAdmin, book }) => {
+  const navigate = useNavigate();
+
   /*For Admin Issue Copy*/
   const [showIssueCopyModal, setShowIssueCopyModal] = useState(false);
   const handleShowIssueCopyModal = () => {
