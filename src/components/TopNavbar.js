@@ -10,7 +10,7 @@ function TopNavbar() {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  console.log(user)
+  // console.log(user)
 
   const handleLogout = () => {
 
