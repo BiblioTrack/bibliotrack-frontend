@@ -1,24 +1,26 @@
 // BookImageAndButtons.js
 import React, { useState } from 'react';
 import { Image, Button } from 'react-bootstrap';
-import IssueCopyModal from './IssueCopyModal.js';
+// import IssueCopyModal from './IssueCopyModal.js';
 import RequestCopyModal from './RequestCopyModal.js';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import EditBookModal from './EditBookModal.js';
-
+import { deleteBook } from '../../../ApiCalls.js';
+import { useAuth } from '../../AuthPages/AuthContext.js';
 
 const BookImageAndButtons = ({ isAdmin, book }) => {
   const navigate = useNavigate();
-  
-  /*For Admin Issue Copy*/
-  const [showIssueCopyModal, setShowIssueCopyModal] = useState(false);
-  const handleShowIssueCopyModal = () => {
-    setShowIssueCopyModal(true);
-  };
-  const handleHideIssueCopyModal = () => {
-    setShowIssueCopyModal(false);
-  };
+  const user = useAuth();
+
+  // /*For Admin Issue Copy*/
+  // const [showIssueCopyModal, setShowIssueCopyModal] = useState(false);
+  // const handleShowIssueCopyModal = () => {
+  //   setShowIssueCopyModal(true);
+  // };
+  // const handleHideIssueCopyModal = () => {
+  //   setShowIssueCopyModal(false);
+  // };
 
   /*For User Request Copy*/
   const [showRequestCopyModal, setRequestCopyModal] = useState(false);
@@ -31,7 +33,7 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
 
   /*For Admin Edit Book*/
   const [showEditBookModal, setEditBookModal] = useState(false);
-  
+
   const handleEditBookModal = () => {
     setEditBookModal(true);
   };
@@ -45,13 +47,21 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
     setShowDeleteModal(true);
   };
 
-  const handleConfirmDelete = () => {
-    // TODO: Perform the actual delete operation
-    console.log(book.id);
-    navigate('/');
+  const handleConfirmDelete = async () => {
+    try {
+      // console.log('user token', user.user)
+      // TODO: Perform the actual delete operation
+      await deleteBook(book._id, user.user);
 
-    // Close the modal
-    setShowDeleteModal(false);
+      // Navigate or update UI as needed
+      navigate('/');
+    } catch (error) {
+      // Handle errors (e.g., show error message)
+      console.error('Error deleting book:', error.message);
+    } finally {
+      // Close the modal
+      setShowDeleteModal(false);
+    }
   };
 
   const handleCancelDelete = () => {
@@ -70,28 +80,28 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
           <RequestCopyModal
             show={showRequestCopyModal}
             onHide={handleHideRequestCopyModal}
-            bookId={book.id}
+            bookId={book._id}
           />
         </>
 
       }
       {isAdmin &&
         <>
-          <Button variant="outline-dark" className="wide-button mt-3">
+          <Button onClick={handleEditBookModal} variant="outline-dark" className="wide-button mt-3">
             Edit Book
           </Button>
           <Button onClick={handleDeleteClick} variant="outline-dark" className="wide-button mt-3">
-              Delete Book
-            </Button>
-          <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
+            Delete Book
+          </Button>
+          {/* <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
             Issue Copy
           </Button>
 
           <IssueCopyModal
             show={showIssueCopyModal}
             onHide={handleHideIssueCopyModal}
-            bookId={book.id}
-          />
+            bookId={book._id}
+          /> */}
 
           <ConfirmDeleteModal
             show={showDeleteModal}
@@ -104,7 +114,6 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
             onHide={handleHideEditBookModal}
             bookId={book._id}
             bookData={book}
-            onSubmit={handleEditBookModal}
           />
 
         </>

@@ -128,12 +128,36 @@ export const addNewBook = async (bookData, user) => {
   }
 };
 
-export const editBookData = async (bookId, bookData) => {
+export const deleteBook = async (bookId, user) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/books?_id=${bookId}`, {
-      method: 'PUT', // Assuming your API supports updating via HTTP PUT
+    const response = await fetch(`${API_BASE_URL}/books/${bookId}`, {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete book');
+    }
+
+    // Handle successful response (e.g., show success message, update UI, etc.)
+    console.log('Book deleted successfully');
+  } catch (error) {
+    // Handle errors (e.g., show error message)
+    console.error('Error deleting book:', error.message);
+  }
+};
+
+
+export const editBookData = async (bookId, bookData, user) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/books?_id=${bookId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
       },
       body: JSON.stringify(bookData),
     });
@@ -161,7 +185,7 @@ export const createBookRequest = async (issueData, user) => {
       },
       body: JSON.stringify(issueData),
     });
-    console.log(response)
+    // console.log(response)
     if (!response.ok) {
       throw new Error('Failed to request copy');
     }

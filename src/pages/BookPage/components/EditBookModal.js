@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Row, Col, FormControl } from 'react-bootstrap';
 import { editBookData } from '../../../ApiCalls'
+import { useAuth } from '../../AuthPages/AuthContext.js';
 
 
-const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
-
+const EditBookModal = ({ show, onHide, bookId, bookData }) => {
+  const { user } = useAuth();
   const [name, setName] = useState(bookData.name);
   const [author, setAuthor] = useState(bookData.author);
 
@@ -14,7 +15,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
   const [edition, setEdition] = useState(bookData.edition);
   const [publicationDate, setPublicationDate] = useState(new Date(new Date(bookData.publicationDate) + 7).toISOString().split('T')[0]);
 
-  const [editor, setEditor] = useState(bookData.edition);
+  const [editor, setEditor] = useState(bookData.editor);
   const [publisher, setPublisher] = useState(bookData.publisher);
 
 
@@ -23,7 +24,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
 
   const [shelf, setShelf] = useState(bookData.shelf);
   const [floor, setFloor] = useState(bookData.floor);
-
+  const [language, setLanguage] = useState(bookData.language);
   const [imageUrl, setImageUrl] = useState(bookData.imageUrl);
   const [description, setDescription] = useState(bookData.description);
 
@@ -47,13 +48,15 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
       pages,
       shelf,
       floor,
+      language,
       imageUrl,
       description,
 
     };
 
     console.log(`Editing book copy: ${JSON.stringify(bookData)}`);
-    editBookData(bookId, bookData);
+    console.log(`user: ${JSON.stringify(user.token)}`);
+    editBookData(bookId, bookData, user);
 
     onHide();
 
@@ -206,6 +209,16 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
               </Form.Group>
             </Col>
           </Row>
+
+          <Form.Group className="mb-3" controlId="language">
+            <Form.Label>Language</Form.Label>
+            <Form.Control
+              type="text"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            />
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="imageUrl">
             <Form.Label>Book Cover Link</Form.Label>
             <Form.Control
