@@ -79,6 +79,9 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
           <Button variant="outline-dark" className="wide-button mt-3">
             Edit Book
           </Button>
+          <Button onClick={handleDeleteClick} variant="outline-dark" className="wide-button mt-3">
+              Delete Book
+            </Button>
           <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
             Issue Copy
           </Button>
