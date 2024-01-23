@@ -29,19 +29,20 @@ function TopNavbar() {
       <Navbar.Brand >BiblioTrack</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        {user != null && user.userinfo != null &&
+        {/* {user != null && user.userinfo != null && */}
+        {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
-            {isAdmin && <Nav.Link as={Link} to="/addbook">Add Book</Nav.Link>}
+            {user != null && user.userinfo != null && <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>}
+            {user != null && user.userinfo != null && isAdmin && <Nav.Link as={Link} to="/addbook">Add Book</Nav.Link>}
             <Nav.Link as={Link} to="/about">About</Nav.Link>
           </Nav>
         }
         {user != null && user.userinfo != null && (
           <Nav className="ml-auto">
             <NavDropdown align="end" title={user.userinfo.firstname + ' ' + user.userinfo.lastname || 'Profile'} id="basic-nav-dropdown">
-              <span>User ID: {user.id}</span>
-              <NavDropdown.Divider />
+              {/* <span>User ID: {user.id}</span> */}
+              {/* <NavDropdown.Divider /> */}
               <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
