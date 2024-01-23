@@ -1,0 +1,5 @@
+
+[1/19/2024, 10:39:58 PM] Log file for the test which redirects the addBook page and enters the book details
+[1/19/2024, 10:39:58 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
+[1/19/2024, 10:39:59 PM] redirected to addBook button and the URL is:http://localhost:3000/addbook
+[1/19/2024, 10:40:15 PM] Entered new book details
