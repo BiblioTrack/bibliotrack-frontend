@@ -20,6 +20,7 @@ const Requests = ({ requests }) => {
     setSelectedRequest(request);
     setShowResponseModal(true);
   };
+  
   useEffect(() => {
     // Update the table when the requests prop changes
     setUpdatedRequests(requests);
@@ -58,7 +59,7 @@ const Requests = ({ requests }) => {
           </tr>
         </thead>
         <tbody>
-          {requests.map((request, index) => {
+          {updatedRequests.map((request, index) => {
 
             const isClickable = request.status === 'Pending';
 
