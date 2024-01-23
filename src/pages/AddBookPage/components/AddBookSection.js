@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Form, FormControl, Row, Col, Button } from 'react-bootstrap';
 import MainSection from '../../../components/MainSection';
 import { addNewBook } from '../../../ApiCalls'
+import { useAuth } from '../../AuthPages/AuthContext';
 
 const AddBookSection = () => {
-
+  const { user } = useAuth();
   const [name, setName] = useState('');
   const [author, setAuthor] = useState('');
 
@@ -23,6 +24,8 @@ const AddBookSection = () => {
 
   const [shelf, setShelf] = useState('');
   const [floor, setFloor] = useState('');
+  const [language, setLanguage] = useState('');
+
 
   const [imageUrl, setImageUrl] = useState('');
   const [description, setDescription] = useState('');
@@ -51,13 +54,15 @@ const AddBookSection = () => {
       pages,
       shelf,
       floor,
+      language,
       imageUrl,
       description,
+
     };
 
     console.log(newBook);
 
-    addNewBook(newBook);
+    addNewBook(newBook, user);
 
   };
 
@@ -139,7 +144,7 @@ const AddBookSection = () => {
         <Row>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="editor">
-              <Form.Label>Editor Name</Form.Label>
+              <Form.Label>Editor Name *</Form.Label>
               <FormControl
                 type="text"
                 value={editor}
@@ -162,7 +167,7 @@ const AddBookSection = () => {
         <Row>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="copies">
-              <Form.Label>Copies</Form.Label>
+              <Form.Label>Copies *</Form.Label>
               <FormControl
                 type="text"
                 value={copies}
@@ -185,7 +190,7 @@ const AddBookSection = () => {
         <Row>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="shelf">
-              <Form.Label>Shelf</Form.Label>
+              <Form.Label>Shelf *</Form.Label>
               <FormControl
                 type="int"
                 value={shelf}
@@ -204,9 +209,16 @@ const AddBookSection = () => {
             </Form.Group>
           </Col>
         </Row>
-
+        <Form.Group className="mb-3" controlId="language">
+          <Form.Label>Language *</Form.Label>
+          <Form.Control
+            type="text"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+          />
+        </Form.Group>
         <Form.Group className="mb-3" controlId="imageUrl">
-          <Form.Label>Book Cover Link</Form.Label>
+          <Form.Label>Book Cover Link *</Form.Label>
           <Form.Control
             as="textarea"
             rows={2}

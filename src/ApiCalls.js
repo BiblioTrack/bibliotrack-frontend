@@ -105,12 +105,13 @@ export const fetchIssueRequestsSingleUser = async (userId) => {
   }
 };
 
-export const addNewBook = async (bookData) => {
+export const addNewBook = async (bookData, user) => {
   try {
     const response = await fetch(`${API_BASE_URL}/books`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
       },
       body: JSON.stringify(bookData),
     });
