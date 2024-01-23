@@ -28,9 +28,15 @@ export const fetchBook = async (id) => {
 
 
 // Function to fetch all issue history from the API
-export const fetchIssueHistory = async () => {
+export const fetchIssueHistory = async (user) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/issues`);
+    const response = await fetch(`${API_BASE_URL}/issues`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {
@@ -70,9 +76,15 @@ export const fetchIssueHistorySingleBook = async (bookId, user) => {
 };
 
 // Function to fetch all issue requests from the API
-export const fetchIssueRequests = async () => {
+export const fetchIssueRequests = async (user) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/requests`);
+    const response = await fetch(`${API_BASE_URL}/bookRequests`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {

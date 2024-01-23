@@ -40,7 +40,7 @@ const Book = ({ book }) => {
     // ];
     // setIssues(dummyIssues);
 
-  }, [isAdmin, book._id]);
+  }, [isAdmin, book._id, user]);
 
 
 
