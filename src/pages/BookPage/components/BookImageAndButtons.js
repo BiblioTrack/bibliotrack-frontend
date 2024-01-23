@@ -10,7 +10,7 @@ import EditBookModal from './EditBookModal.js';
 
 const BookImageAndButtons = ({ isAdmin, book }) => {
   const navigate = useNavigate();
-
+  
   /*For Admin Issue Copy*/
   const [showIssueCopyModal, setShowIssueCopyModal] = useState(false);
   const handleShowIssueCopyModal = () => {
@@ -31,6 +31,7 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
 
   /*For Admin Edit Book*/
   const [showEditBookModal, setEditBookModal] = useState(false);
+  
   const handleEditBookModal = () => {
     setEditBookModal(true);
   };
@@ -79,6 +80,9 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
           <Button variant="outline-dark" className="wide-button mt-3">
             Edit Book
           </Button>
+          <Button onClick={handleDeleteClick} variant="outline-dark" className="wide-button mt-3">
+              Delete Book
+            </Button>
           <Button variant="outline-dark" className="wide-button mt-3" onClick={handleShowIssueCopyModal}>
             Issue Copy
           </Button>
@@ -93,6 +97,14 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
             show={showDeleteModal}
             onHide={handleCancelDelete}
             onConfirm={handleConfirmDelete}
+          />
+
+          <EditBookModal
+            show={showEditBookModal}
+            onHide={handleHideEditBookModal}
+            bookId={book._id}
+            bookData={book}
+            onSubmit={handleEditBookModal}
           />
 
         </>
