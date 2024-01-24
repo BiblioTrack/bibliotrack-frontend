@@ -58,7 +58,7 @@ const Requests = ({ requests }) => {
           </tr>
         </thead>
         <tbody>
-          {requests.map((request, index) => {
+          {updatedRequests.map((request, index) => {
 
             const isClickable = request.status === 'Pending';
 
