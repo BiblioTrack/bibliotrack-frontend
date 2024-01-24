@@ -1,17 +1,15 @@
-// Assume you have an API endpoint for fetching issue history and issue requests
 let API_BASE_URL;
 
 if (process.env.NODE_ENV === 'production') {
   // Use production API URL
   API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
 } else {
   // Use local development API URL
   API_BASE_URL = 'http://localhost:8080/api';
 }
-console.log("API BASE URL -> " + API_BASE_URL);
 
-export default API_BASE_URL;
+export { API_BASE_URL };
+
 
 export const fetchAllBooks = async () => {
   try {
