@@ -3,7 +3,7 @@ import Requests from './Requests.js';
 import IssueHistoryAdmin from '../components/IssueHistoryAdmin.js';
 import { Container } from 'react-bootstrap';
 import { useAuth } from '../../AuthPages/AuthContext.js';
-import { fetchIssueHistory, fetchIssueRequests, fetchRequestById, fetchIssueById } from '../../../ApiCalls.js';
+import { fetchIssueHistory, fetchIssueRequests, fetchRequestById } from '../../../ApiCalls.js';
 
 const DashboardAdmin = () => {
   const { user } = useAuth();
@@ -14,13 +14,8 @@ const DashboardAdmin = () => {
     const restructuredData = await Promise.all(
       historyData.map(async (requestHistory) => {
         try {
-          const issue = await fetchIssueById(requestHistory._id, user);
-          if (!issue || !issue.request) {
-            // Handle cases where issue or request is null
-            return null;
-          }
 
-          const request = await fetchRequestById(issue.request._id, user);
+          const request = await fetchRequestById(requestHistory.request._id, user);
           if (!request || !request.userId) {
             // Handle cases where request or userId is null
             return null;
@@ -50,12 +45,12 @@ const DashboardAdmin = () => {
 
   const fetchData = async () => {
     try {
-      console.log('user token', user.token);
+
       const historyData = await fetchIssueHistory(user);
-      console.log('issue history', historyData);
+
 
       const restructuredHistoryDataList = await restructureHistoryData(historyData);
-      console.log('issue history updated', restructuredHistoryDataList);
+
       setIssueHistory(restructuredHistoryDataList);
 
       // Fetch issue requests
@@ -75,7 +70,7 @@ const DashboardAdmin = () => {
       };
 
       const restructuredDataList = restructureRequestData(requestData);
-      console.log('request data', restructuredDataList);
+
       setIssueRequests(restructuredDataList);
     } catch (error) {
       console.error('Error while fetching data:', error);
@@ -90,7 +85,7 @@ const DashboardAdmin = () => {
     try {
       // Fetch issue history
       const historyData = await fetchIssueHistory(user);
-      console.log('issue history', historyData);
+
 
       const restructuredHistoryDataList = await restructureHistoryData(historyData);
       setIssueHistory(restructuredHistoryDataList);
