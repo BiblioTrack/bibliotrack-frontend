@@ -11,7 +11,7 @@ function AboutPage() {
       <div className="about-container">
         <h2>About Our Library</h2>
         <p>
-          Welcome to our Library Management System! We are dedicated to providing a rich and diverse collection of books to our community. Whether you are a student, faculty member, or a visitor, our library is here to serve your literary needs.
+          Welcome to our Library Management System! We are dedicated to providing a rich and diverse collection of books to our community. Whether you are a student, faculty member our library is here to serve your literary needs.
         </p>
 
         <h3>Our Mission</h3>
@@ -31,10 +31,6 @@ function AboutPage() {
         <h3>Contact Us</h3>
         <p>
           If you have any questions, suggestions, or concerns, feel free to reach out to our library staff. We value your feedback and are here to assist you.
-        </p>
-        <p>
-          Email: library@example.com<br />
-          Phone: (555) 123-4567
         </p>
       </div>
     </Container>
