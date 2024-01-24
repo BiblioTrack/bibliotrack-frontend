@@ -71,17 +71,37 @@ const DashboardAdmin = () => {
     // setIssueHistory(dummyIssueHistory);
     // setIssueRequests(dummyIssueRequests);
   };
+
   useEffect(() => {
     fetchData(user);
   }, [user]);
 
+  const handleRequestUpdate = async () => {
 
+    // TODO: Fetch issue history
+    const historyData = await fetchIssueHistory(user);
+    console.log('issue history', historyData)
+    const restructureHistoryData = (historyData) => {
+      return historyData.map(requestHistory => ({
+        userId: requestHistory.request.userId._id,
+        userEmail: requestHistory.request.userId.email,
+        bookName: requestHistory.request.bookId.name,
+        copyNumber: requestHistory.request.copyNumber,
+        issueDate: new Date(new Date(requestHistory.request.requestDate) + 7).toISOString().split('T')[0],
+        dueDate: new Date(new Date(requestHistory.request.dueDate) + 7).toISOString().split('T')[0],
+        returnDate: new Date(new Date(requestHistory.returnDate) + 7).toISOString().split('T')[0],
+      }));
+    };
+    const restructuredHistoryDataList = restructureHistoryData(historyData);
+
+    setIssueHistory(restructuredHistoryDataList);
+  }
 
   return (
     <Container>
       <h4 className='my-5'>Dashboard</h4>
 
-      <Requests requests={issueRequests} />
+      <Requests requests={issueRequests} onUpdate={handleRequestUpdate} />
       <IssueHistoryAdmin issueHistory={issueHistory} />
     </Container>
   );
