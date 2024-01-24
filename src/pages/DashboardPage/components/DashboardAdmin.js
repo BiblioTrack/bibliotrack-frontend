@@ -79,7 +79,7 @@ const DashboardAdmin = () => {
 
   useEffect(() => {
     fetchData(user);
-  }, [user]);
+  }, [user, fetchData]);
 
   const handleRequestUpdate = async () => {
     try {
