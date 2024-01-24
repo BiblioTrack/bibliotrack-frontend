@@ -35,7 +35,7 @@ const AuthContextProvider = ({ children }) => {
   }
 
 
-  const [user, setUser] = useState(mockUserData);
+  const [user, setUser] = useState('');
   const [isAdmin, setIsAdmin] = useState(true);
 
   const login = (userData) => {
