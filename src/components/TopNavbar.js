@@ -38,6 +38,10 @@ function TopNavbar() {
             <Nav.Link as={Link} to="/about">About</Nav.Link>
           </Nav>
         }
+        {user ? null : (
+          <Nav className="ml-auto">
+            <Nav.Link as={Link} to="/login">Log In</Nav.Link>
+          </Nav>)}
         {user != null && user.userinfo != null && (
           <Nav className="ml-auto">
             <NavDropdown align="end" title={user.userinfo.firstname + ' ' + user.userinfo.lastname || 'Profile'} id="basic-nav-dropdown">
