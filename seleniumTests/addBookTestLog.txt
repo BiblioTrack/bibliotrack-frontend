@@ -1,5 +1,11 @@
-
-[1/19/2024, 10:39:58 PM] Log file for the test which redirects the addBook page and enters the book details
-[1/19/2024, 10:39:58 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
-[1/19/2024, 10:39:59 PM] redirected to addBook button and the URL is:http://localhost:3000/addbook
-[1/19/2024, 10:40:15 PM] Entered new book details
+[1/24/2024, 11:59:06 PM] Log file for the test case to test the login page
+[1/24/2024, 11:59:06 PM] Log file for the test which redirects the addBook page and enters the book details
+[1/24/2024, 11:59:07 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
+[1/24/2024, 11:59:09 PM] entered login page and URL is http://localhost:3000/login
+[1/24/2024, 11:59:11 PM] entered admin email ID and password
+[1/24/2024, 11:59:13 PM] admin logged in and URL is http://localhost:3000/
+[1/24/2024, 11:59:13 PM] redirected to addBook button and the URL is:http://localhost:3000/addbook
+[1/24/2024, 11:59:31 PM] Entered new book details
+[1/24/2024, 11:59:34 PM] AddBook page test passed
+[1/24/2024, 11:59:34 PM] Admin successfully added required Book details and URL is http://localhost:3000/
+[1/24/2024, 11:59:36 PM] Admin AddBook functionality tested

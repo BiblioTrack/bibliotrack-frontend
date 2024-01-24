@@ -31,34 +31,41 @@ async function signUpPage() {
       await driver.sleep(2000);
 
       const firstName = await driver.findElement(By.id('firstname'));
-      await firstName.sendKeys('John'); 
+      await firstName.sendKeys('user'); 
       await driver.sleep(1000);
 
       const lastName = await driver.findElement(By.id('lastname'));
-      await lastName.sendKeys('Doe');  
+      await lastName.sendKeys('user');  
+      await driver.sleep(1000);
+
+      const userName = await driver.findElement(By.id('username'));
+      await userName.sendKeys('user');  
+      await driver.sleep(1000);
+
+      const userRole = await driver.findElement(By.id('role'));
+      await userRole.sendKeys('Student');  
       await driver.sleep(1000);
 
       const emailId = await driver.findElement(By.id('email'));
-      await emailId.sendKeys('user@user.com'); 
+      await emailId.sendKeys('user@gmail.com'); 
       await driver.sleep(1000);
 
       const password = await driver.findElement(By.id('password'));
-      await password.sendKeys('pass@123'); 
+      await password.sendKeys('password'); 
       await driver.sleep(1000);
 
       const repeatPassword = await driver.findElement(By.id('repeatPassword'));
-      await repeatPassword.sendKeys('pass@123');
+      await repeatPassword.sendKeys('password');
       logResults(`entered user's personal details`);
 
-    //   const clickSignUpButton = await driver.findElement(By.xpath('//*[@id="root"]/div[2]/div/div/div/form/button')).click('');
-    //   await driver.sleep(2000);
+      await driver.manage().window().maximize(); 
+      await driver.switchTo().window(await driver.getWindowHandle()); 
 
- //currently signup functionality is not redirecting to any URL
+      const clickSignUpButton = await driver.findElement(By.xpath('//*[@id="root"]/div[2]/div/div/div/form/button')).click('');
+      await driver.sleep(2000);
 
-    //   const postsignUpUrl = await driver.getCurrentUrl();
-    //   logResults(`new user signed up successfully and URL is ${postsignUpUrl}`);
-    //   await driver.sleep(2000);
-    //   logResults('user signUp functionality tested');
+      await driver.sleep(2000);
+      logResults('user signUp functionality tested');
 
 
     } catch (error) {

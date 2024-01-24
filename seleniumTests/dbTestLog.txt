@@ -1,12 +1,14 @@
-[1/19/2024, 7:38:49 PM] Log file for the test which enters the dashboard page and tests book issue history
-[1/19/2024, 7:38:50 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
-[1/19/2024, 7:38:50 PM] clicked dashboard button and the URL is:http://localhost:3000/dashboard
-[1/19/2024, 7:38:52 PM] clicked the 2nd issue request and the URL is:http://localhost:3000/book/2
-[1/19/2024, 7:38:54 PM] back to the dashboard page  and the URL is:http://localhost:3000/dashboard
-[1/19/2024, 7:38:58 PM] Selected option: Returned
-[1/19/2024, 7:39:00 PM] Selected option: Overdue
-[1/19/2024, 7:39:02 PM] Selected option: In Progress
-[1/19/2024, 7:39:04 PM] Selected option: All
-[1/19/2024, 7:39:06 PM] type 123 and observation done
-[1/19/2024, 7:39:06 PM] Dashboard page and Dropdown filter test passed.
-
+[1/25/2024, 12:12:24 AM] Log file for the test which enters the dashboard page and tests book issue history
+[1/25/2024, 12:12:24 AM] Log file for the test case to test the login page
+[1/25/2024, 12:12:25 AM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
+[1/25/2024, 12:12:27 AM] entered login page and URL is http://localhost:3000/login
+[1/25/2024, 12:12:29 AM] entered admin email ID and password
+[1/25/2024, 12:12:31 AM] admin logged in and URL is http://localhost:3000/
+[1/25/2024, 12:12:31 AM] clicked dashboard button and the URL is:http://localhost:3000/dashboard
+[1/25/2024, 12:12:33 AM] clicked one of the issue requests and the URL is:http://localhost:3000/book/65a45409e7cd239effdb6a12
+[1/25/2024, 12:12:35 AM] back to the dashboard page  and the URL is:http://localhost:3000/dashboard
+[1/25/2024, 12:12:39 AM] Selected option: Returned
+[1/25/2024, 12:12:41 AM] Selected option: Overdue
+[1/25/2024, 12:12:43 AM] Selected option: In Progress
+[1/25/2024, 12:12:45 AM] Dashboard page and Dropdown filter test passed.
+[1/25/2024, 12:12:45 AM] Selected option: All

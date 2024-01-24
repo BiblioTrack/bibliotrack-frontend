@@ -11,3 +11,12 @@
 [1/19/2024, 7:23:32 PM] Search bar on Home page and book issue history tested
 
 
+
+[1/25/2024, 12:22:20 AM] Log file for the test case to test the search navigation bar
+[1/25/2024, 12:22:21 AM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
+[1/25/2024, 12:22:23 AM] entered login page and URL is http://localhost:3000/login
+[1/25/2024, 12:22:25 AM] entered admin email ID and password
+[1/25/2024, 12:22:27 AM] admin logged in and URL is http://localhost:3000/
+[1/25/2024, 12:22:29 AM] searched and selected on the book 1984
+[1/25/2024, 12:22:30 AM] Redirected to: http://localhost:3000/book/65a45409e7cd239effdb6a11
+[1/25/2024, 12:22:31 AM] Search bar on user Home page tested

@@ -1,0 +1,7 @@
+[1/24/2024, 10:59:43 PM] Log file for the test case to test the login page
+[1/24/2024, 10:59:43 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
+[1/24/2024, 10:59:46 PM] entered login page and URL is http://localhost:3000/login
+[1/24/2024, 10:59:48 PM] entered admin email ID and password
+[1/24/2024, 10:59:50 PM] admin logged in and URL is http://localhost:3000/
+[1/24/2024, 10:59:52 PM] admin logged out successfully and URL is http://localhost:3000/login
+[1/24/2024, 10:59:54 PM] admin login and log out functionality tested
