@@ -120,6 +120,20 @@ export const fetchRequestById = async (requestId, user) => {
   }
 };
 
+export const deleteBookRequet = async (requestId, user) => {
+  try {
+    await fetch(`${API_BASE_URL}/bookRequests/${requestId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+    });
+
+  } catch (error) {
+    console.error('Error deleting issue requests:', error);
+  }
+};
 
 // Function to fetch all issue requests from the API
 export const fetchIssueRequestsSingleUser = async (user) => {

@@ -1,12 +1,16 @@
 // RequestResponseModal.js
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { deleteBookRequet } from '../../../ApiCalls';
+import { useAuth } from '../../AuthPages/AuthContext';
 
 const RequestDeleteModal = ({ show, onClose, selectedRequest }) => {
-
- 
-  const handleDelete = () => {
+  // console.log(selectedRequest)
+  const user = useAuth();
+  const handleDelete = async () => {
     // TODO: Use Delete Request API call
+    // console.log(user)
+    await deleteBookRequet(selectedRequest.requestId, user.user);
     console.log(`Delete Request ${selectedRequest}`);
     onClose();
   };
