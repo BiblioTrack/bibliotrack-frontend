@@ -5,34 +5,12 @@ import '@testing-library/jest-dom';
 
 import AddBookSection from '../pages/AddBookPage/components/AddBookSection.js';
 
-// Mock the addNewBook function from ApiCalls module
-jest.mock('../ApiCalls', () => ({
-  addNewBook: jest.fn(),
-}));
-
-jest.mock('../pages/AuthPages/AuthContext', () => ({
-  useAuth: jest.fn(() => ({
-    user: {
-      status: "Login Successful!",
-      success: true,
-      token: "12ddfe455554",
-      userinfo: {
-        firstname: 'John',
-        lastname: 'Doe',
-        email: 'john@example.com',
-        username: '',
-        password: 'strongPassword',
-        role: 'student',
-        admin: false
-      }
-    }
-  })),
+jest.mock('react-router-dom', () => ({
+  useNavigate: jest.fn(),
 }));
 
 
 describe('AddBookSection Component', () => {
-
-
   it('renders without crashing', () => {
     render(<AddBookSection />);
   });

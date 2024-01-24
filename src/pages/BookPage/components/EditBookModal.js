@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Modal, Button, Form, Row, Col, FormControl } from 'react-bootstrap';
 import { editBookData } from '../../../ApiCalls'
 
-import { useAuth } from '../../AuthPages/AuthContext.js';
 
 
 const EditBookModal = ({ show, onHide, bookId, bookData, onUpdate }) => {
-  const { user } = useAuth();
+
+  const usertoken = localStorage.getItem('userLoginToken');
 
   const [name, setName] = useState(bookData.name);
   const [author, setAuthor] = useState(bookData.author);
@@ -56,7 +56,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onUpdate }) => {
 
     };
 
-    await editBookData(bookId, bookData, user.token);
+    await editBookData(bookId, bookData, usertoken);
 
     onHide();
 

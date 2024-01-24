@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Form, FormControl, Row, Col, Button } from 'react-bootstrap';
 import MainSection from '../../../components/MainSection';
 import { addNewBook } from '../../../ApiCalls'
-import { useAuth } from '../../AuthPages/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const AddBookSection = () => {
-  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const usertoken = localStorage.getItem('userLoginToken');
   const [name, setName] = useState('');
   const [author, setAuthor] = useState('');
 
@@ -30,7 +32,7 @@ const AddBookSection = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [description, setDescription] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Add new book form validation
@@ -62,7 +64,10 @@ const AddBookSection = () => {
 
     console.log(newBook);
 
-    addNewBook(newBook, user);
+    await addNewBook(newBook, usertoken);
+
+    navigate('/')
+
 
   };
 

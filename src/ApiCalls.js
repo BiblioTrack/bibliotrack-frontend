@@ -1,5 +1,6 @@
 // Assume you have an API endpoint for fetching issue history and issue requests
 
+
 export const API_BASE_URL = 'http://localhost:8080/api';
 
 export const fetchAllBooks = async () => {
@@ -123,13 +124,13 @@ export const fetchIssueRequestsSingleUser = async (user) => {
   }
 };
 
-export const addNewBook = async (bookData, user) => {
+export const addNewBook = async (bookData, usertoken) => {
   try {
     const response = await fetch(`${API_BASE_URL}/books`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user.token}`,
+        'Authorization': `Bearer ${usertoken}`,
       },
       body: JSON.stringify(bookData),
     });
@@ -140,6 +141,7 @@ export const addNewBook = async (bookData, user) => {
 
     // Handle successful response (e.g., show success message, reset form, etc.)
     console.log('Book added successfully');
+
   } catch (error) {
     // Handle errors (e.g., show error message)
     console.error('Error adding book:', error.message);
