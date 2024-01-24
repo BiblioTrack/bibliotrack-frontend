@@ -22,7 +22,7 @@ const IssueHistoryUser = ({ issueHistory }) => {
   const filteredIssueHistory = issueHistory.filter((issue) => {
     // Apply search filter
     const matchesSearch =
-      issue.bookId.toLowerCase().includes(searchQuery.toLowerCase())||
+      // issue.bookId.toLowerCase().includes(searchQuery.toLowerCase())||
       issue.issueDate.includes(searchQuery) ||
       issue.dueDate.includes(searchQuery) ||
       (issue.returnDate && issue.returnDate.includes(searchQuery));
@@ -45,7 +45,7 @@ const IssueHistoryUser = ({ issueHistory }) => {
           <Form.Group controlId="searchQuery" className="col-md-8 mb-3 mb-md-0">
             <Form.Control
               type="text"
-              placeholder= "Search by book ID, issue, due, or return date"
+              placeholder="Search by book ID, issue, due, or return date"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -69,7 +69,7 @@ const IssueHistoryUser = ({ issueHistory }) => {
       <Table bordered responsive style={{ whiteSpace: 'nowrap' }}>
         <thead>
           <tr>
-            <th>Book ID</th>
+            <th>Book Name</th>
             <th>Copy Num.</th>
             <th>Issue Date</th>
             <th>Due Date</th>
@@ -85,7 +85,7 @@ const IssueHistoryUser = ({ issueHistory }) => {
               <tr key={index} >
                 <td>
                   <Link to={`/book/${issue.bookId}`}>
-                    {issue.bookId}
+                    {issue.bookName}
                   </Link>
                 </td>
                 <td>{issue.copyNumber}</td>
