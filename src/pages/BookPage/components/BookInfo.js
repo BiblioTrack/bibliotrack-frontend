@@ -14,10 +14,12 @@ const BookInfo = ({ book }) => (
       ))}
     </div>
     <p className="mb-3">{book.description}</p>
+    <p><strong>ISBN:</strong> {book.isbn}</p>
     <p><strong>Pages:</strong> {book.pages}</p>
     <p><strong>Shelf:</strong> {book.shelf}</p>
     <p><strong>Floor:</strong> {book.floor}</p>
     <p><strong>Format:</strong> {book.format}</p>
+    <p><strong>Edition:</strong> {book.edition}</p>
     <p><strong>Editor:</strong> {book.editor}</p>
     <p><strong>Publisher:</strong> {book.publisher}</p>
     <p><strong>Language:</strong> {book.language}</p>

@@ -1,5 +1,6 @@
 // Assume you have an API endpoint for fetching issue history and issue requests
 
+
 export const API_BASE_URL = 'http://localhost:8080/api';
 
 export const fetchAllBooks = async () => {
@@ -45,9 +46,19 @@ export const fetchIssueHistory = async (user) => {
   }
 };
 
-export const fetchIssueHistorySingleUser = async (userId) => {
+export const fetchIssueHistorySingleUser = async (user) => {
+
+  const userId = user.userinfo._id;
+  const token = user.token;
+
   try {
-    const response = await fetch(`${API_BASE_URL}/issues?userId=${userId}`);
+    const response = await fetch(`${API_BASE_URL}/issues?userId=${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {
@@ -94,9 +105,17 @@ export const fetchIssueRequests = async (user) => {
 };
 
 // Function to fetch all issue requests from the API
-export const fetchIssueRequestsSingleUser = async (userId) => {
+export const fetchIssueRequestsSingleUser = async (user) => {
+  const userId = user.userinfo._id;
+  const token = user.token;
   try {
-    const response = await fetch(`${API_BASE_URL}/requests?userId=${userId}`);
+    const response = await fetch(`${API_BASE_URL}/bookRequests?userId=${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {
@@ -105,12 +124,13 @@ export const fetchIssueRequestsSingleUser = async (userId) => {
   }
 };
 
-export const addNewBook = async (bookData) => {
+export const addNewBook = async (bookData, usertoken) => {
   try {
     const response = await fetch(`${API_BASE_URL}/books`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${usertoken}`,
       },
       body: JSON.stringify(bookData),
     });
@@ -121,18 +141,43 @@ export const addNewBook = async (bookData) => {
 
     // Handle successful response (e.g., show success message, reset form, etc.)
     console.log('Book added successfully');
+
   } catch (error) {
     // Handle errors (e.g., show error message)
     console.error('Error adding book:', error.message);
   }
 };
 
-export const editBookData = async (bookId, bookData) => {
+export const deleteBook = async (bookId, user) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/books?_id=${bookId}`, {
-      method: 'PUT', // Assuming your API supports updating via HTTP PUT
+    const response = await fetch(`${API_BASE_URL}/books/${bookId}`, {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete book');
+    }
+
+    // Handle successful response (e.g., show success message, update UI, etc.)
+    console.log('Book deleted successfully');
+  } catch (error) {
+    // Handle errors (e.g., show error message)
+    console.error('Error deleting book:', error.message);
+  }
+};
+
+
+export const editBookData = async (bookId, bookData, usertoken) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/books/${bookId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${usertoken}`,
       },
       body: JSON.stringify(bookData),
     });
@@ -160,7 +205,7 @@ export const createBookRequest = async (issueData, user) => {
       },
       body: JSON.stringify(issueData),
     });
-    console.log(response)
+    // console.log(response)
     if (!response.ok) {
       throw new Error('Failed to request copy');
     }
@@ -175,9 +220,9 @@ export const createBookRequest = async (issueData, user) => {
 }
 
 
-export const approveBookRequest = async (requestId, updateData, user) => {
+export const approveBookRequest = async (selectedRequest, updateData, user) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/bookRequests/${requestId}`, {
+    const response = await fetch(`${API_BASE_URL}/bookRequests/${selectedRequest.requestId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -192,36 +237,69 @@ export const approveBookRequest = async (requestId, updateData, user) => {
 
     console.log('Book request approved successfully');
 
+    const returnDate = new Date(new Date(selectedRequest.issueDate).setDate(new Date(selectedRequest.issueDate).getDate() + 14)).toDateString()
+
+    const issueData = {
+      request: selectedRequest.requestId,
+      issueDate: selectedRequest.issueDate,
+      returnDate: returnDate,
+      dueDate: selectedRequest.dueDate,
+      isReturned: false
+    }
+
+    createIssueCopy(issueData, user);
+    // return data
+
   } catch (error) {
     console.error('Error approving book request:', error.message);
     alert('Failed to approve book request. Please try again.');
   }
 };
 
+export const rejectBookRequest = async (selectedRequest, updateData, user) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/bookRequests/${selectedRequest.requestId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(updateData),
+    });
 
-// export const fetchUserById = async (userId) => {
-//   // Implement the logic to fetch user details by userId from your API
-//   
-// };
+    if (!response.ok) {
+      throw new Error('Failed to reject book request');
+    }
+
+    console.log('Book request rejected successfully');
+
+  } catch (error) {
+    console.error('Error rejecting book request:', error.message);
+    alert('Failed to reject book request. Please try again.');
+  }
+};
 
 export const createIssueCopy = async (issueData, user) => {
 
-  // createBookRequest(issueData, user)
-
   try {
+    console.log('issuebook', issueData)
     const response = await fetch(`${API_BASE_URL}/issues`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
       },
       body: JSON.stringify(issueData),
     });
+
+    // const data = await response.json();
 
     if (!response.ok) {
       throw new Error('Failed to issue copy');
     }
 
     console.log('Copy issued successfully');
+    // return data;
   } catch (error) {
     console.error('Error issuing copy:', error.message);
     alert('Failed to issue copy. Please try again.');

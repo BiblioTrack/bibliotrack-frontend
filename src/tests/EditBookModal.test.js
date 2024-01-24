@@ -22,13 +22,15 @@ const mockBookData = {
 describe('EditBookModal Component', () => {
     test('renders without crashing', () => {
         const handleClose = jest.fn();
-        render(<EditBookModal show={true} onHide={handleClose} bookId="1" bookData={mockBookData} />);
+        const handleUpdate = jest.fn();
+        render(<EditBookModal show={true} onHide={handleClose} bookId="1" bookData={mockBookData} onUpdate={handleUpdate} />);
     });
 
     test('calls onHide when "Close" button is clicked', () => {
         const handleClose = jest.fn();
+        const handleUpdate = jest.fn();
         const { getByText } = render(
-            <EditBookModal show={true} onHide={handleClose} bookId="1" bookData={mockBookData} />
+            <EditBookModal show={true} onHide={handleClose} bookId="1" bookData={mockBookData} onUpdate={handleUpdate} />
         );
 
         fireEvent.click(getByText(/close/i));
@@ -38,9 +40,9 @@ describe('EditBookModal Component', () => {
 
     test('calls fetch with the correct data when submit button is clicked', async () => {
         const handleClose = jest.fn();
-        // const { getByText, getByLabelText, getByTestId } = render(<EditBookModal onHide={handleClose} bookId="1" bookData={mockBookData} />);
+        const handleUpdate = jest.fn();
         const { getByText, getByLabelText } = render(
-            <EditBookModal show={true} onHide={handleClose} bookId="1" bookData={mockBookData}
+            <EditBookModal show={true} onHide={handleClose} bookId="1" bookData={mockBookData} onUpdate={handleUpdate}
             />,
         );
         // Mocking the global fetch function
@@ -59,11 +61,12 @@ describe('EditBookModal Component', () => {
 
         // Expect that fetch was called with the correct data
         expect(global.fetch).toHaveBeenCalledWith(
-            'http://localhost:8080/api/books?_id=1',
+            'http://localhost:8080/api/books/1',
             expect.objectContaining({
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    "Authorization": "Bearer null",
                 },
             })
         );

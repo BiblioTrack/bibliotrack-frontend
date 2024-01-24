@@ -33,6 +33,9 @@ const LoginSection = () => {
       // Assuming the API returns user data upon successful login
       const userData = await response.json();
 
+      const userLoginToken = userData.token;
+      localStorage.setItem("userLoginToken", userLoginToken);
+
       // Call the login function with the user data
       login(userData);
       // console.log('login data', userData)

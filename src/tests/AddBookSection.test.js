@@ -1,16 +1,21 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 
 import AddBookSection from '../pages/AddBookPage/components/AddBookSection.js';
+
+jest.mock('react-router-dom', () => ({
+  useNavigate: jest.fn(),
+}));
+
 
 describe('AddBookSection Component', () => {
   it('renders without crashing', () => {
     render(<AddBookSection />);
   });
 
-  it('submits the form with valid data', () => {
+  it('submits the form with valid data', async () => {
     const { getByLabelText, getByText, getByTestId } = render(<AddBookSection />);
 
     // Fill in the form with valid data
@@ -20,8 +25,10 @@ describe('AddBookSection Component', () => {
     fireEvent.change(getByLabelText(/genres/i), { target: { value: 'Fiction' } });
 
 
-    // Submit the form
-    fireEvent.click(getByText(/submit/i));
+    await act(async () => {
+      // Submit the form
+      fireEvent.click(getByText(/submit/i));
+    });
 
     // TODO: Add assertions for the expected behavior after form submission
 

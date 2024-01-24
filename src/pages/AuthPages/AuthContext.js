@@ -11,16 +11,32 @@ const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
 
   // Mock user data ***this is without token, so incomplete
-  const mockUserData = {
-    id: 1,
-    firstname: 'John',
-    lastname: 'Doe',
-    email: 'john@example.com',
-    role: 'admin',
-  };
+  // const mockUserData = {
+  //   id: 1,
+  //   firstname: 'John',
+  //   lastname: 'Doe',
+  //   email: 'john@example.com',
+  //   role: 'admin',
+  // };
 
-  const [user, setUser] = useState(mockUserData);
-  const [isAdmin, setIsAdmin] = useState(true);
+  // const mockUserData = {
+  //   status: "Login Successful!",
+  //   success: true,
+  //   token: "your_token_here",
+  //   userinfo: {
+  //     firstname: 'John',
+  //     lastname: 'Doe',
+  //     email: 'john@example.com',
+  //     username: '',
+  //     password: 'strongPassword',
+  //     role: 'student',
+  //     admin: false
+  //   }
+  // }
+
+
+  const [user, setUser] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const login = (userData) => {
     // console.log('auth data', userData.userinfo)

@@ -3,7 +3,10 @@ import { Modal, Button, Form, Row, Col, FormControl } from 'react-bootstrap';
 import { editBookData } from '../../../ApiCalls'
 
 
-const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
+
+const EditBookModal = ({ show, onHide, bookId, bookData, onUpdate }) => {
+
+  const usertoken = localStorage.getItem('userLoginToken');
 
   const [name, setName] = useState(bookData.name);
   const [author, setAuthor] = useState(bookData.author);
@@ -14,7 +17,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
   const [edition, setEdition] = useState(bookData.edition);
   const [publicationDate, setPublicationDate] = useState(new Date(new Date(bookData.publicationDate) + 7).toISOString().split('T')[0]);
 
-  const [editor, setEditor] = useState(bookData.edition);
+  const [editor, setEditor] = useState(bookData.editor);
   const [publisher, setPublisher] = useState(bookData.publisher);
 
 
@@ -23,12 +26,12 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
 
   const [shelf, setShelf] = useState(bookData.shelf);
   const [floor, setFloor] = useState(bookData.floor);
-
+  const [language, setLanguage] = useState(bookData.language);
   const [imageUrl, setImageUrl] = useState(bookData.imageUrl);
   const [description, setDescription] = useState(bookData.description);
 
 
-  const handleBookEdit = () => {
+  const handleBookEdit = async () => {
 
     //   TODO: validate that Title is not emplty and CopyNumber aren't empty
 
@@ -47,15 +50,18 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
       pages,
       shelf,
       floor,
+      language,
       imageUrl,
       description,
 
     };
 
-    console.log(`Editing book copy: ${JSON.stringify(bookData)}`);
-    editBookData(bookId, bookData);
+    await editBookData(bookId, bookData, usertoken);
 
     onHide();
+
+    onUpdate();
+
 
   };
 
@@ -166,7 +172,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
               <Form.Group className="mb-3" controlId="copies">
                 <Form.Label>Copies</Form.Label>
                 <FormControl
-                  type="text"
+                  type="int"
                   value={copies}
                   onChange={(e) => setCopies(e.target.value)}
                 />
@@ -206,6 +212,16 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onSubmit }) => {
               </Form.Group>
             </Col>
           </Row>
+
+          <Form.Group className="mb-3" controlId="language">
+            <Form.Label>Language</Form.Label>
+            <Form.Control
+              type="text"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            />
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="imageUrl">
             <Form.Label>Book Cover Link</Form.Label>
             <Form.Control
