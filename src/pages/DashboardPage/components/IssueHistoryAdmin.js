@@ -15,7 +15,7 @@ const calculateStatus = (dueDate, returnDate) => {
   }
 };
 
-const IssueHistoryAdmin = ({ issueHistory , showBookIdColumn = true}) => {
+const IssueHistoryAdmin = ({ issueHistory, showBookIdColumn = true }) => {
   const [showReturnModal, setShowReturnModal] = useState(false);
   const [selectedIssue, setSelectedIssue] = useState(null);
 
@@ -32,7 +32,7 @@ const IssueHistoryAdmin = ({ issueHistory , showBookIdColumn = true}) => {
     // Apply search filter
     const matchesSearch =
       issue.userId.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      ( showBookIdColumn && issue.bookId.toLowerCase().includes(searchQuery.toLowerCase()))||
+      (showBookIdColumn && issue.bookId.toLowerCase().includes(searchQuery.toLowerCase())) ||
       issue.issueDate.includes(searchQuery) ||
       issue.dueDate.includes(searchQuery) ||
       (issue.returnDate && issue.returnDate.includes(searchQuery));
@@ -79,8 +79,8 @@ const IssueHistoryAdmin = ({ issueHistory , showBookIdColumn = true}) => {
       <Table bordered responsive style={{ whiteSpace: 'nowrap' }}>
         <thead>
           <tr>
-            {showBookIdColumn && <th>Book ID</th>}
-            <th>User ID</th>
+            {showBookIdColumn && <th>Book Name</th>}
+            <th>User Email</th>
             <th>Copy Num.</th>
             <th>Issue Date</th>
             <th>Due Date</th>
@@ -99,20 +99,20 @@ const IssueHistoryAdmin = ({ issueHistory , showBookIdColumn = true}) => {
                 onClick={() => isClickable && handleShowReturnModal(issue)}
                 style={{ cursor: isClickable ? 'pointer' : 'default' }}
               >
-                {showBookIdColumn &&   
-                <td>
-                  <Link to={`/book/${issue.bookId}`}>
-                    {issue.bookId}
-                  </Link>
-                </td>}
-                <td>{issue.userId}</td>
+                {showBookIdColumn &&
+                  <td>
+                    <Link to={`/book/${issue.bookId}`}>
+                      {issue.bookName}
+                    </Link>
+                  </td>}
+                <td>{issue.userEmail}</td>
                 <td>{issue.copyNumber}</td>
                 <td>{issue.issueDate}</td>
                 <td>{issue.dueDate}</td>
                 <td>{issue.returnDate}</td>
                 <td style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   {status}
-                  {isClickable && (<PencilSquare style={{ margin: '0px 10px' }} /> )}
+                  {isClickable && (<PencilSquare style={{ margin: '0px 10px' }} />)}
                 </td>
               </tr>
             );

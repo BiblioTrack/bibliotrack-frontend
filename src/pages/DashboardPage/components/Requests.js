@@ -7,7 +7,7 @@ import RequestDeleteModal from './RequestDeleteModal.js'
 import { useAuth } from '../../../pages/AuthPages/AuthContext.js';
 
 
-const Requests = ({ requests }) => {
+const Requests = ({ requests, onUpdate }) => {
   const { isAdmin } = useAuth();
 
   const [showResponseModal, setShowResponseModal] = useState(false);
@@ -20,9 +20,11 @@ const Requests = ({ requests }) => {
     setSelectedRequest(request);
     setShowResponseModal(true);
   };
+
   useEffect(() => {
     // Update the table when the requests prop changes
     setUpdatedRequests(requests);
+
   }, [requests]);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -33,13 +35,14 @@ const Requests = ({ requests }) => {
     setShowDeleteModal(true);
   };
 
-  const handleUpdateRequests = (updatedRequest) => {
-    const updatedRequestsCopy = [...updatedRequests];
+  const handleUpdateRequests = async (updatedRequest) => {
+    const updatedRequestsCopy = await [...updatedRequests];
     const index = updatedRequestsCopy.findIndex((r) => r.requestId === updatedRequest.requestId);
     if (index !== -1) {
       updatedRequestsCopy[index] = updatedRequest;
       setUpdatedRequests(updatedRequestsCopy);
     }
+    onUpdate(); // notify parent 
   };
 
   return (
@@ -78,7 +81,7 @@ const Requests = ({ requests }) => {
               >
                 <td>{request.requestId}</td>
                 <td>
-                  <Link to={`/book/${request.bookName}`}>
+                  <Link to={`/book/${request.bookId}`}>
                     {request.bookName}
                   </Link>
                 </td>

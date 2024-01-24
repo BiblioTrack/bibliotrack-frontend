@@ -1,90 +1,106 @@
 import React, { useEffect, useState } from 'react';
 import Requests from './Requests.js';
-import { useAuth } from '../../AuthPages/AuthContext.js';
 import IssueHistoryAdmin from '../components/IssueHistoryAdmin.js';
 import { Container } from 'react-bootstrap';
-import { fetchIssueHistory, fetchIssueRequests } from '../../../ApiCalls.js';
+import { useAuth } from '../../AuthPages/AuthContext.js';
+import { fetchIssueHistory, fetchIssueRequests, fetchRequestById } from '../../../ApiCalls.js';
 
 const DashboardAdmin = () => {
   const { user } = useAuth();
   const [issueHistory, setIssueHistory] = useState([]);
   const [issueRequests, setIssueRequests] = useState([]);
-  const fetchData = async (user) => {
 
-    console.log('issue history', user.token)
-    // TODO: Fetch issue history
-    const historyData = await fetchIssueHistory(user);
+  const restructureHistoryData = async (historyData) => {
+    const restructuredData = await Promise.all(
+      historyData.map(async (requestHistory) => {
+        try {
+          const request = await fetchRequestById(requestHistory.request._id, user);
+          if (!request || !request.userId) {
+            // Handle cases where request or userId is null
+            return null;
+          }
 
-    const restructureHistoryData = (historyData) => {
-      return historyData.map(request => ({
-        userEmail: request.userId.email,
-        bookName: request.bookId.name,
-        copyNumber: request.copyNumber,
-        issueDate: new Date(new Date(request.requestDate) + 7).toISOString().split('T')[0],
-        dueDate: new Date(new Date(request.dueDate) + 7).toISOString().split('T')[0],
-        returnDate: new Date(new Date(request.returnDate) + 7).toISOString().split('T')[0],
-        status: request.status,
-        requestId: request._id
-      }));
-    };
-    const restructuredHistoryDataList = restructureHistoryData(historyData);
+          const userData = request.userId;
+          return {
+            userId: userData._id,
+            userEmail: userData.email,
+            bookName: requestHistory.request?.bookId?.name || null,
+            copyNumber: requestHistory.request?.copyNumber || null,
+            issueDate: new Date(new Date(requestHistory.request?.requestDate) + 7).toISOString().split('T')[0],
+            dueDate: new Date(new Date(requestHistory.request?.dueDate) + 7).toISOString().split('T')[0],
+            returnDate: requestHistory.returnDate
+              ? new Date(new Date(requestHistory.returnDate) + 7).toISOString().split('T')[0]
+              : null,
+          };
+        } catch (error) {
+          console.error('Error while fetching data:', error);
+          return null;
+        }
+      })
+    );
 
-    setIssueHistory(restructuredHistoryDataList);
-
-    // // TODO: Fetch issue requests
-    const requestData = await fetchIssueRequests(user);
-
-
-    const restructureRequestData = (requestData) => {
-      return requestData.map(request => ({
-        requestId: request._id,
-        userEmail: request.userId.email,
-        bookName: request.bookId.name,
-        copyNumber: request.copyNumber,
-        issueDate: new Date(new Date(request.requestDate) + 7).toISOString().split('T')[0],
-        dueDate: new Date(new Date(request.dueDate) + 7).toISOString().split('T')[0],
-        status: request.status
-      }));
-    };
-
-    const restructuredDataList = restructureRequestData(requestData);
-    console.log('request data', restructuredDataList)
-    setIssueRequests(restructuredDataList);
-
-
-    // Mock
-    // const dummyIssueHistory = [
-    //   { userId: '123', bookId: '1', copyNumber: '888', issueDate: '2023-01-01', dueDate: '2023-01-15', returnDate: '2023-01-14' },
-    //   { userId: '456', bookId: '1', copyNumber: '999', issueDate: '2023-02-01', dueDate: '2023-02-15', returnDate: null },
-    //   { userId: '789', bookId: '1', copyNumber: '777', issueDate: '2023-12-01', dueDate: '2023-12-28', returnDate: null },
-    //   { userId: '123', bookId: '1', copyNumber: '666', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26' },
-    //   { userId: '789', bookId: '2', copyNumber: '555', issueDate: '2023-12-01', dueDate: '2023-12-28', returnDate: null },
-    //   { userId: '123', bookId: '33', copyNumber: '444', issueDate: '2023-12-01', dueDate: '2023-12-25', returnDate: '2023-12-26' },
-    // ];
-
-    // const dummyIssueRequests = [
-    //   { userId: '123', bookId: '1', issueDate: '2023-01-01', dueDate: '2023-01-15', status: 'Pending' },
-    //   { userId: '456', bookId: '2', issueDate: '2023-01-02', dueDate: '2023-01-16', status: 'Rejected' },
-    //   { userId: '789', bookId: '1', issueDate: '2023-01-03', dueDate: '2023-01-17', status: 'Approved' },
-    // ];
-
-    // setIssueHistory(dummyIssueHistory);
-    // setIssueRequests(dummyIssueRequests);
+    return restructuredData.filter(Boolean); // Filter out null values
   };
+
+  const fetchData = async () => {
+    try {
+      // console.log('user token', user.token);
+      const historyData = await fetchIssueHistory(user);
+      // console.log('issue history', historyData);
+
+      const restructuredHistoryDataList = await restructureHistoryData(historyData);
+      // console.log('issue history updated', restructuredHistoryDataList);
+      setIssueHistory(restructuredHistoryDataList);
+
+      // Fetch issue requests
+      const requestData = await fetchIssueRequests(user);
+
+      const restructureRequestData = (requestData) => {
+        return requestData.map((request) => ({
+          requestId: request._id,
+          userEmail: request.userId?.email || null,
+          bookName: request.bookId?.name || null,
+          bookId: request.bookId?._id || null,
+          copyNumber: request.copyNumber || null,
+          issueDate: new Date(new Date(request.requestDate) + 7).toISOString().split('T')[0],
+          dueDate: new Date(new Date(request.dueDate) + 7).toISOString().split('T')[0],
+          status: request.status || null,
+        }));
+      };
+
+      const restructuredDataList = restructureRequestData(requestData);
+      // console.log('request data', restructuredDataList);
+      setIssueRequests(restructuredDataList);
+    } catch (error) {
+      console.error('Error while fetching data:', error);
+    }
+  };
+
   useEffect(() => {
-    fetchData(user);
-  }, [user]);
+    fetchData();
+  });
 
+  const handleRequestUpdate = async () => {
+    try {
+      // Fetch issue history
+      const historyData = await fetchIssueHistory(user);
+      // console.log('issue history', historyData);
 
+      const restructuredHistoryDataList = await restructureHistoryData(historyData);
+      setIssueHistory(restructuredHistoryDataList);
+    } catch (error) {
+      console.error('Error while fetching data:', error);
+    }
+  };
 
   return (
     <Container>
       <h4 className='my-5'>Dashboard</h4>
 
-      <Requests requests={issueRequests} />
+      <Requests requests={issueRequests} onUpdate={handleRequestUpdate} />
       <IssueHistoryAdmin issueHistory={issueHistory} />
     </Container>
   );
-}
+};
 
 export default DashboardAdmin;
