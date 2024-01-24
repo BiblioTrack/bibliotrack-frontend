@@ -44,6 +44,7 @@ const RequestCopyModal = ({ show, onHide, bookId }) => {
       dueDate,
       copyNumber,
       reason,
+      status: 'Pending'
     };
 
     console.log(user)
