@@ -284,12 +284,12 @@ export const approveBookRequest = async (selectedRequest, updateData, user) => {
 
     console.log('Book request approved successfully');
 
-    const returnDate = new Date(new Date(selectedRequest.issueDate).setDate(new Date(selectedRequest.issueDate).getDate() + 14)).toDateString()
+    //const returnDate = new Date(new Date(selectedRequest.issueDate).setDate(new Date(selectedRequest.issueDate).getDate() + 14)).toDateString()
 
     const issueData = {
       request: selectedRequest.requestId,
       issueDate: selectedRequest.issueDate,
-      returnDate: returnDate,
+      returnDate: null,
       dueDate: selectedRequest.dueDate,
       isReturned: false
     }
