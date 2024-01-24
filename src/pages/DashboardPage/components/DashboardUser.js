@@ -3,7 +3,7 @@ import Requests from './Requests.js';
 import IssueHistoryUser from './IssueHistoryUser.js';
 import { Container } from 'react-bootstrap';
 import { useAuth } from '../../AuthPages/AuthContext.js';
-import { fetchIssueHistorySingleUser, fetchIssueRequestsSingleUser } from '../../../ApiCalls.js';
+// import { fetchIssueHistorySingleUser, fetchIssueRequestsSingleUser } from '../../../ApiCalls.js';
 
 const DashboardUser = () => {
 
