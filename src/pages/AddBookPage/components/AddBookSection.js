@@ -169,7 +169,7 @@ const AddBookSection = () => {
             <Form.Group className="mb-3" controlId="copies">
               <Form.Label>Copies *</Form.Label>
               <FormControl
-                type="text"
+                type="int"
                 value={copies}
                 onChange={(e) => setCopies(e.target.value)}
               />
