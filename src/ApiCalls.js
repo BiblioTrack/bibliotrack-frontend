@@ -243,6 +243,29 @@ export const approveBookRequest = async (requestId, updateData, user) => {
   }
 };
 
+export const rejectBookRequest = async (requestId, updateData, user) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/bookRequests/${requestId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(updateData),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to reject book request');
+    }
+
+    console.log('Book request rejected successfully');
+
+  } catch (error) {
+    console.error('Error rejecting book request:', error.message);
+    alert('Failed to reject book request. Please try again.');
+  }
+};
+
 
 // export const fetchUserById = async (userId) => {
 //   // Implement the logic to fetch user details by userId from your API

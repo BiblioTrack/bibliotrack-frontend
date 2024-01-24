@@ -1,7 +1,7 @@
 // RequestResponseModal.js
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { approveBookRequest } from '../../../ApiCalls'
+import { approveBookRequest, rejectBookRequest } from '../../../ApiCalls'
 import { useAuth } from '../../AuthPages/AuthContext.js';
 
 const RequestResponseModal = ({ show, onClose, onUpdateRequests, selectedRequest }) => {
@@ -31,10 +31,27 @@ const RequestResponseModal = ({ show, onClose, onUpdateRequests, selectedRequest
     }
   };
 
-  const handleReject = () => {
-    // TODO: Implement logic for rejecting the request
-    console.log(`Reject Request: ${JSON.stringify(selectedRequest)}`);
-    onClose();
+  const handleReject = async () => {
+    try {
+      // TODO: Implement logic for approving the request
+      const updateData = {
+        status: 'Rejected',
+      };
+
+      // Call the approveBookRequest function and wait for it to complete
+      await rejectBookRequest(selectedRequest.requestId, updateData, user);
+
+      // Notify the parent component about the updated request
+      onUpdateRequests({
+        ...selectedRequest,
+        status: 'Rejected',
+      });
+
+      onClose();
+    } catch (error) {
+      console.error('Error approving request:', error.message);
+      alert('Failed to approve request. Please try again.');
+    }
   };
 
   return (

@@ -39,6 +39,7 @@ const DashboardAdmin = () => {
         requestId: request._id,
         userEmail: request.userId.email,
         bookName: request.bookId.name,
+        bookId: request.bookId._id,
         copyNumber: request.copyNumber,
         issueDate: new Date(new Date(request.requestDate) + 7).toISOString().split('T')[0],
         dueDate: new Date(new Date(request.dueDate) + 7).toISOString().split('T')[0],

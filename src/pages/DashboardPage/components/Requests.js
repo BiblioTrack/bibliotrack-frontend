@@ -20,7 +20,7 @@ const Requests = ({ requests }) => {
     setSelectedRequest(request);
     setShowResponseModal(true);
   };
-  
+
   useEffect(() => {
     // Update the table when the requests prop changes
     setUpdatedRequests(requests);
@@ -79,7 +79,7 @@ const Requests = ({ requests }) => {
               >
                 <td>{request.requestId}</td>
                 <td>
-                  <Link to={`/book/${request.bookName}`}>
+                  <Link to={`/book/${request.bookId}`}>
                     {request.bookName}
                   </Link>
                 </td>
