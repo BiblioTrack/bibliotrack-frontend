@@ -16,7 +16,7 @@ const RequestResponseModal = ({ show, onClose, onUpdateRequests, selectedRequest
       };
 
       // Call the approveBookRequest function and wait for it to complete
-      await approveBookRequest(selectedRequest.requestId, updateData, user);
+      await approveBookRequest(selectedRequest, updateData, user);
 
       // Notify the parent component about the updated request
       onUpdateRequests({
@@ -39,7 +39,7 @@ const RequestResponseModal = ({ show, onClose, onUpdateRequests, selectedRequest
       };
 
       // Call the approveBookRequest function and wait for it to complete
-      await rejectBookRequest(selectedRequest.requestId, updateData, user);
+      await rejectBookRequest(selectedRequest, updateData, user);
 
       // Notify the parent component about the updated request
       onUpdateRequests({

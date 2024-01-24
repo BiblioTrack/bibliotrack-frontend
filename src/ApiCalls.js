@@ -220,9 +220,9 @@ export const createBookRequest = async (issueData, user) => {
 }
 
 
-export const approveBookRequest = async (requestId, updateData, user) => {
+export const approveBookRequest = async (selectedRequest, updateData, user) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/bookRequests/${requestId}`, {
+    const response = await fetch(`${API_BASE_URL}/bookRequests/${selectedRequest.requestId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -237,15 +237,28 @@ export const approveBookRequest = async (requestId, updateData, user) => {
 
     console.log('Book request approved successfully');
 
+    const returnDate = new Date(new Date(selectedRequest.issueDate).setDate(new Date(selectedRequest.issueDate).getDate() + 14)).toDateString()
+
+    const issueData = {
+      request: selectedRequest.requestId,
+      issueDate: selectedRequest.issueDate,
+      returnDate: returnDate,
+      dueDate: selectedRequest.dueDate,
+      isReturned: false
+    }
+
+    createIssueCopy(issueData, user);
+    // return data
+
   } catch (error) {
     console.error('Error approving book request:', error.message);
     alert('Failed to approve book request. Please try again.');
   }
 };
 
-export const rejectBookRequest = async (requestId, updateData, user) => {
+export const rejectBookRequest = async (selectedRequest, updateData, user) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/bookRequests/${requestId}`, {
+    const response = await fetch(`${API_BASE_URL}/bookRequests/${selectedRequest.requestId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -266,30 +279,27 @@ export const rejectBookRequest = async (requestId, updateData, user) => {
   }
 };
 
-
-// export const fetchUserById = async (userId) => {
-//   // Implement the logic to fetch user details by userId from your API
-//   
-// };
-
 export const createIssueCopy = async (issueData, user) => {
 
-  // createBookRequest(issueData, user)
-
   try {
+    console.log('issuebook', issueData)
     const response = await fetch(`${API_BASE_URL}/issues`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
       },
       body: JSON.stringify(issueData),
     });
+
+    // const data = await response.json();
 
     if (!response.ok) {
       throw new Error('Failed to issue copy');
     }
 
     console.log('Copy issued successfully');
+    // return data;
   } catch (error) {
     console.error('Error issuing copy:', error.message);
     alert('Failed to issue copy. Please try again.');
