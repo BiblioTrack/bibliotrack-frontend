@@ -43,7 +43,7 @@ const DashboardAdmin = () => {
     return restructuredData.filter(Boolean); // Filter out null values
   };
 
-  const fetchData = async () => {
+  const fetchData = async (user) => {
     try {
 
       const historyData = await fetchIssueHistory(user);
@@ -78,7 +78,7 @@ const DashboardAdmin = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData(user);
   }, [user]);
 
   const handleRequestUpdate = async () => {
