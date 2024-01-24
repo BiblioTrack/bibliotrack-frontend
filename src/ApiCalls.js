@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 console.log("API BASE URL -> " + API_BASE_URL);
 
+export default API_BASE_URL;
 
 export const fetchAllBooks = async () => {
   try {
