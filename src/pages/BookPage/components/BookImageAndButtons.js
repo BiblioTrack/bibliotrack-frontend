@@ -9,7 +9,8 @@ import EditBookModal from './EditBookModal.js';
 import { deleteBook } from '../../../ApiCalls.js';
 import { useAuth } from '../../AuthPages/AuthContext.js';
 
-const BookImageAndButtons = ({ isAdmin, book }) => {
+
+const BookImageAndButtons = ({ isAdmin, book, onUpdate }) => {
   const navigate = useNavigate();
   const user = useAuth();
 
@@ -39,6 +40,10 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
   };
   const handleHideEditBookModal = () => {
     setEditBookModal(false);
+  };
+
+  const handleUpdate = () => {
+    onUpdate();
   };
   /*For Delete Book*/
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -114,6 +119,7 @@ const BookImageAndButtons = ({ isAdmin, book }) => {
             onHide={handleHideEditBookModal}
             bookId={book._id}
             bookData={book}
+            onUpdate={handleUpdate}
           />
 
         </>

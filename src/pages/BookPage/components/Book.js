@@ -1,21 +1,30 @@
 // BookDetails.js
 
-// import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import BookImageAndButtons from './BookImageAndButtons.js';
 import BookInfo from './BookInfo.js';
 // import IssueHistoryAdmin from '../../../pages/DashboardPage/components/IssueHistoryAdmin.js';
 import { useAuth } from '../../AuthPages/AuthContext.js';
 import './Book.css';
-// import { fetchIssueHistorySingleBook } from '../../../ApiCalls.js'
+import { fetchBook } from '../../../ApiCalls.js'
 
 const Book = ({ book }) => {
+
+  const handleUpdate = async () => {
+
+    const newbook = await fetchBook(book._id);
+    setBookInfoData(newbook)
+  };
   const { isAdmin } = useAuth();
+  const [bookInfoData, setBookInfoData] = useState(book);
   // const { isAdmin, user } = useAuth();
   // const [issues, setIssues] = useState([]);
 
 
   // useEffect(() => {
+  //   handleUpdate();
+  // })
   //   //TODO: use fetchIssueHistorySingleBook logic here
 
 
@@ -51,12 +60,12 @@ const Book = ({ book }) => {
       <Row>
         {/* Image and Request Borrowing Button */}
         <Col lg={3} md={4} className="book-details-image text-center">
-          <BookImageAndButtons isAdmin={isAdmin} book={book} />
+          <BookImageAndButtons isAdmin={isAdmin} book={book} onUpdate={handleUpdate} />
         </Col>
 
         <Col lg={9} md={8} className="book-details-info mt-5 mt-md-0">
           {/* Book Info */}
-          <BookInfo book={book} />
+          <BookInfo book={bookInfoData} />
         </Col>
       </Row>
       <Row> <Col><hr className="my-5" /></Col></Row>

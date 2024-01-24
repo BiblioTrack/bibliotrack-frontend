@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Row, Col, FormControl } from 'react-bootstrap';
 import { editBookData } from '../../../ApiCalls'
+
 import { useAuth } from '../../AuthPages/AuthContext.js';
 
 
-const EditBookModal = ({ show, onHide, bookId, bookData }) => {
+const EditBookModal = ({ show, onHide, bookId, bookData, onUpdate }) => {
   const { user } = useAuth();
+
   const [name, setName] = useState(bookData.name);
   const [author, setAuthor] = useState(bookData.author);
 
@@ -29,7 +31,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData }) => {
   const [description, setDescription] = useState(bookData.description);
 
 
-  const handleBookEdit = () => {
+  const handleBookEdit = async () => {
 
     //   TODO: validate that Title is not emplty and CopyNumber aren't empty
 
@@ -54,11 +56,12 @@ const EditBookModal = ({ show, onHide, bookId, bookData }) => {
 
     };
 
-    console.log(`Editing book copy: ${JSON.stringify(bookData)}`);
-    console.log(`user: ${JSON.stringify(user.token)}`);
-    editBookData(bookId, bookData, user);
+    await editBookData(bookId, bookData, user.token);
 
     onHide();
+
+    onUpdate();
+
 
   };
 
@@ -169,7 +172,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData }) => {
               <Form.Group className="mb-3" controlId="copies">
                 <Form.Label>Copies</Form.Label>
                 <FormControl
-                  type="text"
+                  type="int"
                   value={copies}
                   onChange={(e) => setCopies(e.target.value)}
                 />

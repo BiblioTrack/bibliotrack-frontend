@@ -169,13 +169,13 @@ export const deleteBook = async (bookId, user) => {
 };
 
 
-export const editBookData = async (bookId, bookData, user) => {
+export const editBookData = async (bookId, bookData, usertoken) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/books?_id=${bookId}`, {
+    const response = await fetch(`${API_BASE_URL}/books/${bookId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user.token}`,
+        'Authorization': `Bearer ${usertoken}`,
       },
       body: JSON.stringify(bookData),
     });
