@@ -46,6 +46,23 @@ export const fetchIssueHistory = async (user) => {
   }
 };
 
+export const fetchIssueById = async (issueId, user) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/issues/${issueId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching issue history:', error);
+    return [];
+  }
+};
+
 export const fetchIssueHistorySingleUser = async (user) => {
 
   const token = user.token;
