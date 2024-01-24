@@ -48,11 +48,10 @@ export const fetchIssueHistory = async (user) => {
 
 export const fetchIssueHistorySingleUser = async (user) => {
 
-  const userId = user.userinfo._id;
   const token = user.token;
 
   try {
-    const response = await fetch(`${API_BASE_URL}/issues?userId=${userId}`, {
+    const response = await fetch(`${API_BASE_URL}/issues/user`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -104,12 +103,43 @@ export const fetchIssueRequests = async (user) => {
   }
 };
 
+export const fetchRequestById = async (requestId, user) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/bookRequests/${requestId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching issue requests:', error);
+    return [];
+  }
+};
+
+export const deleteBookRequet = async (requestId, user) => {
+  try {
+    await fetch(`${API_BASE_URL}/bookRequests/${requestId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+    });
+
+  } catch (error) {
+    console.error('Error deleting issue requests:', error);
+  }
+};
+
 // Function to fetch all issue requests from the API
 export const fetchIssueRequestsSingleUser = async (user) => {
-  const userId = user.userinfo._id;
   const token = user.token;
   try {
-    const response = await fetch(`${API_BASE_URL}/bookRequests?userId=${userId}`, {
+    const response = await fetch(`${API_BASE_URL}/bookRequests/user`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
