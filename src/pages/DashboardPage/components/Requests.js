@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { PencilSquare, Trash3 } from 'react-bootstrap-icons';
 import RequestResponseModal from './RequestResponseModal';
 import RequestDeleteModal from './RequestDeleteModal.js'
@@ -81,9 +80,7 @@ const Requests = ({ requests, onUpdate }) => {
               >
                 <td>{request.requestId}</td>
                 <td>
-                  <Link to={`/book/${request.bookId}`}>
                     {request.bookName}
-                  </Link>
                 </td>
 
                 {isAdmin && <td>{request.userEmail}</td>}

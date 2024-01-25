@@ -1,25 +1,30 @@
 // ReturnModal.js
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import {updateIssueCopy} from '../../../ApiCalls';
+import { useAuth } from '../../AuthPages/AuthContext.js';
 
 const MarkReturnedModal = ({ show, onClose, selectedIssue }) => {
-    
+  const { user } = useAuth();
   const [returnDate, setReturnDate] = useState(
     new Date().toISOString().split('T')[0] 
   );
 
-  const handleMarkReturned = () => {
+  const handleMarkReturned = async() => {
 
      // Check if the return date is not empty
      if (!returnDate) {
         alert('Return date cannot be empty');
         return;
+      }else{
+        selectedIssue.returnDate = returnDate;
+        await updateIssueCopy(selectedIssue,user);
+        console.log(selectedIssue);
       }
 
     // Perform logic to mark issue as returned and set the return date
     console.log(`Marking ${selectedIssue} as returned`);
     console.log(JSON.stringify(returnDate));
-
 
     onClose();
   };

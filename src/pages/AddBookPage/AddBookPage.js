@@ -2,9 +2,14 @@ import TopNavbar from '../../components/TopNavbar.js';
 import VerticalSpace from '../../components/VerticalSpace.js';
 import AddBookSection from './components/AddBookSection.js';
 import { useAuth } from '../AuthPages/AuthContext.js'; 
+import {Navigate } from 'react-router-dom';
 
 function AddBookPage() {
-  const {isAdmin } = useAuth();
+  const {user, isAdmin } = useAuth();
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   return <>
   {isAdmin && 

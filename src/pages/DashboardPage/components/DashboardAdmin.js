@@ -22,6 +22,7 @@ const DashboardAdmin = () => {
 
           const userData = request.userId;
           return {
+            issueId:requestHistory._id,
             userId: userData._id,
             userEmail: userData.email,
             bookName: requestHistory.request?.bookId?.name || null,

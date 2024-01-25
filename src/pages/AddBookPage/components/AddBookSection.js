@@ -42,12 +42,17 @@ const AddBookSection = () => {
       return;
     }
 
+    if(isbn.length<6){
+      alert('ISBN is too short.');
+      return;
+    }
+
     // TODO: Add new book addition logic here
     const newBook = {
       name,
       author,
       isbn,
-      genres,
+      "genres":genres.split(",").map(string => string.trim()),
       edition,
       publicationDate,
       editor,
@@ -113,7 +118,7 @@ const AddBookSection = () => {
           </Col>
           <Col md={6} className="mb-3">
             <Form.Group className="mb-3" controlId="genres">
-              <Form.Label>Genres *</Form.Label>
+              <Form.Label>Genres (,) *</Form.Label>
               <FormControl
                 type="text"
                 value={genres}

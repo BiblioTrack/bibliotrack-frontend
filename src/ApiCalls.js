@@ -199,6 +199,7 @@ export const addNewBook = async (bookData, usertoken) => {
 
   } catch (error) {
     // Handle errors (e.g., show error message)
+    console.log(usertoken);
     console.error('Error adding book:', error.message);
   }
 };
@@ -292,12 +293,12 @@ export const approveBookRequest = async (selectedRequest, updateData, user) => {
 
     console.log('Book request approved successfully');
 
-    const returnDate = new Date(new Date(selectedRequest.issueDate).setDate(new Date(selectedRequest.issueDate).getDate() + 14)).toDateString()
+    //const returnDate = new Date(new Date(selectedRequest.issueDate).setDate(new Date(selectedRequest.issueDate).getDate() + 14)).toDateString()
 
     const issueData = {
       request: selectedRequest.requestId,
       issueDate: selectedRequest.issueDate,
-      returnDate: returnDate,
+      returnDate: null,
       dueDate: selectedRequest.dueDate,
       isReturned: false
     }
@@ -358,5 +359,32 @@ export const createIssueCopy = async (issueData, user) => {
   } catch (error) {
     console.error('Error issuing copy:', error.message);
     alert('Failed to issue copy. Please try again.');
+  }
+}
+
+export const updateIssueCopy = async (issueData, user) => {
+
+  try {
+    console.log('issuebook', issueData)
+    const response = await fetch(`${API_BASE_URL}/issues/${issueData.issueId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(issueData),
+    });
+
+    // const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error('Failed to  update issue ');
+    }
+
+    console.log('Update issued successfully');
+    // return data;
+  } catch (error) {
+    console.error('Error updating issue:', error.message);
+    alert('Failed to update issue. Please try again.');
   }
 }
