@@ -20,21 +20,40 @@ async function dashboardPageTest() {
     try {
         logResults(`Log file for the test which enters the dashboard page and tests book issue history`); 
 
-        await driver.get("http://localhost:3000/");
+        logResults(`Log file for the test case to test the login page`); 
+        await driver.get("https://biblio-track.onrender.com/");
         const pageTitle = await driver.getTitle();
         const currentUrl = await driver.getCurrentUrl();
         logResults(`Page title is: ${pageTitle} and the URL is:${currentUrl}`);
+        await driver.sleep(2000);
+        
+        const clickLogin = await driver.findElement(By.xpath('//*[@id="basic-navbar-nav"]/div[2]/a')).click();
+        const loginPageUrl = await driver.getCurrentUrl();
+        logResults(`entered login page and URL is ${loginPageUrl}`);
+        await driver.sleep(2000);
+
+        const emailId = await driver.findElement(By.id('username'));
+        await emailId.sendKeys('admin');
+        const password = await driver.findElement(By.id('password'));
+        await password.sendKeys('password');
+        
+        const clickSubmit = await driver.findElement(By.xpath('//*[@id="root"]/div[2]/div/div/div/form/button')).click();
+        logResults(`entered admin email ID and password`);
+        await driver.sleep(2000);
+        const postLoginUrl = await driver.getCurrentUrl();
+        logResults(`admin logged in and URL is ${postLoginUrl}`);
+
 
         // Click on the dashboard button
-        const dashboardButton = await driver.findElement(By.xpath('//*[@id="basic-navbar-nav"]/div/a[2]')).click('');
+        const dashboardButton = await driver.findElement(By.xpath('//*[@id="basic-navbar-nav"]/div[1]/a[2]')).click('');
         const dashboardUrl = await driver.getCurrentUrl();
         logResults(`clicked dashboard button and the URL is:${dashboardUrl}`);
         await driver.sleep(2000);
 
         // Click on an issueRequest
-        const dashboardIssueRequest = await driver.findElement(By.xpath('//*[@id="root"]/div[2]/div[1]/div/table/tbody/tr[2]/td[1]/a')).click('');
+        const dashboardIssueRequest = await driver.findElement(By.xpath('//*[@id="root"]/div[2]/div[1]/div/table/tbody/tr[1]/td[2]/a')).click('');
         const issueRequestUrl = await driver.getCurrentUrl();
-        logResults(`clicked the 2nd issue request and the URL is:${issueRequestUrl}`);
+        logResults(`clicked one of the issue requests and the URL is:${issueRequestUrl}`);
         await driver.sleep(2000);
 
         await driver.navigate().back();        
@@ -65,12 +84,6 @@ async function dashboardPageTest() {
         await filterDropdown.sendKeys('All');
         await driver.sleep(2000);
         logResults('Selected option: All');
-
-        // Testing issueHistory search bar
-        const issueHistory = await driver.findElement(By.className('form-control'));
-        await issueHistory.sendKeys("123");
-        await driver.sleep(2000);
-        logResults('type 123 and observation done');
 
         logResults('Dashboard page and Dropdown filter test passed.');
     } catch (error) {

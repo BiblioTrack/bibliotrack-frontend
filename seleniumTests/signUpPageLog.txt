@@ -1,5 +1,24 @@
-
-[1/19/2024, 10:40:39 PM] Log file for the test case to test the login page
-[1/19/2024, 10:40:39 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/login
-[1/19/2024, 10:40:41 PM] redirected to signUp page and URL is http://localhost:3000/signup
-[1/19/2024, 10:40:48 PM] entered user's personal details
+[1/25/2024, 7:28:04 AM] Log file for the test case to test the login page
+[1/25/2024, 7:28:05 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 7:28:07 AM] Test failed. Error: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div[2]/div/div/div/form/div[3]/p[2]/a"}
+  (Session info: chrome=121.0.6167.85)
+[1/25/2024, 7:29:17 AM] Log file for the test case to test the login page
+[1/25/2024, 7:29:18 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 7:29:20 AM] Test failed. Error: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div[2]/div/div/div/form/div[3]/p[2]/a"}
+  (Session info: chrome=121.0.6167.85)
+[1/25/2024, 7:30:12 AM] Log file for the test case to test the login page
+[1/25/2024, 7:30:12 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 7:30:14 AM] Test failed. Error: no such element: Unable to locate element: {"method":"xpath","selector":"/html/body/div/div[2]/div/div/div/form/div[3]/p[2]/a"}
+  (Session info: chrome=121.0.6167.85)
+[1/25/2024, 7:30:46 AM] Log file for the test case to test the login page
+[1/25/2024, 7:30:47 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 7:30:49 AM] Test failed. Error: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div[2]/div/div/div/form/div[3]/p[2]/a"}
+  (Session info: chrome=121.0.6167.85)
+[1/25/2024, 7:30:56 AM] Log file for the test case to test the login page
+[1/25/2024, 7:30:57 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 7:30:59 AM] Test failed. Error: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div[2]/div/div/div/form/div[3]/p[2]/a"}
+  (Session info: chrome=121.0.6167.85)
+[1/25/2024, 7:31:37 AM] Log file for the test case to test the login page
+[1/25/2024, 7:31:37 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 7:31:39 AM] Test failed. Error: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div[2]/div/div/div/form/div[3]/p[2]/a"}
+  (Session info: chrome=121.0.6167.85)

@@ -1,12 +1,14 @@
-[1/19/2024, 7:38:49 PM] Log file for the test which enters the dashboard page and tests book issue history
-[1/19/2024, 7:38:50 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
-[1/19/2024, 7:38:50 PM] clicked dashboard button and the URL is:http://localhost:3000/dashboard
-[1/19/2024, 7:38:52 PM] clicked the 2nd issue request and the URL is:http://localhost:3000/book/2
-[1/19/2024, 7:38:54 PM] back to the dashboard page  and the URL is:http://localhost:3000/dashboard
-[1/19/2024, 7:38:58 PM] Selected option: Returned
-[1/19/2024, 7:39:00 PM] Selected option: Overdue
-[1/19/2024, 7:39:02 PM] Selected option: In Progress
-[1/19/2024, 7:39:04 PM] Selected option: All
-[1/19/2024, 7:39:06 PM] type 123 and observation done
-[1/19/2024, 7:39:06 PM] Dashboard page and Dropdown filter test passed.
-
+[1/25/2024, 6:59:09 AM] Log file for the test which enters the dashboard page and tests book issue history
+[1/25/2024, 6:59:09 AM] Log file for the test case to test the login page
+[1/25/2024, 6:59:09 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 6:59:11 AM] entered login page and URL is https://biblio-track.onrender.com/login
+[1/25/2024, 6:59:13 AM] entered admin email ID and password
+[1/25/2024, 6:59:15 AM] admin logged in and URL is https://biblio-track.onrender.com/
+[1/25/2024, 6:59:15 AM] clicked dashboard button and the URL is:https://biblio-track.onrender.com/dashboard
+[1/25/2024, 6:59:17 AM] clicked one of the issue requests and the URL is:https://biblio-track.onrender.com/book/65a45409e7cd239effdb6a11
+[1/25/2024, 6:59:19 AM] back to the dashboard page  and the URL is:https://biblio-track.onrender.com/dashboard
+[1/25/2024, 6:59:23 AM] Selected option: Returned
+[1/25/2024, 6:59:25 AM] Selected option: Overdue
+[1/25/2024, 6:59:27 AM] Selected option: In Progress
+[1/25/2024, 6:59:29 AM] Dashboard page and Dropdown filter test passed.
+[1/25/2024, 6:59:29 AM] Selected option: All

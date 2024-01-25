@@ -1,0 +1,8 @@
+
+[1/25/2024, 7:03:22 AM] Log file for the test case to test the login page
+[1/25/2024, 7:03:23 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 7:03:25 AM] entered login page and URL is https://biblio-track.onrender.com/login
+[1/25/2024, 7:03:27 AM] entered user email ID and password
+[1/25/2024, 7:03:29 AM] user logged in and URL is https://biblio-track.onrender.com/
+[1/25/2024, 7:03:31 AM] user logged out successfully and URL is https://biblio-track.onrender.com/login
+[1/25/2024, 7:03:33 AM] user login and log out functionality tested

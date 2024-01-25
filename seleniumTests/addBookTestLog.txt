@@ -1,5 +1,11 @@
-
-[1/19/2024, 10:39:58 PM] Log file for the test which redirects the addBook page and enters the book details
-[1/19/2024, 10:39:58 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
-[1/19/2024, 10:39:59 PM] redirected to addBook button and the URL is:http://localhost:3000/addbook
-[1/19/2024, 10:40:15 PM] Entered new book details
+[1/25/2024, 6:57:03 AM] Log file for the test which redirects the addBook page and enters the book details
+[1/25/2024, 6:57:03 AM] Log file for the test case to test the login page
+[1/25/2024, 6:57:04 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 6:57:06 AM] entered login page and URL is https://biblio-track.onrender.com/login
+[1/25/2024, 6:57:08 AM] entered admin email ID and password
+[1/25/2024, 6:57:10 AM] admin logged in and URL is https://biblio-track.onrender.com/
+[1/25/2024, 6:57:11 AM] redirected to addBook button and the URL is:https://biblio-track.onrender.com/addbook
+[1/25/2024, 6:57:29 AM] Entered new book details
+[1/25/2024, 6:57:31 AM] AddBook page test passed
+[1/25/2024, 6:57:31 AM] Admin successfully added required Book details and URL is https://biblio-track.onrender.com/
+[1/25/2024, 6:57:33 AM] Admin AddBook functionality tested

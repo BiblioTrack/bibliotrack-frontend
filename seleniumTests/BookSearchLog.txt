@@ -1,13 +1,16 @@
-[1/19/2024, 7:23:15 PM] Log file for the test case to test the search navigation bar and the book issue history
-[1/19/2024, 7:23:15 PM] Page title is: BiblioTrack and the URL is:http://localhost:3000/
-[1/19/2024, 7:23:19 PM] searched and selected on the book 1984
-[1/19/2024, 7:23:20 PM] Redirected to: http://localhost:3000/book/3
-[1/19/2024, 7:23:21 PM] Checking dropdown in book issue history
-[1/19/2024, 7:23:24 PM] Selected option: Returned
-[1/19/2024, 7:23:26 PM] Selected option: Overdue
-[1/19/2024, 7:23:28 PM] Selected option: In Progress
-[1/19/2024, 7:23:30 PM] Selected option: All
-[1/19/2024, 7:23:32 PM] type 123 and observation done
-[1/19/2024, 7:23:32 PM] Search bar on Home page and book issue history tested
-
-
+[1/25/2024, 7:36:18 AM] Log file for the test case to test the search navigation bar
+[1/25/2024, 7:36:19 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 7:36:21 AM] entered login page and URL is https://biblio-track.onrender.com/login
+[1/25/2024, 7:36:24 AM] entered admin email ID and password
+[1/25/2024, 7:36:26 AM] admin logged in and URL is https://biblio-track.onrender.com/
+[1/25/2024, 7:36:28 AM] searched and selected on the book 1984
+[1/25/2024, 7:36:29 AM] Redirected to: https://biblio-track.onrender.com/book/65a45409e7cd239effdb6a11
+[1/25/2024, 7:36:30 AM] Search bar on user Home page tested
+[1/25/2024, 7:36:48 AM] Log file for the test case to test the search navigation bar
+[1/25/2024, 7:36:49 AM] Page title is: BiblioTrack and the URL is:https://biblio-track.onrender.com/
+[1/25/2024, 7:36:51 AM] entered login page and URL is https://biblio-track.onrender.com/login
+[1/25/2024, 7:36:53 AM] entered admin email ID and password
+[1/25/2024, 7:36:55 AM] admin logged in and URL is https://biblio-track.onrender.com/
+[1/25/2024, 7:36:58 AM] searched and selected on the book 1984
+[1/25/2024, 7:36:59 AM] Redirected to: https://biblio-track.onrender.com/book/65a45409e7cd239effdb6a11
+[1/25/2024, 7:37:00 AM] Search bar on user Home page tested
