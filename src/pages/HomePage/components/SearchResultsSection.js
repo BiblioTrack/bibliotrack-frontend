@@ -20,7 +20,7 @@ const SearchResultsSection = ({ searchQuery }) => {
 
 
 
-  if (books && books.length> 0){
+  if (Array.isArray(books) && books && books.length> 0){
     var filteredBooks = []
   } else{
     // Filter books based on search query
