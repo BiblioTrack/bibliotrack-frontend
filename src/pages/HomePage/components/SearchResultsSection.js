@@ -20,12 +20,16 @@ const SearchResultsSection = ({ searchQuery }) => {
 
 
 
+  if (books.length> 0){
+    var filteredBooks = []
+  } else{
+    // Filter books based on search query
+    filteredBooks = books.filter(book =>
+      book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      book.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
 
-  // Filter books based on search query
-  const filteredBooks = books.filter(book =>
-    book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    book.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div className="search-results-container">
