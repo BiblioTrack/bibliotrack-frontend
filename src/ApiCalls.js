@@ -191,6 +191,7 @@ export const addNewBook = async (bookData, usertoken) => {
 
   } catch (error) {
     // Handle errors (e.g., show error message)
+    console.log(usertoken);
     console.error('Error adding book:', error.message);
   }
 };
