@@ -21,7 +21,7 @@ async function dashboardPageTest() {
         logResults(`Log file for the test which enters the dashboard page and tests book issue history`); 
 
         logResults(`Log file for the test case to test the login page`); 
-        await driver.get("http://localhost:3000");
+        await driver.get("https://biblio-track.onrender.com/");
         const pageTitle = await driver.getTitle();
         const currentUrl = await driver.getCurrentUrl();
         logResults(`Page title is: ${pageTitle} and the URL is:${currentUrl}`);

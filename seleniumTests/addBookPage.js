@@ -20,7 +20,7 @@ async function addBookPageTest() {
         logResults(`Log file for the test which redirects the addBook page and enters the book details`); 
 
         logResults(`Log file for the test case to test the login page`); 
-        await driver.get("http://localhost:3000");
+        await driver.get("https://biblio-track.onrender.com/");
         const pageTitle = await driver.getTitle();
         const currentUrl = await driver.getCurrentUrl();
         logResults(`Page title is: ${pageTitle} and the URL is:${currentUrl}`);
