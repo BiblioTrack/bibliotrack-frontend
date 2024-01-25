@@ -3,10 +3,14 @@ import VerticalSpace from '../../components/VerticalSpace.js';
 import DashboardAdmin from './components/DashboardAdmin.js';
 import DashboardUser from './components/DashboardUser.js';
 import { useAuth } from '../../pages/AuthPages/AuthContext.js';
+import {Navigate } from 'react-router-dom';
 
 
 const DashboardPage = () => {
-    const { isAdmin } = useAuth();
+    const {user, isAdmin } = useAuth();
+    if (!user) {
+        return <Navigate to="/login" replace />;
+      }
 
     return(
         <>

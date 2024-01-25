@@ -8,8 +8,11 @@ import { useParams } from 'react-router-dom';
 import Book from './components/Book.js';
 // import booksData from '../../assets/booksData.json';
 import { fetchBook } from '../../ApiCalls.js'
+import { useAuth } from '../AuthPages/AuthContext.js'; 
+import {Navigate } from 'react-router-dom';
 
 const BookDetailsPage = () => {
+
 
   const { id } = useParams();
 
@@ -30,6 +33,11 @@ const BookDetailsPage = () => {
 
   }, [id]);
 
+  const {user} = useAuth();
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <>
