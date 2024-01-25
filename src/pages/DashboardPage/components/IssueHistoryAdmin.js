@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Table, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { PencilSquare } from 'react-bootstrap-icons';
 import MarkReturnedModal from './MarkReturnedModal';
 
@@ -101,9 +100,7 @@ const IssueHistoryAdmin = ({ issueHistory, showBookIdColumn = true }) => {
               >
                 {showBookIdColumn &&
                   <td>
-                    <Link to={`/book/${issue.bookId}`}>
                       {issue.bookName}
-                    </Link>
                   </td>}
                 <td>{issue.userEmail}</td>
                 <td>{issue.copyNumber}</td>
