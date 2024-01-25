@@ -353,3 +353,30 @@ export const createIssueCopy = async (issueData, user) => {
     alert('Failed to issue copy. Please try again.');
   }
 }
+
+export const updateIssueCopy = async (issueData, user) => {
+
+  try {
+    console.log('issuebook', issueData)
+    const response = await fetch(`${API_BASE_URL}/issues/${issueData.issueId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(issueData),
+    });
+
+    // const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error('Failed to  update issue ');
+    }
+
+    console.log('Update issued successfully');
+    // return data;
+  } catch (error) {
+    console.error('Error updating issue:', error.message);
+    alert('Failed to update issue. Please try again.');
+  }
+}
