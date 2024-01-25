@@ -20,16 +20,12 @@ const SearchResultsSection = ({ searchQuery }) => {
 
 
 
-  if (Array.isArray(books) && books && books.length> 0){
-    var filteredBooks = []
-  } else{
     // Filter books based on search query
-    filteredBooks = books.filter(book =>
+    const filteredBooks = books.filter(book =>
       book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
       book.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-  }
-
+  
 
   return (
     <div className="search-results-container">
