@@ -14,6 +14,7 @@ const Book = ({ book }) => {
   const handleUpdate = async () => {
 
     const newbook = await fetchBook(book._id);
+    console.log(newbook);
     setBookInfoData(newbook)
   };
   const { isAdmin } = useAuth();

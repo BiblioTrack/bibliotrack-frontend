@@ -33,15 +33,26 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onUpdate }) => {
 
   const handleBookEdit = async () => {
 
-    //   TODO: validate that Title is not emplty and CopyNumber aren't empty
+    if (!name || !author || !isbn || !genres) {
+      // Handle validation error, e.g., show an alert
+      alert('Please fill in all required fields.');
+      return;
+    }
 
+    if(isbn.length<6){
+      alert('ISBN is too short.');
+      return;
+    }
+
+    const generesArray = String(genres).split(",").map(string => string.trim());
 
     // TODO: EditBook API Call
     const bookData = {
       bookId,
       name,
+      author,
       isbn,
-      genres,
+      "genres":generesArray,
       edition,
       publicationDate,
       editor,
@@ -77,7 +88,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onUpdate }) => {
           <Row>
             <Col md={6} className="mb-3">
               <Form.Group className="mb-3" controlId="name">
-                <Form.Label>Title</Form.Label>
+                <Form.Label>Title *</Form.Label>
                 <FormControl
                   type="text"
                   value={name}
@@ -88,7 +99,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onUpdate }) => {
             </Col>
             <Col md={6} className="mb-3">
               <Form.Group className="mb-3" controlId="author">
-                <Form.Label>Author</Form.Label>
+                <Form.Label>Author *</Form.Label>
                 <FormControl
                   type="text"
                   value={author}
@@ -101,7 +112,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onUpdate }) => {
           <Row>
             <Col md={6} className="mb-3">
               <Form.Group className="mb-3" controlId="isbn">
-                <Form.Label>ISBN</Form.Label>
+                <Form.Label>ISBN *</Form.Label>
                 <FormControl
                   type="text"
                   value={isbn}
@@ -111,7 +122,7 @@ const EditBookModal = ({ show, onHide, bookId, bookData, onUpdate }) => {
             </Col>
             <Col md={6} className="mb-3">
               <Form.Group className="mb-3" controlId="genres">
-                <Form.Label>Genres</Form.Label>
+                <Form.Label>Genres (,) *</Form.Label>
                 <FormControl
                   type="text"
                   value={genres}
